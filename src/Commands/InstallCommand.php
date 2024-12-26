@@ -27,13 +27,20 @@ class InstallCommand extends Command
             - Make sure app.js is use Livewire and Alpine JS from ESM Module
             - Make sure livewire-toaster.js is imported
             - Make sure alpine-autosize.js is imported
+            - Add avatar url and first name attribute to the User model
+                - getAvatarUrlAttribute()
+                - getFirstNameAttribute()
+            - Add app.css configuration
+                - scrollbar settings
+                - grid settings
+                - etc.
 
         Publish the assets
             - Publish all files from the `view` directory
                 - components
                 - layouts
             - Publish all files from the `css` directory
-                - app.css - scrollbar settings, etc
+
         */
 
         $this->comment('Zinc UI is installed! Make something awesome!');
