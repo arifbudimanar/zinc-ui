@@ -187,7 +187,8 @@ class InstallCommand extends Command
                 theme: {
                     extend: {
                         fontFamily: {
-                            sans: ["Figtree", ...defaultTheme.fontFamily.sans],
+                            sans: ["Inter", ...defaultTheme.fontFamily.sans],
+                            mono: ["JetBrains Mono", ...defaultTheme.fontFamily.mono],
                         },
                     },
                 },
