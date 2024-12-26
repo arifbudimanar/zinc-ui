@@ -149,6 +149,55 @@ class InstallCommand extends Command
         );
         $this->replaceInFile(
             <<<'EOT'
+            import defaultTheme from 'tailwindcss/defaultTheme';
+
+            /** @type {import('tailwindcss').Config} */
+            export default {
+                content: [
+                    './vendor/laravel/framework/src/Illuminate/Pagination/resources/views/*.blade.php',
+                    './storage/framework/views/*.php',
+                    './resources/**/*.blade.php',
+                    './resources/**/*.js',
+                    './resources/**/*.vue',
+                ],
+                theme: {
+                    extend: {
+                        fontFamily: {
+                            sans: ['Figtree', ...defaultTheme.fontFamily.sans],
+                        },
+                    },
+                },
+                plugins: [],
+            };
+
+            EOT,
+            <<<'EOT'
+            import defaultTheme from "tailwindcss/defaultTheme";
+
+            /** @type {import('tailwindcss').Config} */
+            export default {
+                darkMode: "selector",
+                content: [
+                    "./vendor/laravel/framework/src/Illuminate/Pagination/resources/views/*.blade.php",
+                    "./storage/framework/views/*.php",
+                    "./resources/**/*.blade.php",
+                    "./resources/**/*.js",
+                    "./resources/**/*.vue",
+                ],
+                theme: {
+                    extend: {
+                        fontFamily: {
+                            sans: ["Figtree", ...defaultTheme.fontFamily.sans],
+                        },
+                    },
+                },
+                plugins: [],
+            };
+            EOT,
+            base_path('tailwind.config.js')
+        );
+        $this->replaceInFile(
+            <<<'EOT'
             @tailwind base;
             @tailwind components;
             @tailwind utilities;
