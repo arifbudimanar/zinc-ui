@@ -1,0 +1,4 @@
+<svg {{ $attributes }} xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+    stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" data-icon>
+    <polygon points="12 2 19 21 12 17 5 21 12 2" />
+</svg>
