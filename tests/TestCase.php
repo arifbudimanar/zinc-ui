@@ -2,9 +2,9 @@
 
 namespace ArifBudimanAr\ZincUi\Tests;
 
+use ArifBudimanAr\ZincUi\ZincUiServiceProvider;
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Orchestra\Testbench\TestCase as Orchestra;
-use ArifBudimanAr\ZincUi\ZincUiServiceProvider;
 
 class TestCase extends Orchestra
 {

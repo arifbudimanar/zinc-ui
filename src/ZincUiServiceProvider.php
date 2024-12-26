@@ -2,9 +2,9 @@
 
 namespace ArifBudimanAr\ZincUi;
 
+use ArifBudimanAr\ZincUi\Commands\ZincUiCommand;
 use Spatie\LaravelPackageTools\Package;
 use Spatie\LaravelPackageTools\PackageServiceProvider;
-use ArifBudimanAr\ZincUi\Commands\ZincUiCommand;
 
 class ZincUiServiceProvider extends PackageServiceProvider
 {
