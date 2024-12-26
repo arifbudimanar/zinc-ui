@@ -1,12 +1,12 @@
 <?php
 
-namespace VendorName\Skeleton\Commands;
+namespace ArifBudimanAr\ZincUi\Commands;
 
 use Illuminate\Console\Command;
 
-class SkeletonCommand extends Command
+class ZincUiCommand extends Command
 {
-    public $signature = 'skeleton';
+    public $signature = 'zinc-ui';
 
     public $description = 'My command';
 
