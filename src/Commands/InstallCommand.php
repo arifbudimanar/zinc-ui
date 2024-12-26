@@ -12,8 +12,9 @@ class InstallCommand extends Command
 
     public function handle(): int
     {
-        $this->comment('Install Zinc UI...');
+        $this->comment('Install Zinc UI ...');
         $this->comment('Install Livewire');
+        $this->comment('Install Tailwind CSS');
         $this->comment('Install Livewire Toaster');
         $this->comment('Install Alpine Autozise');
 

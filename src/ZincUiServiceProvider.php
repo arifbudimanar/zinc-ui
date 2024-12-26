@@ -3,7 +3,6 @@
 namespace ArifBudimanAr\ZincUi;
 
 use ArifBudimanAr\ZincUi\Commands\InstallCommand;
-use ArifBudimanAr\ZincUi\Commands\ZincUiCommand;
 use Spatie\LaravelPackageTools\Package;
 use Spatie\LaravelPackageTools\PackageServiceProvider;
 
