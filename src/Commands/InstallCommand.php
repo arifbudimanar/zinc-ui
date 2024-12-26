@@ -123,7 +123,7 @@ class InstallCommand extends Command
 
         $this->replaceInFile(
             <<<'EOT'
-            import "./bootstrap";
+            import './bootstrap';
             EOT,
             <<<'EOT'
             import "./bootstrap";

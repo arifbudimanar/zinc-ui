@@ -18,7 +18,7 @@ class ZincUiServiceProvider extends PackageServiceProvider
          */
         $package
             ->name('zinc-ui')
-            ->hasConfigFile()
+            // ->hasConfigFile()
             // ->hasViews()
             // ->hasMigration('create_zinc_ui_table')
             ->hasCommands([

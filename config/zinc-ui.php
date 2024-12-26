@@ -1,6 +1,6 @@
 <?php
 
-// config for ArifBudimanAr/ZincUi
+// Config for Zinc UI
 return [
 
 ];
