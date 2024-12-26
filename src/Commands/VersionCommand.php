@@ -4,7 +4,7 @@ namespace ArifBudimanAr\ZincUi\Commands;
 
 use Illuminate\Console\Command;
 
-class InstallCommand extends Command
+class VersionCommand extends Command
 {
     public $signature = 'zinc:version';
 
