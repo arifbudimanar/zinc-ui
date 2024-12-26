@@ -1,9 +1,10 @@
 {
     "name": "arifbudimanar/zinc-ui",
-    "description": "This is my package zinc-ui",
+    "description": "Zinc UI is a laravel blade component that work with livewire.",
     "keywords": [
-        "ArifBudimanAr",
         "laravel",
+        "livewire",
+        "tailwindcss",
         "zinc-ui"
     ],
     "homepage": "https://github.com/arifbudimanar/zinc-ui",
