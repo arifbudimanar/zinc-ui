@@ -2,6 +2,7 @@
 
 namespace ArifBudimanAr\ZincUi;
 
+use ArifBudimanAr\ZincUi\Commands\InstallCommand;
 use ArifBudimanAr\ZincUi\Commands\ZincUiCommand;
 use Spatie\LaravelPackageTools\Package;
 use Spatie\LaravelPackageTools\PackageServiceProvider;
@@ -19,7 +20,7 @@ class ZincUiServiceProvider extends PackageServiceProvider
             ->name('zinc-ui')
             ->hasConfigFile()
             ->hasViews()
-            ->hasMigration('create_zinc_ui_table')
-            ->hasCommand(ZincUiCommand::class);
+            // ->hasMigration('create_zinc_ui_table')
+            ->hasCommand(InstallCommand::class);
     }
 }

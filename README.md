@@ -76,8 +76,8 @@ Please review [our security policy](../../security/policy) on how to report secu
 
 ## Credits
 
-- [Arif Budiman Arrosyid](https://github.com/arifbudimanar)
-- [All Contributors](../../contributors)
+-   [Arif Budiman Arrosyid](https://github.com/arifbudimanar)
+-   [All Contributors](../../contributors)
 
 ## License
 
