@@ -1,8 +1,14 @@
 **WIP Package**, **No Test Yet**, **No Docs Yet**
 
 <p align="center">
-    <img src="/art/logo-light.svg" alt="Logo Zinc UI" media="(prefers-color-scheme: light)">
-    <img src="/art/logo-dark.svg" alt="Logo Zinc UI" media="(prefers-color-scheme: dark)">
+    <picture>
+        <!-- Light Mode -->
+        <source srcset="/art/logo-light.svg" media="(prefers-color-scheme: light)">
+        <!-- Dark Mode -->
+        <source srcset="/art/logo-dark.svg" media="(prefers-color-scheme: dark)">
+        <!-- Default Fallback -->
+        <img src="/art/logo-light.svg" alt="Logo Zinc UI">
+    </picture>
 </p>
 
 <p align="center">
