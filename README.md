@@ -1,7 +1,9 @@
 **WIP Package**, **No Test Yet**, **No Docs Yet**
 
-<p align="center"><img src="/art/logo-light.svg" alt="Logo Zinc UI" media="(prefers-color-scheme: light)"></p>
-<p align="center"><img src="/art/logo-dark.svg" alt="Logo Zinc UI" media="(prefers-color-scheme: dark)"></p>
+<p align="center">
+    <img src="/art/logo-light.svg" alt="Logo Zinc UI" media="(prefers-color-scheme: light)">
+    <img src="/art/logo-dark.svg" alt="Logo Zinc UI" media="(prefers-color-scheme: dark)">
+</p>
 
 <p align="center">
     <a href="https://packagist.org/packages/arifbudimanar/zinc-ui"><img src="https://img.shields.io/packagist/v/arifbudimanar/zinc-ui.svg?style=flat-square" alt="Latest Version on Packagist"></a>
