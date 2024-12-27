@@ -1,13 +1,21 @@
 **WIP Package**, **No Test Yet**, **No Docs Yet**
 
-# Zinc UI
+<p align="center"><img src="/art/logo.svg" alt="Logo Zinc UI"></p>
 
-[![Latest Version on Packagist](https://img.shields.io/packagist/v/arifbudimanar/zinc-ui.svg?style=flat-square)](https://packagist.org/packages/arifbudimanar/zinc-ui)
-[![GitHub Tests Action Status](https://img.shields.io/github/actions/workflow/status/arifbudimanar/zinc-ui/run-tests.yml?branch=main&label=tests&style=flat-square)](https://github.com/arifbudimanar/zinc-ui/actions?query=workflow%3Arun-tests+branch%3Amain)
-[![GitHub Code Style Action Status](https://img.shields.io/github/actions/workflow/status/arifbudimanar/zinc-ui/fix-php-code-style-issues.yml?branch=main&label=code%20style&style=flat-square)](https://github.com/arifbudimanar/zinc-ui/actions?query=workflow%3A"Fix+PHP+code+style+issues"+branch%3Amain)
-[![Total Downloads](https://img.shields.io/packagist/dt/arifbudimanar/zinc-ui.svg?style=flat-square)](https://packagist.org/packages/arifbudimanar/zinc-ui)
+<p align="center">
+    <a href="https://packagist.org/packages/arifbudimanar/zinc-ui"><img src="https://img.shields.io/packagist/v/arifbudimanar/zinc-ui.svg?style=flat-square" alt="Latest Version on Packagist"></a>
+    <a href="https://packagist.org/packages/arifbudimanar/zinc-ui"><img src="https://img.shields.io/github/actions/workflow/status/arifbudimanar/zinc-ui/run-tests.yml?branch=main&label=tests&style=flat-square" alt="GitHub Tests Action Status"></a>
+    <a href="https://packagist.org/packages/arifbudimanar/zinc-ui"><img src="https://img.shields.io/github/actions/workflow/status/arifbudimanar/zinc-ui/fix-php-code-style-issues.yml?branch=main&label=code%20style&style=flat-square" alt="GitHub Code Style Action Status"></a>
+    <a href="https://packagist.org/packages/arifbudimanar/zinc-ui"><img src="https://img.shields.io/packagist/dt/arifbudimanar/zinc-ui.svg?style=flat-square" alt="Total Downloads"></a>
+</p>
 
-Zinc UI is a Laravel blade component that work with Livewire out of the box.
+## Introduction
+
+Zinc UI is a Laravel Blade component library that works effortlessly with Livewire.
+
+## Documentation
+
+Comprehensive documentation is available at [Zinc UI](https://zinc-ui.arifcode.dev/doc).
 
 ## Installation
 
