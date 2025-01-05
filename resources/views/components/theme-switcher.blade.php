@@ -43,18 +43,26 @@
 }" {{ $attributes->whereStartsWith('class') }} id="theme-switcher">
     @if ($variant === 'header')
         <x-dropdown id="dropdown-theme-switcher-desktop" position="bottom-end" {{ $attributes }}>
-            <x-button variant="subtle" size="sm" tooltip="Theme Preferences">
-                <x-slot:iconLeading>
-                    <x-icon name="o-moon" class="hidden size-5 dark:block" />
-                    <x-icon name="o-sun" class="block size-5 dark:hidden" />
-                </x-slot:iconLeading>
-            </x-button>
+            <x-tooltip position="bottom">
+                <x-tooltip.content class="whitespace-nowrap">
+                    {{ __('Theme Preferences') }}
+                </x-tooltip.content>
+
+                <x-button variant="subtle" size="sm">
+                    <x-slot:iconLeading>
+                        <x-icon name="o-moon" class="hidden size-5 dark:block" />
+                        <x-icon name="o-sun" class="block size-5 dark:hidden" />
+                    </x-slot:iconLeading>
+                </x-button>
+            </x-tooltip>
             <x-navmenu>
-                <x-navmenu.item icon="o-moon" :label="__('Dark Mode')" kbd="Alt+M" x-on:click="darkMode()"
-                    class="whitespace-nowrap" />
-                <x-navmenu.item icon="o-sun" :label="__('Light Mode')" kbd="Alt+L" x-on:click="lightMode()"
-                    class="whitespace-nowrap" />
-                <x-navmenu.item :label="__('System Preference')" kbd="Alt+P" x-on:click="systemMode()" class="whitespace-nowrap">
+                <x-navmenu.item icon="o-moon" kbd="Alt+M" x-on:click="darkMode()" class="whitespace-nowrap">
+                    {{ __('Dark Mode') }}
+                </x-navmenu.item>
+                <x-navmenu.item icon="o-sun" kbd="Alt+L" x-on:click="lightMode()" class="whitespace-nowrap">
+                    {{ __('Light Mode') }}
+                </x-navmenu.item>
+                <x-navmenu.item kbd="Alt+P" x-on:click="systemMode()" class="whitespace-nowrap">
                     <x-slot:icon>
                         <x-icon name="o-computer-desktop" class="hidden mr-2 shrink-0 size-5 lg:block"
                             data-navmenu-icon />
@@ -63,6 +71,7 @@
                         <x-icon name="o-device-phone-mobile" class="mr-2 shrink-0 size-5 md:hidden lg:hidden"
                             data-navmenu-icon />
                     </x-slot:icon>
+                    {{ __('System Preference') }}
                 </x-navmenu.item>
             </x-navmenu>
         </x-dropdown>
@@ -70,17 +79,22 @@
     @if ($variant === 'sidebar')
         <x-dropdown id="dropdown-theme-switcher-sidebar" position="top-start"
             {{ $attributes->merge(['class' => 'w-full']) }}>
-            <x-navlist.item variant="outline" label="Theme Preferences">
-                <x-slot:iconLeading>
+            <x-navlist.item variant="outline">
+                <x-slot:icon>
                     <x-icon name="o-moon" class="hidden size-5 dark:flex" />
                     <x-icon name="o-sun" class="flex size-5 dark:hidden" />
-                </x-slot:iconLeading>
+                </x-slot:icon>
+                {{ __('Theme Preferences') }}
             </x-navlist.item>
 
             <x-navmenu>
-                <x-navmenu.item icon="o-moon" :label="__('Dark Mode')" x-on:click="darkMode()" kbd="Alt+M" />
-                <x-navmenu.item icon="o-sun" :label="__('Light Mode')" x-on:click="lightMode()" kbd="Alt+L" />
-                <x-navmenu.item :label="__('System Preference')" x-on:click="systemMode()" kbd="Alt+P">
+                <x-navmenu.item icon="o-moon" x-on:click="darkMode()" kbd="Alt+M">
+                    {{ __('Dark Mode') }}
+                </x-navmenu.item>
+                <x-navmenu.item icon="o-sun" x-on:click="lightMode()" kbd="Alt+L">
+                    {{ __('Light Mode') }}
+                </x-navmenu.item>
+                <x-navmenu.item x-on:click="systemMode()" kbd="Alt+P">
                     <x-slot:icon>
                         <x-icon name="o-computer-desktop" class="hidden mr-2 shrink-0 size-5 lg:block"
                             data-navmenu-icon />
@@ -89,6 +103,7 @@
                         <x-icon name="o-device-phone-mobile" class="mr-2 shrink-0 size-5 md:hidden lg:hidden"
                             data-navmenu-icon />
                     </x-slot:icon>
+                    {{ __('System Preference') }}
                 </x-navmenu.item>
             </x-navmenu>
         </x-dropdown>

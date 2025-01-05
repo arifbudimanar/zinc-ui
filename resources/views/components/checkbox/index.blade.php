@@ -40,14 +40,12 @@
                 </svg>
             </label>
 
-            @isset($label)
-                <x-label for="{{ $id }}">
-                    {{ $label }}
-                    @isset($badge)
-                        <x-badge label="{{ $badge }}" color="{{ $badgeColor }}" class="ml-1.5 -my-2.5" />
-                    @endisset
-                </x-label>
-            @endisset
+            <x-label for="{{ $id }}">
+                {{ $slot }}
+                @isset($badge)
+                    <x-badge label="{{ $badge }}" color="{{ $badgeColor }}" class="ml-1.5 -my-2.5" />
+                @endisset
+            </x-label>
         </div>
         @isset($description)
             <x-description class="mb-3 ml-8">

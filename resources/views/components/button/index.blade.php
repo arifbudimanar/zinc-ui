@@ -18,6 +18,8 @@
     $square = !empty($icon || $iconLeading || $iconTrailing) && empty($label) && $slot->isEmpty();
     $iconLeading = $icon ??= $iconLeading;
 
+    $type = $variant === 'primary' ? 'submit' : $type;
+
     $disabled = $attributes->has('disabled') ? true : false;
 
     $backgroundClass = [

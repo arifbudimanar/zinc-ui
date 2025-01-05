@@ -5,6 +5,7 @@
     'iconLeading' => null,
     'iconTrailing' => null,
     'badge' => null,
+    'badgeColor' => 'zinc',
 ])
 
 @php
@@ -34,7 +35,7 @@
     @endif
 
     @isset($badge)
-        <x-badge color="zinc" class="-ml-1">
+        <x-badge color="{{ $badgeColor }}" class="-ml-1">
             {{ $badge }}
         </x-badge>
     @endisset
