@@ -357,8 +357,8 @@ class InstallCommand extends Command
     public function handleBrandLogo()
     {
         (new Filesystem)->ensureDirectoryExists(public_path('logos'));
-        (new Filesystem)->copy(__DIR__.'/../../art/brand-dark.png', public_path('logos/brand-dark.png'));
-        (new Filesystem)->copy(__DIR__.'/../../art/brand-light.png', public_path('logos/brand-light.png'));
+        (new Filesystem)->copy(__DIR__.'/../../art/brand-dark.png', public_path('/logos/brand-dark.png'));
+        (new Filesystem)->copy(__DIR__.'/../../art/brand-light.png', public_path('/logos/brand-light.png'));
     }
 
     public function handle(): int
