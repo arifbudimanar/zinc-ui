@@ -65,6 +65,25 @@
         'filled' =>
             'disabled:shadow-none dark:disabled:bg-white/[7%] disabled:text-zinc-500 dark:disabled:text-zinc-400 disabled:placeholder-zinc-400/70 dark:disabled:placeholder-zinc-500',
     ][$variant];
+    $fileClass = [
+        'outline' => '
+            !py-0 file:px-3 file:h-full file:-ml-3 file:mr-3
+            file:bg-zinc-100 file:dark:bg-zinc-100/5
+            file:text-zinc-700 file:dark:text-zinc-300 file:rounded-l-md
+            file:border-none
+            file:cursor-pointer file:disabled:cursor-default
+            file:disabled:text-zinc-500 file:dark:disabled:text-zinc-400
+            file:outline file:outline-1 file:outline-zinc-200 file:dark:outline-white/10 file:disabled:dark:outline-white/5
+            ',
+        'filled' => '
+            !py-0 file:px-3 file:h-full file:-ml-3 file:mr-3
+            file:bg-zinc-500/5 file:dark:bg-white/5
+            file:text-zinc-700 file:dark:text-zinc-300 file:rounded-l-md
+            file:border-none
+            file:cursor-pointer file:disabled:cursor-default
+            file:disabled:text-zinc-500 file:dark:disabled:text-zinc-400
+            ',
+    ][$variant];
     $class =
         'block w-full py-2 text-sm leading-6 border rounded-lg appearance-none' .
         ' ' .
@@ -87,236 +106,22 @@
         $disabledClass;
 @endphp
 
-@if (!$label && !$description)
-    <div class="w-full">
-        {{-- Default input --}}
-        @if (!$clearable && !$viewable && !$copyable)
-            <div class="relative block w-full group/input" data-input>
-                @if (is_string($iconLeading))
-                    <div
-                        class="{{ 'absolute left-0 top-1 flex items-center justify-center text-zinc-400 dark:text-zinc-400' . ' ' . $iconSizeClass }}">
-                        <x-icon :name="$iconLeading" class="ml-2 shrink-0 size-5" />
-                    </div>
-                @elseif($iconLeading)
-                    <div
-                        class="{{ 'absolute left-0 top-1 flex items-center justify-center text-zinc-400 dark:text-zinc-400' . ' ' . $iconSizeClass }}">
-                        {{ $iconLeading }}
-                    </div>
-                @endif
-                <input
-                    {{ $attributes->merge([
-                        'id' => $id,
-                        'type' => $type,
-                        'class' => $class,
-                        'required' => $required,
-                        'disabled' => $disabled,
-                        'readonly' => $readonly,
-                    ]) }}
-                    data-control data-group-target>
-                @if (is_string($iconTrailing))
-                    <div
-                        class="{{ 'absolute right-0 top-1 flex items-center justify-center text-zinc-400 dark:text-zinc-400' . ' ' . $iconSizeClass }}">
-                        <x-icon :name="$iconTrailing" class="mr-2 shrink-0 size-5" />
-                    </div>
-                @elseif($iconTrailing)
-                    <div
-                        class="{{ 'absolute right-0 top-1 flex items-center justify-center text-zinc-400 dark:text-zinc-400' . ' ' . $iconSizeClass }}">
-                        {{ $iconTrailing }}
-                    </div>
-                @endif
-            </div>
-        @endif
+<x-with-field :$id :$label :$description :$badge :$badgeColor>
+    @if ($type == 'file')
+        <div class="relative block w-full group/input" data-input>
+            <input
+                {{ $attributes->merge([
+                    'id' => $id,
+                    'type' => 'file',
+                    'class' => $class . ' ' . $fileClass,
+                    'required' => $required,
+                    'disabled' => $disabled,
+                    'readonly' => $readonly,
+                ]) }}
+                data-control data-group-target>
 
-        {{-- Clearable input --}}
-        @if ($clearable)
-            <div class="relative block w-full group/input" data-input x-data="{
-                wireModel: '{{ $attributes->whereStartsWith('wire:model')->first() }}',
-                clearInput() {
-                    if (this.wireModel) {
-                        $wire.set(this.wireModel, '');
-                    }
-                    this.$refs.input.value = '';
-                    this.$refs.input.focus();
-                }
-            }"
-                x-on:keydown.alt.x="clearInput()">
-
-                @if (is_string($iconLeading))
-                    <div
-                        class="{{ 'absolute left-0 top-1 flex items-center justify-center text-zinc-400 dark:text-zinc-400' . ' ' . $iconSizeClass }}">
-                        <x-icon :name="$iconLeading" class="ml-2 shrink-0 size-5" />
-                    </div>
-                @elseif($iconLeading)
-                    <div
-                        class="{{ 'absolute left-0 top-1 flex items-center justify-center text-zinc-400 dark:text-zinc-400' . ' ' . $iconSizeClass }}">
-                        {{ $iconLeading }}
-                    </div>
-                @endif
-
-                <input x-ref="input"
-                    {{ $attributes->merge([
-                        'id' => $id,
-                        'type' => $type,
-                        'class' => $class,
-                        'disabled' => $disabled,
-                        'readonly' => $readonly,
-                    ]) }}
-                    data-control data-group-target>
-
-                @if (!$disabled)
-                    <div
-                        class="{{ 'absolute right-0 top-1 flex items-center justify-center text-zinc-400 dark:text-zinc-400' . ' ' . $iconSizeClass }}">
-                        @if ($size == 'base')
-                            <x-button size="sm" variant="subtle" icon="o-x-mark" class="mr-2"
-                                x-on:click="clearInput()" />
-                        @endif
-                        @if ($size == 'sm')
-                            <x-button size="sm" variant="subtle" icon="o-x-mark" class="!h-6 mr-2"
-                                x-on:click="clearInput()" />
-                        @endif
-                    </div>
-                @endif
-            </div>
-        @endif
-
-        {{-- Viewable input --}}
-        @if ($viewable)
-            <div class="relative block w-full group/input" data-input x-data="{
-                isRevealed: false,
-                viewInput() {
-                    this.isRevealed = !this.isRevealed;
-                    this.$refs.input.type = this.isRevealed ? 'text' : 'password';
-                    this.$refs.input.focus();
-                }
-            }"
-                x-on:keydown.alt.v="viewInput()">
-                @if (is_string($iconLeading))
-                    <div
-                        class="{{ 'absolute left-0 top-1 flex items-center justify-center text-zinc-400 dark:text-zinc-400' . ' ' . $iconSizeClass }}">
-                        <x-icon :name="$iconLeading" class="ml-2 shrink-0 size-5" />
-                    </div>
-                @elseif($iconLeading)
-                    <div
-                        class="{{ 'absolute left-0 top-1 flex items-center justify-center text-zinc-400 dark:text-zinc-400' . ' ' . $iconSizeClass }}">
-                        {{ $iconLeading }}
-                    </div>
-                @endif
-
-                <input x-ref="input"
-                    {{ $attributes->merge([
-                        'id' => $id,
-                        'type' => 'password',
-                        'class' => $class,
-                        'disabled' => $disabled,
-                        'readonly' => $readonly,
-                    ]) }}
-                    data-control data-group-target />
-
-                @if (!$disabled)
-                    <div
-                        class="{{ 'absolute right-0 top-1 flex items-center justify-center text-zinc-400 dark:text-zinc-400' . ' ' . $iconSizeClass }}">
-                        @if ($size == 'base')
-                            <x-button size="sm" variant="subtle" icon="o-x-mark" class="mr-2"
-                                x-on:click="viewInput()">
-                                <x-slot:icon>
-                                    <x-icon name="o-eye" x-show="!isRevealed" class="shrink-0 size-5" />
-                                    <x-icon name="o-eye-slash" x-show="isRevealed" x-cloak class="shrink-0 size-5" />
-                                </x-slot:icon>
-                            </x-button>
-                        @endif
-                        @if ($size == 'sm')
-                            <x-button size="sm" variant="subtle" icon="o-x-mark" class="!h-6 mr-2"
-                                x-on:click="viewInput()">
-                                <x-slot:icon>
-                                    <x-icon name="o-eye" x-show="!isRevealed" class="shrink-0 size-5" />
-                                    <x-icon name="o-eye-slash" x-show="isRevealed" x-cloak class="shrink-0 size-5" />
-                                </x-slot:icon>
-                            </x-button>
-                        @endif
-                    </div>
-                @endif
-            </div>
-        @endif
-
-        {{-- Copyable input --}}
-        @if ($copyable)
-            <div class="relative block w-full group/input" data-input x-data="{
-                isCopied: false,
-                copyInput() {
-                    this.$refs.input.select();
-                    document.execCommand('copy');
-                    this.isCopied = true;
-                    setTimeout(() => this.isCopied = false, 1500);
-                }
-            }"
-                x-on:keydown.alt.c="copyInput()">
-                @if (is_string($iconLeading))
-                    <div
-                        class="{{ 'absolute left-0 top-1 flex items-center justify-center text-zinc-400 dark:text-zinc-400' . ' ' . $iconSizeClass }}">
-                        <x-icon :name="$iconLeading" class="ml-2 shrink-0 size-5" />
-                    </div>
-                @elseif($iconLeading)
-                    <div
-                        class="{{ 'absolute left-0 top-1 flex items-center justify-center text-zinc-400 dark:text-zinc-400' . ' ' . $iconSizeClass }}">
-                        {{ $iconLeading }}
-                    </div>
-                @endif
-
-                <input x-ref="input"
-                    {{ $attributes->merge([
-                        'id' => $id,
-                        'type' => $type,
-                        'class' => $class,
-                        'disabled' => $disabled,
-                        'readonly' => $readonly,
-                    ]) }}
-                    data-control data-group-target />
-
-                @if (!$disabled)
-                    <div
-                        class="{{ 'absolute right-0 top-1 flex items-center justify-center text-zinc-400 dark:text-zinc-400' . ' ' . $iconSizeClass }}">
-                        @if ($size == 'base')
-                            <x-button size="sm" variant="{{ $variant == 'filled' ? 'outline' : 'filled' }}"
-                                class="mr-2" x-on:click="copyInput()"
-                                x-bind:class="isCopied && 'pointer-events-none'">
-                                <x-slot:iconLeading>
-                                    <x-icon name="o-clipboard" x-show="!isCopied" class="shrink-0 size-5" />
-                                    <x-icon name="o-check" x-show="isCopied" x-cloak class="shrink-0 size-5" />
-                                </x-slot:iconLeading>
-                            </x-button>
-                        @endif
-                        @if ($size == 'sm')
-                            <x-button size="sm" variant="{{ $variant == 'filled' ? 'outline' : 'filled' }}"
-                                class="!h-6 mr-2" x-on:click="copyInput()"
-                                x-bind:class="isCopied && 'pointer-events-none'">
-                                <x-slot:iconLeading>
-                                    <x-icon name="o-clipboard" x-show="!isCopied" class="shrink-0 size-5" />
-                                    <x-icon name="o-check" x-show="isCopied" x-cloak class="shrink-0 size-5" />
-                                </x-slot:iconLeading>
-                            </x-button>
-                        @endif
-                    </div>
-                @endif
-            </div>
-        @endif
-    </div>
-@else
-    <x-field>
-        @isset($label)
-            <x-label>
-                {{ $label }}
-                @isset($badge)
-                    <x-badge label="{{ $badge }}" color="{{ $badgeColor }}" class="ml-1.5 -my-2.5" />
-                @endisset
-            </x-label>
-        @endisset
-
-        @isset($description)
-            <x-description>
-                {{ $description }}
-            </x-description>
-        @endisset
-
+        </div>
+    @else
         {{-- Default input --}}
         @if (!$clearable && !$viewable && !$copyable)
             <div class="relative block w-full group/input" data-input>
@@ -527,9 +332,5 @@
                 @endif
             </div>
         @endif
-
-        @if ($label !== null)
-            <x-error name="{{ $id }}" />
-        @endif
-    </x-field>
-@endif
+    @endif
+</x-with-field>

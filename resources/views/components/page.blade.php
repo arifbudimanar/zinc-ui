@@ -47,9 +47,11 @@
         },
     }" x-resize.document="$width >= 1024 && closeSidebar" data-layout>
 
-    @isset($body)
+    {{-- @isset($body)
         {{ $body }}
-    @endisset
+    @endisset --}}
+
+    {{ $slot }}
 
     @persist('toaster')
         <x-toaster />

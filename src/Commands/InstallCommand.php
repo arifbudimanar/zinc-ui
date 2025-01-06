@@ -83,10 +83,10 @@ class InstallCommand extends Command
 
     public function handleLivewire()
     {
-        $this->comment('Install Livewire and Livewire Toaster ...');
-        if (! $this->requireComposerPackages(['livewire/livewire:^3.5', 'masmerise/livewire-toaster:^2.6'])) {
-            return 1;
-        }
+        // $this->comment('Install Livewire and Livewire Toaster ...');
+        // if (! $this->requireComposerPackages(['livewire/livewire:^3.5', 'masmerise/livewire-toaster:^2.6'])) {
+        //     return 1;
+        // }
 
         $this->comment('Publish Livewire config and Livewire Toaster config ...');
         $this->runCommands(['php artisan livewire:publish --config']);
@@ -357,8 +357,8 @@ class InstallCommand extends Command
     public function handleBrandLogo()
     {
         (new Filesystem)->ensureDirectoryExists(public_path('logos'));
-        (new Filesystem)->copyDirectory(__DIR__.'/../../art/brand-dark.png', public_path('logos'));
-        (new Filesystem)->copyDirectory(__DIR__.'/../../art/brand-light.png', public_path('logos'));
+        (new Filesystem)->copy(__DIR__.'/../../art/brand-dark.png', public_path('logos/brand-dark.png'));
+        (new Filesystem)->copy(__DIR__.'/../../art/brand-light.png', public_path('logos/brand-light.png'));
     }
 
     public function handle(): int
