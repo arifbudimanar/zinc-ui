@@ -10,6 +10,8 @@
     'badgeColor' => 'zinc',
 ])
 
+@aware(['variant' => $variant])
+
 @php
     $expandable = $attributes->has('expandable') ? true : false;
 

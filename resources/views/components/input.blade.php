@@ -57,8 +57,9 @@
         'base' => '!h-8',
         'sm' => '!h-6',
     ][$size];
-    $paddingLeftClass = isset($icon) ? 'pl-10' : 'pl-3';
-    $paddingRightClass = isset($iconTrailing) || $viewable || $clearable || $copyable ? 'pr-10' : 'pr-3';
+    $paddingLeftClass = $type === 'file' ? 'pl-3' : (isset($icon) || isset($iconLeading) ? 'pl-10' : 'pl-3');
+    $paddingRightClass =
+        $type === 'file' ? 'pr-3' : (isset($iconTrailing) || $viewable || $clearable || $copyable ? 'pr-10' : 'pr-3');
     $disabledClass = [
         'outline' =>
             'disabled:shadow-none dark:disabled:bg-white/[7%] disabled:text-zinc-500 dark:disabled:text-zinc-400 disabled:placeholder-zinc-400/70 dark:disabled:placeholder-zinc-500',
