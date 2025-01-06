@@ -151,6 +151,24 @@ class InstallCommand extends Command
             }
         }
 
+        *:has(> [data-main]) {
+            display: grid;
+            grid-area: body;
+            grid-template-rows: auto 1fr auto;
+            grid-template-columns: min-content minmax(0, 1fr) min-content;
+            grid-template-areas:
+                "header  header  header"
+                "sidebar main    aside"
+                "sidebar footer  aside";
+        }
+
+        *:has(> [data-sidebar] + [data-header]) {
+            grid-template-areas:
+                "sidebar header  header"
+                "sidebar main    aside"
+                "sidebar footer  aside";
+        }
+
         /* Light mode color scheme */
         .light {
             color-scheme: light;
@@ -323,7 +341,7 @@ class InstallCommand extends Command
 
     /** @type {import('tailwindcss').Config} */
     export default {
-        darkMode: 'class',
+        darkMode: 'selector',
         content: [
             './vendor/arifbudimanar/zinc-ui/resources/views/**/*.blade.php',
             './vendor/laravel/framework/src/Illuminate/Pagination/resources/views/*.blade.php',
