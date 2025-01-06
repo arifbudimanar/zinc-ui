@@ -18,18 +18,22 @@
                 <x-dropdown id="dropdown-menu" position="bottom-end" class="mr-2 sm:hidden">
                     <x-button variant="subtle" icon="o-ellipsis-vertical" />
                     <x-menu>
-                        <x-menu.item href="{{ route('docs.installation') }}" icon="o-book-open"
-                            wire:navigate>{{ __('Docs') }}</x-menu.item>
-                        <x-menu.item href="https://github.com/arifbudimanar/zinc-ui" icon="l-github"
-                            target="_blank">{{ __('Github') }}</x-menu.item>
+                        <x-menu.item href="{{ route('docs') }}" icon="o-book-open" wire:navigate>
+                            {{ __('Docs') }}
+                        </x-menu.item>
+                        <x-menu.item href="https://github.com/arifbudimanar/zinc-ui" icon="l-github" target="_blank">
+                            {{ __('Github') }}
+                        </x-menu.item>
                     </x-menu>
                 </x-dropdown>
 
-                <x-navbar.item href="{{ route('docs.installation') }}" icon="o-book-open" wire:navigate
-                    class="hidden sm:flex">{{ __('Docs') }}</x-navbar.item>
+                <x-navbar.item href="{{ route('docs') }}" icon="o-book-open" wire:navigate class="hidden sm:flex">
+                    {{ __('Docs') }}
+                </x-navbar.item>
                 <x-navbar.item href="https://github.com/arifbudimanar/zinc-ui" icon="l-github" target="_blank"
-                    class="hidden sm:flex">{{ __('Github') }}</x-navbar.item>
-                <x-separator vertical class="hidden mx-4 my-3 sm:flex" />
+                    class="hidden sm:flex">
+                    {{ __('Github') }}
+                </x-navbar.item>
 
                 <x-theme-switcher variant="header" x-on:keydown.alt.l.window="lightMode()"
                     x-on:keydown.alt.m.window="darkMode()" x-on:keydown.alt.p.window="systemMode()" />
