@@ -12,7 +12,7 @@ class VersionCommand extends Command
 
     public function handle(): int
     {
-        $this->comment('Zinc UI v0.1-alpha.15');
+        $this->comment('Zinc UI v0.1-alpha.16');
 
         return self::SUCCESS;
     }
