@@ -16,7 +16,7 @@
             <x-spacer />
 
             <x-dropdown id="dropdown-menu" position="bottom-end" class="mr-2 sm:hidden">
-                <x-button variant="subtle" icon="o-ellipsis-vertical" />
+                <x-button variant="subtle" size="sm" icon="o-ellipsis-vertical" />
                 <x-menu>
                     <x-menu.item href="/docs" icon="o-book-open" wire:navigate>
                         {{ __('Docs') }}
