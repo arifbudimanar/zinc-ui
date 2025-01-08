@@ -103,10 +103,6 @@ Add the following route to your web.php file:
 Route::get('/', Home::class);
 ```
 
-And visit your app url.
-
-### Access Your Application
-
 Visit your application's URL to see Zinc UI in action!
 
 ## Testing
