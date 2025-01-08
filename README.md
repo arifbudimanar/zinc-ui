@@ -15,7 +15,7 @@
 
 ## Introduction
 
-**Zinc UI** is a UI component library for your Livewire applications. It's built using [Tailwind CSS](https://tailwindcss.com/) and [Alpine.js](https://alpinejs.dev/).
+**Zinc UI** is A UI component library for [Livewire](https://livewire.laravel.com/) , built with [Tailwind CSS](https://tailwindcss.com/) and [Alpine.js](https://alpinejs.dev/).
 
 ## Documentation
 
