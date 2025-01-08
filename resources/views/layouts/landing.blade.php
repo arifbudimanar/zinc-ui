@@ -39,7 +39,7 @@
             <x-theme-switcher variant="header" x-on:keydown.alt.l.window="lightMode()"
                 x-on:keydown.alt.m.window="darkMode()" x-on:keydown.alt.p.window="systemMode()" />
 
-            @auth
+            {{-- @auth
                 <x-dropdown position="bottom-end" class="ml-1 -my-1">
                     <x-profile avatar="{{ Auth::user()->avatar_url }}" class="-mr-3" />
                     <x-menu>
@@ -71,7 +71,7 @@
                 <x-button wire:navigate :href="route('login')" variant="outline" size="sm" class="ml-2">
                     {{ __('Login') }}
                 </x-button>
-            @endauth
+            @endauth --}}
         </x-navbar>
     </x-header>
 
