@@ -56,7 +56,7 @@
 
         <div class="relative flex flex-col pl-8 min-h-auto" x-show="isNavlistGroupOpen"
             {{ $attributes->merge(['x-cloak' => $active || $expanded == false]) }}>
-            <div class="absolute inset-y-[3px] w-px bg-zinc-200 dark:bg-white/30 left-0 ml-5"></div>
+            <div class="absolute inset-y-[3px] w-px bg-zinc-200 dark:bg-white/30 left-0 ml-[1.35rem]"></div>
             {{ $slot }}
         </div>
     </div>
