@@ -15,7 +15,7 @@
 
 ## Introduction
 
-**Zinc UI** is a UI component library designed for your Livewire applications. It is built with [Tailwind CSS](https://tailwindcss.com/) and [Alpine.js](https://alpinejs.dev/).
+**Zinc UI** is a UI component library for your Livewire applications. It's built using [Tailwind CSS](https://tailwindcss.com/) and [Alpine.js](https://alpinejs.dev/).
 
 ## Documentation
 
@@ -27,7 +27,6 @@ Since this package is in its Alpha stage, you need to adjust the `minimum-stabil
 
 ```json
 {
-    ...
     "minimum-stability": "dev",
     "prefer-stable": true
 }
@@ -106,8 +105,6 @@ Route::get('/', Home::class);
 Visit your application's URL to see Zinc UI in action!
 
 ## Testing
-
-Coming soon!
 
 ```bash
 composer test
