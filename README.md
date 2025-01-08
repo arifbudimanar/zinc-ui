@@ -15,18 +15,17 @@
 
 ## Introduction
 
-Zinc UI is a UI component library for your Livewire applications. It's built using [Tailwind CSS](https://tailwindcss.com/) and [Alpine Js](https://alpinejs.dev/).
+**Zinc UI** is a UI component library designed for your Livewire applications. It is built with [Tailwind CSS](https://tailwindcss.com/) and [Alpine.js](https://alpinejs.dev/).
 
 ## Documentation
 
-Coming soon!
+Documentation is currently in development. Stay tuned!
 
 ## Installation
 
-This package is still on Alpha version, so you need to change `minimum-stability` to `dev`.
-Open your composer json and add the following line:
+Since this package is in its Alpha stage, you need to adjust the `minimum-stability` setting in your `composer.json` file. Add the following lines:
 
-```
+```json
 {
     ...
     "minimum-stability": "dev",
@@ -34,15 +33,81 @@ Open your composer json and add the following line:
 }
 ```
 
-You can install the package via composer:
+Install the package via Composer:
 
 ```bash
 composer require arifbudimanar/zinc-ui
 ```
 
+Run the installer:
+
 ```bash
 php artisan zinc:install
 ```
+
+Publish components:
+
+```bash
+php artisan zinc:publish
+```
+
+## Compile Assets
+
+After completing the installation steps, compile the frontend assets using:
+
+```bash
+npm run dev
+```
+
+## Example
+
+### Create a Livewire Component
+
+Generate a new Livewire component with the following command:
+
+```bash
+php artisan make:livewire Home
+```
+
+### Update `Home.php`
+
+Add the following code to your Home.php file:
+
+```php
+#[Layout('layouts.sidebar-header')]
+#[Title('Home')]
+class Home extends Component
+{
+    public function render()
+    {
+        return view('livewire.home');
+    }
+}
+```
+
+### Layout Options
+
+Zinc UI provides built-in layout options suited for different use cases:
+
+-   `without-header` : For authentication pages like login and register.
+-   `header` : For public pages like home and about.
+-   `header-sidebar` : For user pages like dashboards and profiles.
+-   `sidebar` : For admin pages like admin dashboards.
+-   `sidebar-header` : Also for admin pages like admin dashboards.
+
+### Update `web.php`
+
+Add the following route to your web.php file:
+
+```php
+Route::get('/', Home::class);
+```
+
+And visit your app url.
+
+### Access Your Application
+
+Visit your application's URL to see Zinc UI in action!
 
 ## Testing
 
