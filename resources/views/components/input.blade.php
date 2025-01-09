@@ -7,7 +7,7 @@
     'iconTrailing' => null,
     'label' => null,
     'badge' => null,
-    'badgeColor' => 'default',
+    'badgeColor' => 'zinc',
     'description' => null,
 ])
 

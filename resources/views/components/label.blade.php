@@ -1,6 +1,6 @@
 @props([
     'badge' => null,
-    'badgeColor' => 'default',
+    'badgeColor' => 'zinc',
 ])
 
 @php
@@ -13,7 +13,7 @@
     data-label>
     {{ $slot }}
     @isset($badge)
-        <x-badge color="{{ $badgeColor }}" class="ml-1.5 -my-2.5">
+        <x-badge size="sm" color="{{ $badgeColor }}" inset="top bottom" class="ml-1.5">
             {{ $badge }}
         </x-badge>
     @endisset

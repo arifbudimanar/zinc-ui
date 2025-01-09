@@ -62,7 +62,7 @@
     @endif
 
     @isset($badge)
-        <x-badge color="{{ $badgeColor }}">
+        <x-badge size="sm" color="{{ $badgeColor }}" inset="top bottom" class="!px-1 !py-0.5">
             {{ $badge }}
         </x-badge>
     @endisset

@@ -11,7 +11,9 @@
         <x-label>
             {{ $label }}
             @isset($badge)
-                <x-badge label="{{ $badge }}" color="{{ $badgeColor }}" class="ml-1.5 -my-2.5" />
+                <x-badge size="sm" color="{{ $badgeColor }}" inset="top bottom" class="ml-1.5">
+                    {{ $badge }}
+                </x-badge>
             @endisset
         </x-label>
 
