@@ -28,9 +28,9 @@
 
     @if ($separator === 'chevron-right')
         <x-icon name="o-chevron-right"
-            class="mx-3 shrink-0 size-4 text-zinc-300 dark:text-white/80 group-last/breadcrumb:hidden" />
+            class="mx-2 shrink-0 size-4 text-zinc-300 dark:text-white/80 group-last/breadcrumb:hidden" />
     @elseif ($separator === 'slash')
         <x-icon name="o-slash"
-            class="mx-3 shrink-0 size-4 text-zinc-300 dark:text-white/80 group-last/breadcrumb:hidden" />
+            class="mx-2 shrink-0 size-4 text-zinc-300 dark:text-white/80 group-last/breadcrumb:hidden" />
     @endif
 </div>
