@@ -6,10 +6,10 @@
 
 @aware(['separator' => $separator])
 
-<div class="flex items-center text-sm font-medium group/breadcrumb" data-breadcrumbs-item>
+<div class="flex items-center text-sm font-medium group/breadcrumb [&_[data-dropdown]]:-mx-1" data-breadcrumbs-item>
     @if ($href)
         <a
-            {{ $attributes->merge(['class' => 'text-zinc-800 dark:text-white hover:underline decoration-zinc-800/20 underline-offset-4', 'href' => $href]) }}>
+            {{ $attributes->merge(['class' => ' text-zinc-800 dark:text-white hover:underline decoration-zinc-800/20 underline-offset-4', 'href' => $href]) }}>
             @if ($icon)
                 <x-icon name="{{ $icon }}" class="size-5 shrink-0" />
             @else
