@@ -105,15 +105,19 @@
             $insetClass,
     ]) }}
         data-badge>
-        @isset($iconLeading)
+        @if (is_string($iconLeading) && $iconLeading !== '')
             <x-icon name="{{ $icon }}" class="shrink-0 [:where(&)]:size-4" data-badge-icon />
-        @endisset
+        @else
+            {{ $iconLeading }}
+        @endif
 
         {{ $slot }}
 
-        @isset($iconTrailing)
+        @if (is_string($iconTrailing) && $iconTrailing !== '')
             <x-icon name="{{ $iconTrailing }}" class="shrink-0 [:where(&)]:size-4" data-badge-icon-trailing />
-        @endisset
+        @else
+            {{ $iconTrailing }}
+        @endif
     </div>
 @endif
 
@@ -137,14 +141,18 @@
             'type' => 'button',
         ]) }}
         data-badge>
-        @isset($iconLeading)
+        @if (is_string($iconLeading) && $iconLeading !== '')
             <x-icon name="{{ $icon }}" class="shrink-0 [:where(&)]:size-4" data-badge-icon />
-        @endisset
+        @else
+            {{ $iconLeading }}
+        @endif
 
         {{ $slot }}
 
-        @isset($iconTrailing)
+        @if (is_string($iconTrailing) && $iconTrailing !== '')
             <x-icon name="{{ $iconTrailing }}" class="shrink-0 [:where(&)]:size-4" data-badge-icon-trailing />
-        @endisset
+        @else
+            {{ $iconTrailing }}
+        @endif
     </button>
 @endif
