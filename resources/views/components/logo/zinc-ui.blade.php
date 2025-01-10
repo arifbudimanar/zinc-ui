@@ -1,5 +1,5 @@
 <svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg"
-    {{ $attributes->merge(['class' => 'block dark:hidden']) }} data-icon>
+    {{ $attributes->merge(['class' => 'block dark:hidden']) }} data-logo>
     <path opacity="0.85"
         d="M2.69827 30.2757C1.47574 29.2281 1.90006 27.7843 3.64602 27.0508L24.985 18.0857C26.731 17.3522 29.1374 17.6068 30.36 18.6544L45.3017 31.4578C46.5243 32.5054 46.0999 33.9492 44.354 34.6827L23.015 43.6478C21.269 44.3813 18.8626 44.1267 17.64 43.0791L2.69827 30.2757Z"
         fill="#71717A" />
@@ -12,7 +12,7 @@
 </svg>
 
 <svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg"
-    {{ $attributes->merge(['class' => 'hidden dark:block']) }} data-icon>
+    {{ $attributes->merge(['class' => 'hidden dark:block']) }} data-logo>
     <path opacity="0.9"
         d="M2.69827 30.2757C1.47574 29.2281 1.90006 27.7843 3.64602 27.0508L24.985 18.0857C26.731 17.3522 29.1374 17.6068 30.36 18.6544L45.3017 31.4578C46.5243 32.5054 46.0999 33.9492 44.354 34.6827L23.015 43.6478C21.269 44.3813 18.8626 44.1267 17.64 43.0791L2.69827 30.2757Z"
         fill="#71717A" />
