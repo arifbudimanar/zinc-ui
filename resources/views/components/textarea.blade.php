@@ -2,7 +2,7 @@
     'type' => 'text',
     'variant' => 'outline',
     'resize' => 'auto',
-    'rows' => 2,
+    'rows' => 4,
     'label' => null,
     'badge' => null,
     'badgeColor' => 'zinc',
