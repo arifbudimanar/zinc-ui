@@ -74,7 +74,7 @@
         $insets = $inset === true ? ['top', 'right', 'bottom', 'left'] : explode(' ', $inset);
 
         $insetValues = match ($size) {
-            'sm' => ['top' => '-mt-0.5', 'right' => '-mr-0.5', 'bottom' => '-mb-0.5', 'left' => '-ml-0.5'],
+            'sm' => ['top' => '-mt-1', 'right' => '-mr-1', 'bottom' => '-mb-1', 'left' => '-ml-1'],
             'base' => ['top' => '-mt-1', 'right' => '-mr-1', 'bottom' => '-mb-1', 'left' => '-ml-1'],
             'lg' => ['top' => '-mt-2', 'right' => '-mr-2', 'bottom' => '-mb-2', 'left' => '-ml-2'],
         };
