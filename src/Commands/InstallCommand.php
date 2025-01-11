@@ -141,11 +141,11 @@ class InstallCommand extends Command
 
         @layer utilities {
             /* Hide scrollbar for Chrome, Safari and Opera */
-            .no-scrollbar::-webkit-scrollbar {
+            .scrollbar-none::-webkit-scrollbar {
                 display: none;
             }
             /* Hide scrollbar for IE, Edge and Firefox */
-            .no-scrollbar {
+            .scrollbar-none {
                 -ms-overflow-style: none; /* IE and Edge */
                 scrollbar-width: none; /* Firefox */
             }
@@ -250,7 +250,7 @@ class InstallCommand extends Command
             $fileContent = File::get($filePath);
 
             // Add new styles if not already present
-            if (! Str::contains($fileContent, '.no-scrollbar')) {
+            if (! Str::contains($fileContent, '.scrollbar-none')) {
                 File::append($filePath, $newStyles);
             }
         }

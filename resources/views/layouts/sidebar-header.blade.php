@@ -39,7 +39,7 @@
             {{-- Guest --}}
             {{-- <x-button wire:navigate href="/login" variant="outline" size="sm">{{ __('Login') }}</x-button> --}}
         </x-navbar>
-        <x-navbar scrollable class="no-scrollbar">
+        <x-navbar scrollable class="scrollbar-none">
             <x-navbar.item active>{{ __('Dashboard') }}</x-navbar.item>
             <x-navbar.item badge="32">{{ __('Orders') }}</x-navbar.item>
             <x-navbar.item>{{ __('Catalog') }}</x-navbar.item>
