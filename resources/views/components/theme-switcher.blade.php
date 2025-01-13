@@ -43,32 +43,32 @@
 }" {{ $attributes->whereStartsWith('class') }} id="theme-switcher">
     @if ($variant === 'header')
         <x-dropdown id="dropdown-theme-switcher-desktop" position="bottom-end" {{ $attributes }}>
-            <x-tooltip position="bottom">
+            <x-tooltip position="bottom" offset="6">
                 <x-tooltip.content class="whitespace-nowrap">
                     {{ __('Theme Preferences') }}
                 </x-tooltip.content>
 
                 <x-button variant="subtle" size="sm">
-                    <x-slot:iconLeading>
+                    <x-slot:icon>
                         <x-icon name="o-moon" class="hidden size-5 dark:block" />
                         <x-icon name="o-sun" class="block size-5 dark:hidden" />
-                    </x-slot:iconLeading>
+                    </x-slot:icon>
                 </x-button>
             </x-tooltip>
             <x-navmenu>
-                <x-navmenu.item icon="o-moon" kbd="Alt+M" x-on:click="darkMode()" class="whitespace-nowrap">
+                <x-navmenu.item icon="s-moon" kbd="Alt+M" x-on:click="darkMode()" class="whitespace-nowrap">
                     {{ __('Dark Mode') }}
                 </x-navmenu.item>
-                <x-navmenu.item icon="o-sun" kbd="Alt+L" x-on:click="lightMode()" class="whitespace-nowrap">
+                <x-navmenu.item icon="s-sun" kbd="Alt+L" x-on:click="lightMode()" class="whitespace-nowrap">
                     {{ __('Light Mode') }}
                 </x-navmenu.item>
                 <x-navmenu.item kbd="Alt+P" x-on:click="systemMode()" class="whitespace-nowrap">
                     <x-slot:icon>
-                        <x-icon name="o-computer-desktop" class="hidden mr-2 shrink-0 size-5 lg:block"
+                        <x-icon name="s-computer-desktop" class="hidden mr-2 shrink-0 size-5 lg:block"
                             data-navmenu-icon />
-                        <x-icon name="o-device-tablet" class="hidden mr-2 shrink-0 size-5 md:block lg:hidden"
+                        <x-icon name="s-device-tablet" class="hidden mr-2 shrink-0 size-5 md:block lg:hidden"
                             data-navmenu-icon />
-                        <x-icon name="o-device-phone-mobile" class="mr-2 shrink-0 size-5 md:hidden lg:hidden"
+                        <x-icon name="s-device-phone-mobile" class="mr-2 shrink-0 size-5 md:hidden lg:hidden"
                             data-navmenu-icon />
                     </x-slot:icon>
                     {{ __('System Preference') }}
@@ -88,19 +88,19 @@
             </x-navlist.item>
 
             <x-navmenu>
-                <x-navmenu.item icon="o-moon" x-on:click="darkMode()" kbd="Alt+M">
+                <x-navmenu.item icon="s-moon" x-on:click="darkMode()" kbd="Alt+M">
                     {{ __('Dark Mode') }}
                 </x-navmenu.item>
-                <x-navmenu.item icon="o-sun" x-on:click="lightMode()" kbd="Alt+L">
+                <x-navmenu.item icon="s-sun" x-on:click="lightMode()" kbd="Alt+L">
                     {{ __('Light Mode') }}
                 </x-navmenu.item>
                 <x-navmenu.item x-on:click="systemMode()" kbd="Alt+P">
                     <x-slot:icon>
-                        <x-icon name="o-computer-desktop" class="hidden mr-2 shrink-0 size-5 lg:block"
+                        <x-icon name="s-computer-desktop" class="hidden mr-2 shrink-0 size-5 lg:block"
                             data-navmenu-icon />
-                        <x-icon name="o-device-tablet" class="hidden mr-2 shrink-0 size-5 md:block lg:hidden"
+                        <x-icon name="s-device-tablet" class="hidden mr-2 shrink-0 size-5 md:block lg:hidden"
                             data-navmenu-icon />
-                        <x-icon name="o-device-phone-mobile" class="mr-2 shrink-0 size-5 md:hidden lg:hidden"
+                        <x-icon name="s-device-phone-mobile" class="mr-2 shrink-0 size-5 md:hidden lg:hidden"
                             data-navmenu-icon />
                     </x-slot:icon>
                     {{ __('System Preference') }}
