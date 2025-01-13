@@ -1,7 +1,7 @@
 @props([
     'orientation' => 'horizontal',
     'variant' => 'default',
-    'label' => null,
+    'text' => null,
 ])
 
 @php
@@ -18,12 +18,12 @@
     ][$orientation];
 @endphp
 
-@if ($label !== null)
+@if ($text !== null)
     <div data-orientation="{{ $orientation }}" class="flex items-center w-full" role="none" data-separator>
         <div {{ $attributes->merge(['class' => 'grow' . ' ' . $variantClass . ' ' . $orientationClass]) }}></div>
 
         <span class="mx-6 text-sm font-medium select-none shrink text-zinc-500 dark:text-zinc-300 whitespace-nowrap">
-            {{ $label }}
+            {{ $text }}
         </span>
 
         <div {{ $attributes->merge(['class' => 'grow' . ' ' . $variantClass . ' ' . $orientationClass]) }}></div>
