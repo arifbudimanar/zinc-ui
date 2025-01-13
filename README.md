@@ -19,9 +19,11 @@
 
 ## Documentation
 
-Documentation is currently in development. Stay tuned!
+You can find the documentation [here](https://zinc.arifcode.dev/).
 
 ## Installation
+
+> **Package Status: Alpha Stage**
 
 Since this package is in its Alpha stage, you need to adjust the `minimum-stability` setting in your `composer.json` file. Add the following lines:
 
