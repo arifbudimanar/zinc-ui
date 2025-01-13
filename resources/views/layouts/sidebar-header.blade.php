@@ -29,11 +29,8 @@
                         <x-subheading class="text-xs truncate">jhondoe@gmail.com</x-subheading>
                     </div>
                     <x-navmenu.separator />
-                    <x-navmenu.item icon="o-rectangle-stack">{{ __('Dashboard') }}</x-navmenu.item>
-                    <x-navmenu.item icon="o-user-circle">{{ __('Account') }}</x-navmenu.item>
-                    <x-navmenu.item icon="o-cog-8-tooth">{{ __('Settings') }}</x-navmenu.item>
-                    <x-navmenu.separator />
-                    <x-navmenu.item icon="l-log-out">{{ __('Logout') }}</x-navmenu.item>
+                    <x-navmenu.item icon="s-user-circle">{{ __('Account') }}</x-navmenu.item>
+                    <x-navmenu.item icon="s-arrow-right-start-on-rectangle">{{ __('Logout') }}</x-navmenu.item>
                 </x-navmenu>
             </x-dropdown>
             {{-- Guest --}}
@@ -92,11 +89,8 @@
                     <x-subheading class="text-xs truncate">jhondoe@gmail.com</x-subheading>
                 </div>
                 <x-navmenu.separator />
-                <x-navmenu.item icon="o-rectangle-stack">{{ __('Dashboard') }}</x-navmenu.item>
-                <x-navmenu.item icon="o-user-circle">{{ __('Account') }}</x-navmenu.item>
-                <x-navmenu.item icon="o-cog-8-tooth">{{ __('Settings') }}</x-navmenu.item>
-                <x-navmenu.separator />
-                <x-navmenu.item icon="l-log-out">{{ __('Logout') }}</x-navmenu.item>
+                <x-navmenu.item icon="s-user-circle">{{ __('Account') }}</x-navmenu.item>
+                <x-navmenu.item icon="s-arrow-right-start-on-rectangle">{{ __('Logout') }}</x-navmenu.item>
             </x-navmenu>
         </x-dropdown>
     </x-sidebar>
