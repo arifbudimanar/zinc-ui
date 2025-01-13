@@ -18,6 +18,6 @@
     @if (is_string($src) && $src !== '')
         <img src="{{ $src }}" alt="{{ $name ? $name : 'Avatar' }}">
     @else
-        {{ $src }}
+        {{ $slot }}
     @endif
 </div>

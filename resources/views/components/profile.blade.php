@@ -10,9 +10,7 @@
     data-profile>
     @if (is_string($avatar) && $avatar !== '')
         <x-avatar :$size class="bg-zinc-800/5 dark:bg-white/10">
-            <x-slot:src>
-                <img src="{!! $avatar !!}" alt="{{ $name }}" class="dark:invert">
-            </x-slot:src>
+            <img src="{!! $avatar !!}" alt="{{ $name }}" class="dark:invert">
         </x-avatar>
     @else
         <x-avatar :$size class="bg-zinc-800/5 dark:bg-white/10">
