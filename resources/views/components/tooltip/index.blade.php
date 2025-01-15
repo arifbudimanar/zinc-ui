@@ -1,6 +1,6 @@
 @props([
     'id' => null,
-    'position' => 'bottom',
+    'position' => 'top',
     'offset' => 6,
     'content' => null,
     'kbd' => null,
