@@ -1,5 +1,5 @@
 @props([
-    'position' => 'bottom',
+    'position' => 'bottom-start',
     'offset' => 6,
 ])
 

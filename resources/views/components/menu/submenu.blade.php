@@ -1,6 +1,6 @@
 @props([
     'id' => null,
-    'heading' => '',
+    'heading' => null,
     'position' => 'right-start',
     'offset' => -4,
     'variant' => 'default',
