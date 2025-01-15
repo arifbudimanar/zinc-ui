@@ -1,6 +1,6 @@
 @props([
     'tooltip' => null,
-    'tooltipPosition' => 'bottom',
+    'tooltipPosition' => 'top',
     'tooltipOffset' => 6,
     'tooltipKbd' => null,
 ])
