@@ -391,8 +391,7 @@ class InstallCommand extends Command
         $this->handleBrandLogo();
         $this->handleNodePackages();
 
-        $this->comment('Zinc UI is installed! Make something great!');
-        $this->comment('⭐ If you like Zinc UI, consider starring the repo on GitHub: https://github.com/arifbudimanar/zinc-ui');
+        $this->comment('Zinc UI is installed! Love it? Star us on GitHub: https://github.com/arifbudimanar/zinc-ui');
 
         return self::SUCCESS;
     }
