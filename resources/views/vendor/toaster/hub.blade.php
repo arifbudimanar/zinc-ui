@@ -20,13 +20,32 @@
             @endif
             x-transition:leave-end="opacity-0 scale-90"
             @class([
-                'relative duration-300 transform transition p-2 ease-in-out sm:max-w-sm w-full text-zinc-800 dark:text-white pointer-events-auto font-medium text-sm rounded-xl shadow-lg',
+                'relative duration-300 transform transition p-2 ease-in-out w-full sm:max-w-sm text-zinc-800 dark:text-white pointer-events-auto font-medium text-sm rounded-xl shadow-lg',
                 'text-center' => $position->is('center'),
                 'bg-white border border-zinc-200 border-b-zinc-300/80 dark:bg-zinc-700 dark:border-zinc-600',
                 $alignment->is('bottom') ? 'mt-3' : 'mb-3',
-            ])>
-            <div class="flex items-start gap-4">
-                <div class="flex-1 py-1.5 pl-2.5 flex gap-2">
+            ])
+            x-data="{ touchStartX: 0, touchCurrentX: 0, swiping: false, touchStartY: 0, touchCurrentY: 0, isSwiped: false }"
+            x-on:touchstart="swiping = true; touchStartX = $event.touches[0].clientX; touchStartY = $event.touches[0].clientY"
+            x-on:touchmove="if (swiping) { touchCurrentX = $event.touches[0].clientX; touchCurrentY = $event.touches[0].clientY;
+                if (Math.abs(touchCurrentX - touchStartX) > Math.abs(touchCurrentY - touchStartY)) {
+                    isSwiped = true;
+                    $el.style.transition = 'transform 0.3s ease';
+                    $el.style.transform = `translateX(${touchCurrentX - touchStartX}px)`;
+                } else {
+                    isSwiped = false;
+                }}"
+            x-on:touchend="
+                swiping = false;
+                if (isSwiped && Math.abs(touchCurrentX - touchStartX) > 50) {
+                    toast.dispose();
+                } else {
+                    $el.style.transition = 'transform 0.3s ease';
+                    $el.style.transform = '';
+                }
+            ">
+            <div class="flex items-start gap-2.5">
+                <div class="flex-1 py-1.5 pl-2.5 flex gap-2 {{ $closeable ? '' : 'pr-2.5' }}">
                     <x-icon name="c-check-circle" x-show="toast.select({ success: true })"
                         class="shrink-0 mt-0.5 size-4 text-lime-600 dark:text-lime-400" />
                     <x-icon name="c-exclamation-circle" x-show="toast.select({ error: true })"
@@ -42,10 +61,7 @@
                 </div>
 
                 @if ($closeable)
-                    <button type="button" x-on:click="toast.dispose()"
-                        class="inline-flex items-center justify-center flex-shrink-0 w-8 h-8 gap-2 text-sm font-medium truncate bg-transparent rounded-md disabled:opacity-50 dark:disabled:opacity-75 disabled:cursor-default hover:bg-zinc-800/5 dark:hover:bg-white/15 text-zinc-400 hover:text-zinc-800 dark:text-zinc-400 dark:hover:text-white">
-                        <x-icon name="o-x-mark" class="size-5 shrink-0" />
-                    </button>
+                    <x-button variant="subtle" size="sm" icon="o-x-mark" x-on:click="toast.dispose()" />
                 @endif
             </div>
         </div>
