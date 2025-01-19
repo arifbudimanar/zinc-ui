@@ -120,7 +120,7 @@ class InstallCommand extends Command
                 '@marcreichel/alpine-autosize' => '^1.3.3',
             ] + $packages;
         });
-        $this->comment('Installing and building Node dependencies.');
+        $this->comment('Installing and building Node dependencies ...');
         if (file_exists(base_path('pnpm-lock.yaml'))) {
             $this->runCommands(['pnpm install', 'pnpm run build']);
         } elseif (file_exists(base_path('yarn.lock'))) {
@@ -391,7 +391,8 @@ class InstallCommand extends Command
         $this->handleBrandLogo();
         $this->handleNodePackages();
 
-        $this->comment('Zinc UI is installed! Make something awesome!');
+        $this->comment('Zinc UI is installed! Make something great!');
+        $this->comment('⭐ If you like Zinc UI, consider starring the repo on GitHub: https://github.com/arifbudimanar/zinc-ui');
 
         return self::SUCCESS;
     }
