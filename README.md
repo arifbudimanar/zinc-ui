@@ -25,7 +25,9 @@ You can find the documentation [here](https://zinc.arifcode.dev/).
 
 > **Package Status: Alpha Stage**
 
-Since this package is in its Alpha stage, you need to adjust the `minimum-stability` setting in your `composer.json` file. Add the following lines:
+### Configure `composer.json`
+
+Since Zinc UI is in its Alpha version, you need to modify the composer.json file. Open the file and ensure the following lines are present:
 
 ```json
 {
@@ -34,45 +36,47 @@ Since this package is in its Alpha stage, you need to adjust the `minimum-stabil
 }
 ```
 
-Install the package via Composer:
+### Install Zinc UI
+
+Run the following command to add Zinc UI to your project:
 
 ```bash
 composer require arifbudimanar/zinc-ui
 ```
 
-Run the installer:
+### Set up Zinc UI
+
+After installation, initialize the package by running:
 
 ```bash
 php artisan zinc:install
 ```
 
-Publish components:
+### Publishing components (optional)
+
+If you want to customize the components, you can publish them using this command:
 
 ```bash
 php artisan zinc:publish
 ```
 
-## Compile Assets
+### Check installed version
 
-After completing the installation steps, compile the frontend assets using:
+To check the version of Zinc UI installed, run:
 
 ```bash
-npm run dev
+php artisan zinc:version
 ```
-
-## Example
 
 ### Create a Livewire Component
 
-Generate a new Livewire component with the following command:
+Generate a Livewire component by running:
 
 ```bash
 php artisan make:livewire Home
 ```
 
-### Update `Home.php`
-
-Add the following code to your Home.php file:
+Update the `Home.php` file with this content:
 
 ```php
 #[Layout('layouts.sidebar-header')]
@@ -88,23 +92,33 @@ class Home extends Component
 
 ### Layout Options
 
-Zinc UI provides built-in layout options suited for different use cases:
+Zinc UI includes several layouts tailored to different page types:
 
--   `without-header` : For authentication pages like login and register.
 -   `header` : For public pages like home and about.
--   `header-sidebar` : For user pages like dashboards and profiles.
+-   `header-sidebar` : For user-facing pages like dashboards and profiles.
+-   `without-header` : For authentication pages like login and register.
 -   `sidebar` : For admin pages like admin dashboards.
--   `sidebar-header` : Also for admin pages like admin dashboards.
+-   `sidebar-header` : Another option for admin dashboards.
 
-### Update `web.php`
+### Update routes
 
-Add the following route to your web.php file:
+Open the web.php file and define a route for your component:
 
 ```php
+use App\Livewire\Home;
+
 Route::get('/', Home::class);
 ```
 
-Visit your application's URL to see Zinc UI in action!
+## Run the application
+
+Start the development server and compile the assets using:
+
+```bash
+composer run dev
+```
+
+Visit http://localhost:8000 to see Zinc UI in action.
 
 ## Testing
 
