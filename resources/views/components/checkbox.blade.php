@@ -45,5 +45,5 @@
         </x-description>
     @endisset
 
-    <x-error name="{{ $id }}" />
+    <x-error name="{{ $id }}" class="{{ $description ? 'ml-[1.875rem]' : '' }}" />
 </x-field>
