@@ -29,7 +29,7 @@
         data-checkbox-indicator />
 
     @isset($label)
-        <x-label for="{{ $id }}" class="">
+        <x-label for="{{ $id }}" class="w-fit">
             {{ $label }}
             @isset($badge)
                 <x-badge size="sm" color="{{ $badgeColor }}" inset="top bottom" class="ml-1.5">
