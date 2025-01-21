@@ -10,50 +10,40 @@
     $id = $attributes->whereStartsWith('wire:model')->first() ?? ($attributes->get('name') ?? Str::random(8));
     $badge = $badge ?? ($attributes->has('required') ? 'Required' : null);
     $disabled = $attributes->has('disabled') ? true : false;
-
-    $class = 'flex items-center w-full gap-3 mb-2';
 @endphp
 
-<x-field class="{{ $disabled ? 'opacity-50' : '' }}">
-    <div class="relative block w-full">
-        <div {{ $attributes->merge([
-            'class' => $class,
-        ]) }}>
-            <label class="relative inline-flex items-center -my-2.5">
-                <input
-                    class="peer relative size-5 appearance-none overflow-hidden rounded-md
-                    shadow-sm disabled:shadow-none checked:shadow-none
-                    bg-white dark:bg-white/10 checked:before:bg-zinc-800 dark:checked:before:bg-white
-                    border border-zinc-300 dark:border-white/10 checked:border-zinc-800 dark:checked:border-white
-                    before:absolute before:inset-0 before:content['']
-                    cursor-pointer peer-disabled:cursor-default peer-read-only:cursor-default"
-                    {{ $attributes->merge([
-                        'id' => $id,
-                        'type' => $type,
-                        'disabled' => $disabled,
-                    ]) }} />
+<x-field
+    class="relative [&>[data-label]]:!mb-0 [&>[data-label]:has(+[data-description])]:!mb-0 [&>[data-label]+[data-description]]:!mt-0 [&>[data-label]+[data-description]]:!mb-0 [&>*:not([data-label])+[data-description]]:!mt-0 grid gap-x-3 gap-y-1.5 has-[[data-label]~[data-control]]:grid-cols-[1fr_auto] has-[[data-control]~[data-label]]:grid-cols-[auto_1fr] [&>[data-control]~[data-description]]:row-start-2 [&>[data-control]~[data-description]]:col-start-2 [&>[data-control]~[data-error]]:col-span-2 [&>[data-control]~[data-error]]:mt-1 [&>[data-label]~[data-control]]:row-start-1 [&>[data-label]~[data-control]]:col-start-2">
+    <input
+        {{ $attributes->merge([
+            'id' => $id,
+            'type' => $type,
+            'disabled' => $disabled,
+            'class' =>
+                "flex mt-px outline-offset-2 peer relative size-[1.125rem] appearance-none overflow-hidden rounded-[0.3rem] shadow-sm disabled:shadow-none checked:shadow-none bg-white dark:bg-white/10 checked:before:bg-zinc-800 dark:checked:before:bg-white border border-zinc-300 dark:border-white/10 checked:border-zinc-800 dark:checked:border-white before:absolute before:inset-0 before:content-[''] cursor-pointer disabled:cursor-default disabled:opacity-50",
+        ]) }}
+        x-on:keydown.enter.prevent="$el.click()" data-control data-checkbox>
 
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" stroke="currentColor"
-                    fill="none" stroke-width="4"
-                    class="absolute invisible text-white -translate-x-1/2 -translate-y-1/2 pointer-events-none left-1/2 top-1/2 size-4 dark:text-zinc-800 peer-checked:visible">
-                    <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" />
-                </svg>
-            </label>
+    <x-icon name="c-check"
+        class="absolute invisible text-white pointer-events-none size-[1.125rem] top-[0.063rem] left-0 dark:text-zinc-800 peer-checked:visible"
+        data-checkbox-indicator />
 
-            <x-label for="{{ $id }}">
-                {{ $slot }}
-                @isset($badge)
-                    <x-badge size="sm" color="{{ $badgeColor }}" inset="top bottom" class="ml-1.5">
-                        {{ $badge }}
-                    </x-badge>
-                @endisset
-            </x-label>
-        </div>
-        @isset($description)
-            <x-description class="mb-3 ml-8">
-                {{ $description }}
-            </x-description>
-        @endisset
-        <x-error name="{{ $id }}" class="mt-2" />
-    </div>
+    @isset($label)
+        <x-label for="{{ $id }}" class="">
+            {{ $label }}
+            @isset($badge)
+                <x-badge size="sm" color="{{ $badgeColor }}" inset="top bottom" class="ml-1.5">
+                    {{ $badge }}
+                </x-badge>
+            @endisset
+        </x-label>
+    @endisset
+
+    @isset($description)
+        <x-description>
+            {{ $description }}
+        </x-description>
+    @endisset
+
+    <x-error name="{{ $id }}" />
 </x-field>
