@@ -95,7 +95,7 @@
         <x-separator variant="subtle" class="mb-8" />
         <div class="grid grid-cols-2 gap-6 lg:gap-8 sm:grid-cols-3 lg:grid-cols-6">
             <div class="col-span-full lg:col-span-3">
-                <x-brand />
+                <x-brand class="px-2 -mx-2 rounded-lg w-fit" />
                 <x-subheading>
                     Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eos quod vitae deserunt inventore
                     consequatur pariatur!
@@ -103,23 +103,22 @@
             </div>
             <div class="space-y-2 text-sm lg:mt-2">
                 <x-subheading class="uppercase">{{ __('Resources') }}</x-subheading>
-                <x-link href="https://laravel.com" target="_blank" class="flex w-full">{{ __('Laravel') }}</x-link>
+                <x-link href="https://laravel.com" target="_blank" class="flex w-fit">{{ __('Laravel') }}</x-link>
                 <x-link href="https://livewire.laravel.com" target="_blank"
-                    class="flex w-full">{{ __('Livewire') }}</x-link>
-                <x-link href="https://alpinejs.dev/" target="_blank" class="flex w-full">{{ __('Alpine Js') }}</x-link>
-                <x-link href="https://tailwindcss.com/" target="_blank" class="flex w-full">
+                    class="flex w-fit">{{ __('Livewire') }}</x-link>
+                <x-link href="https://alpinejs.dev/" target="_blank" class="flex w-fit">{{ __('Alpine Js') }}</x-link>
+                <x-link href="https://tailwindcss.com/" target="_blank" class="flex w-fit">
                     {{ __('Tailwind CSS') }}</x-link>
             </div>
             <div class="space-y-2 text-sm lg:mt-2">
                 <x-subheading class="uppercase">{{ __('Legal') }}</x-subheading>
-                <x-link wire:navigate href="/terms-of-service"
-                    class="flex w-full">{{ __('Terms of Service') }}</x-link>
-                <x-link wire:navigate href="/privacy-policy" class="flex w-full">{{ __('Privacy Policy') }}</x-link>
+                <x-link wire:navigate href="/terms-of-service" class="flex w-fit">{{ __('Terms of Service') }}</x-link>
+                <x-link wire:navigate href="/privacy-policy" class="flex w-fit">{{ __('Privacy Policy') }}</x-link>
             </div>
             <div class="space-y-2 text-sm lg:mt-2">
                 <x-subheading class="uppercase">{{ __('Socials') }}</x-subheading>
-                <x-link target="_blank" class="flex w-full">{{ __('Github') }}</x-link>
-                <x-link target="_blank" class="flex w-full">{{ __('Discord') }}</x-link>
+                <x-link href="https://github.com/arifbudimanar/zinc-ui" target="_blank"
+                    class="flex w-fit">{{ __('Github') }}</x-link>
             </div>
         </div>
         <div class="flex flex-col justify-start gap-2 py-8 lg:items-center sm:flex-row sm:justify-center">
