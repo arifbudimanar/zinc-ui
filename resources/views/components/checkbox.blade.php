@@ -29,7 +29,7 @@
             class="absolute invisible text-white pointer-events-none size-[1.125rem] top-[0.063rem] left-0 dark:text-zinc-800 peer-checked:visible"
             data-checkbox-indicator />
 
-        @isset($label)
+        @if (is_string($label) && $label !== '')
             <x-label for="{{ $id }}" class="w-fit">
                 {{ $label }}
                 @isset($badge)
@@ -38,13 +38,17 @@
                     </x-badge>
                 @endisset
             </x-label>
-        @endisset
+        @else
+            {{ $label }}
+        @endif
 
-        @isset($description)
+        @if (is_string($description) && $description !== '')
             <x-description>
                 {{ $description }}
             </x-description>
-        @endisset
+        @else
+            {{ $description }}
+        @endif
 
         <x-error name="{{ $id }}" />
     </x-field>
