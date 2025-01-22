@@ -43,11 +43,19 @@
                 'type' => $type,
                 'disabled' => $disabled,
                 'readonly' => $readonly,
-                'class' => 'peer sr-only',
+                'class' => 'peer sr-only hidden',
             ]) }}
-            x-on:keydown.enter.prevent="$el.click()" x-on:click="$el.click()" data-control data-switch>
+            data-control>
 
-        <div
+        <div x-on:click.prevent="$el.previousElementSibling.click()"
+            x-on:keydown.enter.prevent="$el.previousElementSibling.click()"
+            x-on:keydown.space.prevent="$el.previousElementSibling.click()"
+            :tabindex="$el.previousElementSibling.disabled ? '-1' : '0'"
+            :aria-disabled="$el.previousElementSibling.disabled"
+            :class="{
+                'cursor-pointer': !$el.previousElementSibling.disabled,
+                'cursor-default': $el.previousElementSibling.disabled,
+            }"
             class="peer w-8 h-5 rounded-full appearance-none shadow-sm disabled:shadow-none dark:shadow-none
             bg-zinc-300 dark:bg-transparent peer-checked:bg-black dark:peer-checked:bg-white peer-disabled:opacity-50
             dark:border border-zinc-300 dark:border-zinc-600 peer-checked:border-0
