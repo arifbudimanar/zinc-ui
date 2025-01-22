@@ -6,7 +6,7 @@
     'badgeColor' => 'zinc',
 ])
 
-@if ($label !== null || $description !== null)
+@if ($label || $description)
     <x-field>
         @if ($label)
             <x-label>
