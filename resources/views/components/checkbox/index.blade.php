@@ -7,7 +7,7 @@
 ])
 
 @php
-    $id = $attributes->whereStartsWith('wire:model')->first() ?? ($attributes->get('name') ?? Str::random(8));
+    $id = Str::slug($label);
     $badge ??= $attributes->has('required') ? 'Required' : null;
     $disabled = $attributes->has('disabled');
 @endphp
