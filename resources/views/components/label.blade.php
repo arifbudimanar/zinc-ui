@@ -4,8 +4,8 @@
 ])
 
 @php
-    // $badge = $attributes->has('required') ? 'Required' : $badge;
-    $disabled = $attributes->has('disabled') ? true : false;
+    $badge ??= $attributes->has('required') ? 'Required' : null;
+    $disabled = $attributes->has('disabled');
 @endphp
 
 <label

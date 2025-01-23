@@ -8,8 +8,8 @@
 
 @php
     $id = $attributes->whereStartsWith('wire:model')->first() ?? ($attributes->get('name') ?? Str::random(8));
-    $badge = $badge ?? ($attributes->has('required') ? 'Required' : null);
-    $disabled = $attributes->has('disabled') ? true : false;
+    $badge ??= $attributes->has('required') ? 'Required' : null;
+    $disabled = $attributes->has('disabled');
 @endphp
 
 @if ($label || $description)
@@ -23,7 +23,7 @@
                 'class' =>
                     "flex mt-px outline-offset-2 peer relative size-[1.125rem] appearance-none overflow-hidden rounded-[0.3rem] shadow-sm disabled:shadow-none checked:shadow-none bg-white dark:bg-white/10 checked:before:bg-zinc-800 dark:checked:before:bg-white border border-zinc-300 dark:border-white/10 checked:border-zinc-800 dark:checked:border-white before:absolute before:inset-0 before:content-[''] cursor-pointer disabled:cursor-default disabled:opacity-50",
             ]) }}
-            x-on:keydown.enter.prevent="$el.click()" data-control data-checkbox>
+            x-on:keydown.enter.prevent="$el.click()" data-control data-checkbox />
 
         <x-icon name="c-check"
             class="absolute invisible text-white pointer-events-none size-[1.125rem] top-[0.063rem] left-0 dark:text-zinc-800 peer-checked:visible"
@@ -62,7 +62,7 @@
                 'class' =>
                     "flex mt-px outline-offset-2 peer relative size-[1.125rem] appearance-none overflow-hidden rounded-[0.3rem] shadow-sm disabled:shadow-none checked:shadow-none bg-white dark:bg-white/10 checked:before:bg-zinc-800 dark:checked:before:bg-white border border-zinc-300 dark:border-white/10 checked:border-zinc-800 dark:checked:border-white before:absolute before:inset-0 before:content-[''] cursor-pointer disabled:cursor-default disabled:opacity-50",
             ]) }}
-            x-on:keydown.enter.prevent="$el.click()" data-control data-checkbox>
+            x-on:keydown.enter.prevent="$el.click()" data-control data-checkbox />
 
         <x-icon name="c-check"
             class="absolute invisible text-white pointer-events-none size-[1.125rem] top-[0.063rem] left-0 dark:text-zinc-800 peer-checked:visible"

@@ -20,7 +20,7 @@
 
     $type = $variant === 'primary' ? 'submit' : $type;
 
-    $disabled = $attributes->has('disabled') ? true : false;
+    $disabled = $attributes->has('disabled');
 
     $backgroundClass = [
         'primary' => 'bg-zinc-800 hover:bg-zinc-900 dark:bg-white dark:hover:bg-zinc-100',

@@ -13,16 +13,16 @@
 
 @php
     $id = $attributes->whereStartsWith('wire:model')->first() ?? ($attributes->get('name') ?? Str::random(8));
-    $badge = $badge ?? ($attributes->has('required') ? 'Required' : null);
+    $badge ??= $attributes->has('required') ? 'Required' : null;
     $iconLeading = $icon ??= $iconLeading;
 
-    $required = $attributes->has('required') ? true : false;
-    $disabled = $attributes->has('disabled') ? true : false;
-    $readonly = $attributes->has('readonly') ? true : false;
+    $required = $attributes->has('required');
+    $disabled = $attributes->has('disabled');
+    $readonly = $attributes->has('readonly');
 
-    $viewable = $attributes->has('viewable') ? true : false;
-    $clearable = $attributes->has('clearable') ? true : false;
-    $copyable = $attributes->has('copyable') ? true : false;
+    $viewable = $attributes->has('viewable');
+    $clearable = $attributes->has('clearable');
+    $copyable = $attributes->has('copyable');
 
     $backgroundClass = [
         'outline' => 'bg-white dark:bg-white/10',

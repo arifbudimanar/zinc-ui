@@ -8,9 +8,9 @@
 
 @php
     $id = $attributes->whereStartsWith('wire:model')->first() ?? ($attributes->get('name') ?? Str::random(8));
-    $badge = $badge ?? ($attributes->has('required') ? 'Required' : null);
-    $disabled = $attributes->has('disabled') ? true : false;
-    $readonly = $attributes->has('readonly') ? true : false;
+    $badge ??= $attributes->has('required') ? 'Required' : null;
+    $disabled = $attributes->has('disabled');
+    $readonly = $attributes->has('readonly');
 @endphp
 
 <x-field
@@ -45,7 +45,7 @@
                 'readonly' => $readonly,
                 'class' => 'peer sr-only hidden',
             ]) }}
-            data-control>
+            data-control />
 
         <div x-on:click.prevent="$el.previousElementSibling.click()"
             x-on:keydown.enter.prevent="$el.previousElementSibling.click()"

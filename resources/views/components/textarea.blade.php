@@ -11,11 +11,11 @@
 
 @php
     $id = $attributes->whereStartsWith('wire:model')->first() ?? ($attributes->get('name') ?? Str::random(8));
-    $badge = $badge ?? ($attributes->has('required') ? 'Required' : null);
+    $badge ??= $attributes->has('required') ? 'Required' : null;
 
-    $required = $attributes->has('required') ? true : false;
-    $disabled = $attributes->has('disabled') ? true : false;
-    $readonly = $attributes->has('readonly') ? true : false;
+    $required = $attributes->has('required');
+    $disabled = $attributes->has('disabled');
+    $readonly = $attributes->has('readonly');
 
     $backgroundClass = [
         'outline' => 'bg-white dark:bg-white/10',
