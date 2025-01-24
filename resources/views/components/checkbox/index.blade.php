@@ -1,4 +1,5 @@
 @props([
+    'id' => null,
     'type' => 'checkbox',
     'label' => null,
     'badge' => null,
@@ -7,7 +8,10 @@
 ])
 
 @php
-    $id = Str::slug($label);
+    $id =
+        $id ??
+        ($label ??
+            ($attributes->whereStartsWith('wire:model')->first() ?? ($attributes->get('name') ?? Str::random(8))));
     $badge ??= $attributes->has('required') ? 'Required' : null;
     $disabled = $attributes->has('disabled');
 @endphp

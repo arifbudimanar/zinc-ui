@@ -13,11 +13,9 @@
 @aware(['variant' => $variant])
 
 @php
-    $expandable = $attributes->has('expandable');
-
-    $expanded = $attributes->has('expanded');
-
     $id = $id ?? 'dropdown-navlist-' . Str::random(8);
+    $expandable = $attributes->has('expandable');
+    $expanded = $attributes->has('expanded');
 @endphp
 
 @if ($expandable == false)

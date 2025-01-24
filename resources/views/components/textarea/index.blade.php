@@ -1,4 +1,5 @@
 @props([
+    'id' => null,
     'type' => 'text',
     'variant' => 'outline',
     'resize' => 'auto',
@@ -10,7 +11,10 @@
 ])
 
 @php
-    $id = $attributes->whereStartsWith('wire:model')->first() ?? ($attributes->get('name') ?? Str::random(8));
+    $id =
+        $id ??
+        ($label ??
+            ($attributes->whereStartsWith('wire:model')->first() ?? ($attributes->get('name') ?? Str::random(8))));
     $badge ??= $attributes->has('required') ? 'Required' : null;
 
     $required = $attributes->has('required');

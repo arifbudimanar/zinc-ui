@@ -1,4 +1,5 @@
 @props([
+    'id' => null,
     'type' => 'checkbox',
     'label' => null,
     'badge' => null,
@@ -7,10 +8,12 @@
 ])
 
 @php
-    $id = $attributes->whereStartsWith('wire:model')->first() ?? ($attributes->get('name') ?? Str::random(8));
+    $id =
+        $id ??
+        ($label ??
+            ($attributes->whereStartsWith('wire:model')->first() ?? ($attributes->get('name') ?? Str::random(8))));
     $badge ??= $attributes->has('required') ? 'Required' : null;
     $disabled = $attributes->has('disabled');
-    $readonly = $attributes->has('readonly');
 @endphp
 
 <x-field
@@ -42,7 +45,6 @@
                 'id' => $id,
                 'type' => $type,
                 'disabled' => $disabled,
-                'readonly' => $readonly,
                 'class' => 'peer sr-only hidden',
             ]) }}
             data-control />
