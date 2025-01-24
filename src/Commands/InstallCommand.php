@@ -188,14 +188,16 @@ class InstallCommand extends Command
         .dark ::-webkit-scrollbar {
             width: 10px;
             height: 10px;
-            background-color: #3f3f46;
+            background-color: #27272a;
         }
+
         .dark ::-webkit-scrollbar-thumb {
-            background-color: #ffffff;
+            background-color: #71717a;
             border-radius: 5px;
         }
+
         .dark ::-webkit-scrollbar-thumb:hover {
-            background-color: #ffffff;
+            background-color: #a1a1aa;
         }
 
         /* Light theme scrollbar styles */
@@ -204,12 +206,14 @@ class InstallCommand extends Command
             height: 10px;
             background-color: #f4f4f5;
         }
+
         .light ::-webkit-scrollbar-thumb {
-            background-color: #27272a;
+            background-color: #a1a1aa;
             border-radius: 5px;
         }
+
         .light ::-webkit-scrollbar-thumb:hover {
-            background-color: #27272a;
+            background-color: #71717a;
         }
 
         /* System preference scrollbar styles */
@@ -217,14 +221,16 @@ class InstallCommand extends Command
             :root:not(.light):not(.dark) ::-webkit-scrollbar {
                 width: 10px;
                 height: 10px;
-                background-color: #3f3f46;
+                background-color: #27272a;
             }
+
             :root:not(.light):not(.dark) ::-webkit-scrollbar-thumb {
-                background-color: #ffffff;
+                background-color: #71717a;
                 border-radius: 5px;
             }
+
             :root:not(.light):not(.dark) ::-webkit-scrollbar-thumb:hover {
-                background-color: #ffffff;
+                background-color: #a1a1aa;
             }
         }
 
@@ -234,12 +240,14 @@ class InstallCommand extends Command
                 height: 10px;
                 background-color: #f4f4f5;
             }
+
             :root:not(.light):not(.dark) ::-webkit-scrollbar-thumb {
-                background-color: #27272a;
+                background-color: #a1a1aa;
                 border-radius: 5px;
             }
+
             :root:not(.light):not(.dark) ::-webkit-scrollbar-thumb:hover {
-                background-color: #27272a;
+                background-color: #71717a;
             }
         }
 
