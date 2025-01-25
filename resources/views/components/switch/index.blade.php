@@ -50,7 +50,13 @@
             ]) }}
             data-control />
 
-        <div x-on:click.prevent="$el.previousElementSibling.click()"
+        <div class="peer w-8 h-5 rounded-full appearance-none shadow-sm disabled:shadow-none dark:shadow-none
+        bg-zinc-300 dark:bg-transparent peer-checked:bg-black dark:peer-checked:bg-white peer-disabled:opacity-50
+        dark:border border-zinc-300 dark:border-zinc-600 peer-checked:border-0
+        after:absolute after:content-[''] after:top-[3px] after:left-[3px] after:h-3.5 after:w-3.5
+        after:rounded-full after:transition-all peer-checked:after:translate-x-3
+        after:bg-white dark:after:peer-checked:bg-zinc-800 cursor-pointer peer-disabled:cursor-default focus:outline-1"
+            x-on:click.prevent="$el.previousElementSibling.click()"
             x-on:keydown.enter.prevent="$el.previousElementSibling.click()"
             x-on:keydown.space.prevent="$el.previousElementSibling.click()"
             :tabindex="$el.previousElementSibling.disabled ? '-1' : '0'"
@@ -59,12 +65,7 @@
                 'cursor-pointer': !$el.previousElementSibling.disabled,
                 'cursor-default': $el.previousElementSibling.disabled,
             }"
-            class="peer w-8 h-5 rounded-full appearance-none shadow-sm disabled:shadow-none dark:shadow-none
-            bg-zinc-300 dark:bg-transparent peer-checked:bg-black dark:peer-checked:bg-white peer-disabled:opacity-50
-            dark:border border-zinc-300 dark:border-zinc-600 peer-checked:border-0
-            after:absolute after:content-[''] after:top-[3px] after:left-[3px] after:h-3.5 after:w-3.5
-            after:rounded-full after:transition-all peer-checked:after:translate-x-3
-            after:bg-white dark:after:peer-checked:bg-zinc-800 cursor-pointer peer-disabled:cursor-default focus:outline-1">
+            data-switch-indicator>
         </div>
     </label>
 

@@ -25,11 +25,21 @@
                 'id' => $id,
                 'type' => $type,
                 'disabled' => $disabled,
-                'class' =>
-                    "flex mt-px outline-offset-2 peer relative size-[1.125rem] appearance-none overflow-hidden rounded-[0.3rem] shadow-sm disabled:shadow-none checked:shadow-none bg-white dark:bg-white/10 checked:before:bg-zinc-800 dark:checked:before:bg-white border border-zinc-300 dark:border-white/10 checked:border-zinc-800 dark:checked:border-white before:absolute before:inset-0 before:content-[''] cursor-pointer disabled:cursor-default disabled:opacity-50",
+                'class' => 'peer sr-only hidden',
             ]) }}
-            x-on:keydown.enter.prevent="$el.click()" data-control data-checkbox />
+            data-control data-checkbox />
 
+        <div class="size-[1.125rem] mt-px outline-offset-2 rounded-[0.3rem] relative shadow-sm disabled:shadow-none border border-zinc-300 dark:border-white/10 peer-checked:border-transparent bg-white dark:bg-white/10 peer-checked:bg-zinc-800 dark:peer-checked:bg-white peer-disabled:opacity-50"
+            x-on:click.prevent="$el.previousElementSibling.click()"
+            x-on:keydown.enter.prevent="$el.previousElementSibling.click()"
+            x-on:keydown.space.prevent="$el.previousElementSibling.click()"
+            :tabindex="$el.previousElementSibling.disabled ? '-1' : '0'"
+            :aria-disabled="$el.previousElementSibling.disabled"
+            :class="{
+                'cursor-pointer': !$el.previousElementSibling.disabled,
+                'cursor-default': $el.previousElementSibling.disabled,
+            }">
+        </div>
         <x-icon name="c-check"
             class="absolute invisible text-white pointer-events-none size-[1.125rem] top-[0.063rem] left-0 dark:text-zinc-800 peer-checked:visible"
             data-checkbox-indicator />
