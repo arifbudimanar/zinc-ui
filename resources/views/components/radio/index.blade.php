@@ -34,12 +34,7 @@
         ]) }}
         data-control>
 
-    <div class="flex size-[1.125rem] mt-px outline-offset-2
-        rounded-full relative cursor-pointer
-        border border-zinc-300 dark:border-white/10
-        peer-checked:border-transparent
-        bg-white dark:bg-white/10
-        peer-checked:bg-zinc-800 dark:peer-checked:bg-white"
+    <div class="flex size-[1.125rem] mt-px outline-offset-2 rounded-full relative cursor-pointer border border-zinc-300 dark:border-white/10 peer-checked:border-transparent bg-white dark:bg-white/10 peer-checked:bg-zinc-800 dark:peer-checked:bg-white peer-disabled:opacity-50"
         x-on:click.prevent="$el.previousElementSibling.click()"
         x-on:keydown.enter.prevent="$el.previousElementSibling.click()"
         x-on:keydown.space.prevent="$el.previousElementSibling.click()"
@@ -51,7 +46,7 @@
         }">
     </div>
     <div
-        class="absolute invisible rounded-full mt-px bg-white pointer-events-none size-2 top-[0.313rem] left-[0.313rem] dark:bg-zinc-800 peer-checked:visible">
+        class="absolute invisible rounded-full mt-px bg-white pointer-events-none size-2 top-[0.313rem] left-[0.313rem] dark:bg-zinc-800 peer-checked:visible peer-disabled:opacity-50">
     </div>
 
 
