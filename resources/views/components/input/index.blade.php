@@ -17,6 +17,7 @@
         $id ??
         ($label ??
             ($attributes->whereStartsWith('wire:model')->first() ?? ($attributes->get('name') ?? Str::random(8))));
+    $error = $attributes->whereStartsWith('wire:model')->first() ?? ($attributes->get('name') ?? null);
     $badge ??= $attributes->has('required') ? 'Required' : null;
     $iconLeading = $icon ??= $iconLeading;
 
@@ -111,7 +112,7 @@
         $disabledClass;
 @endphp
 
-<x-with-field :$id :$label :$description :$badge :$badgeColor>
+<x-with-field :$id :$error :$label :$description :$badge :$badgeColor>
     @if ($type == 'file')
         <div class="relative block w-full group/input" data-input>
             <input

@@ -12,6 +12,7 @@
         $id ??
         ($label ??
             ($attributes->whereStartsWith('wire:model')->first() ?? ($attributes->get('name') ?? Str::random(8))));
+    $error = $attributes->whereStartsWith('wire:model')->first() ?? ($attributes->get('name') ?? null);
     $badge ??= $attributes->has('required') ? 'Required' : null;
     $disabled = $attributes->has('disabled');
 @endphp
@@ -67,5 +68,5 @@
         </div>
     </label>
 
-    <x-error name="{{ $id }}" />
+    <x-error name="{{ $error }}" />
 </x-field>

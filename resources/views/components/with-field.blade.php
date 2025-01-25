@@ -4,6 +4,7 @@
     'description' => null,
     'badge' => null,
     'badgeColor' => 'zinc',
+    'error' => null,
 ])
 
 @if ($label || $description)
@@ -26,7 +27,7 @@
 
         {{ $slot }}
 
-        <x-error name="{{ $id }}" />
+        <x-error name="{{ $error }}" />
     </x-field>
 @else
     <div class="w-full">

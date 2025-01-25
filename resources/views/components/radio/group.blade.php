@@ -1,5 +1,6 @@
 @props([
     'label' => null,
+    'name' => null,
 ])
 
 <x-field>
@@ -7,7 +8,7 @@
         {{ $label }}
     </x-label>
     <div {{ $attributes->merge(['class' => '[&>[data-field]]:mb-3 [&>[data-field]:has(>[data-description])]:mb-4 [&>[data-field]:last-child]:!mb-0']) }}
-        data-checkbox-group>
+        data-radio-group>
         {{ $slot }}
     </div>
 </x-field>

@@ -15,6 +15,7 @@
         $id ??
         ($label ??
             ($attributes->whereStartsWith('wire:model')->first() ?? ($attributes->get('name') ?? Str::random(8))));
+    $error = $attributes->whereStartsWith('wire:model')->first() ?? ($attributes->get('name') ?? null);
     $badge ??= $attributes->has('required') ? 'Required' : null;
 
     $required = $attributes->has('required');
@@ -73,7 +74,7 @@
         $resizeClass;
 @endphp
 
-<x-with-field :$id :$label :$description :$badge :$badgeColor>
+<x-with-field :$id :$error :$label :$description :$badge :$badgeColor>
     <textarea
         {{ $attributes->merge([
             'id' => $id,
