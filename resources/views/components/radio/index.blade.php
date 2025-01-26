@@ -21,9 +21,7 @@
 
 @aware(['name' => $name])
 
-<x-field
-    class="relative [&>[data-label]]:!mb-0 [&>[data-label]:has(+[data-description])]:!mb-0 [&>[data-label]+[data-description]]:!mt-0 [&>[data-label]+[data-description]]:!mb-0 [&>*:not([data-label])+[data-description]]:!mt-0 grid gap-x-3 gap-y-1.5 has-[[data-label]~[data-control]]:grid-cols-[1fr_auto] has-[[data-control]~[data-label]]:grid-cols-[auto_1fr] [&>[data-control]~[data-description]]:row-start-2 [&>[data-control]~[data-description]]:col-start-2 [&>[data-control]~[data-error]]:col-start-2 [&>[data-control]~[data-error]]:col-span-2 [&>[data-control]~[data-error]]:mt-1 [&>[data-label]~[data-control]]:row-start-1 [&>[data-label]~[data-control]]:col-start-2">
-
+<x-with-field :$id :$error :$label :$description :$badge :$badgeColor variant="inline">
     <input
         {{ $attributes->merge([
             'id' => $id,
@@ -48,28 +46,4 @@
     <div class="absolute invisible rounded-full mt-px bg-white pointer-events-none size-2 top-[0.313rem] left-[0.313rem] dark:bg-zinc-800 peer-checked:visible peer-disabled:opacity-50"
         data-radio-indicator>
     </div>
-
-
-    @if (is_string($label) && $label !== '')
-        <x-label for="{{ $id }}" class="w-fit">
-            {{ $label }}
-            @isset($badge)
-                <x-badge size="sm" color="{{ $badgeColor }}" inset="top bottom" class="ml-1.5">
-                    {{ $badge }}
-                </x-badge>
-            @endisset
-        </x-label>
-    @else
-        {{ $label }}
-    @endif
-
-    @if (is_string($description) && $description !== '')
-        <x-description>
-            {{ $description }}
-        </x-description>
-    @else
-        {{ $description }}
-    @endif
-
-    <x-error name="{{ $error }}" />
-</x-field>
+</x-with-field>
