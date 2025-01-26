@@ -30,7 +30,7 @@
             'disabled' => $disabled,
             'class' => 'peer sr-only hidden',
         ]) }}
-        data-control data-radio>
+        data-control>
 
     <div class="flex size-[1.125rem] mt-px outline-offset-2 rounded-full relative shadow-sm disabled:shadow-none border border-zinc-300 dark:border-white/10 peer-checked:border-transparent bg-white dark:bg-white/10 peer-checked:bg-zinc-800 dark:peer-checked:bg-white peer-disabled:opacity-50"
         x-on:click.prevent="$el.previousElementSibling.click()"
@@ -41,8 +41,10 @@
         :class="{
             'cursor-pointer': !$el.previousElementSibling.disabled,
             'cursor-default': $el.previousElementSibling.disabled,
-        }">
+        }"
+        data-radio>
     </div>
+
     <div class="absolute invisible rounded-full mt-px bg-white pointer-events-none size-2 top-[0.313rem] left-[0.313rem] dark:bg-zinc-800 peer-checked:visible peer-disabled:opacity-50"
         data-radio-indicator>
     </div>

@@ -39,6 +39,7 @@
         }"
         data-checkbox>
     </div>
+
     <x-icon name="c-check"
         class="absolute invisible text-white pointer-events-none size-[1.125rem] top-[0.063rem] left-0 dark:text-zinc-800 peer-checked:visible"
         data-checkbox-indicator />

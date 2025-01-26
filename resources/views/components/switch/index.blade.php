@@ -17,8 +17,7 @@
     $disabled = $attributes->has('disabled');
 @endphp
 
-<x-field
-    class="relative [&>[data-label]]:!mb-0 [&>[data-label]:has(+[data-description])]:!mb-0 [&>[data-label]+[data-description]]:!mt-0 [&>[data-label]+[data-description]]:!mb-0 [&>*:not([data-label])+[data-description]]:!mt-0 grid gap-x-3 gap-y-1.5 has-[[data-label]~[data-control]]:grid-cols-[1fr_auto] has-[[data-control]~[data-label]]:grid-cols-[auto_1fr] [&>[data-control]~[data-description]]:row-start-2 [&>[data-control]~[data-description]]:col-start-2 [&>[data-control]~[data-error]]:col-span-2 [&>[data-control]~[data-error]]:mt-1 [&>[data-label]~[data-control]]:row-start-1 [&>[data-label]~[data-control]]:col-start-2">
+<x-field variant="inline">
     @if (is_string($label) && $label !== '')
         <x-label for="{{ $id }}" class="w-fit">
             {{ $label }}
@@ -40,15 +39,14 @@
         {{ $description }}
     @endif
 
-    <label class="relative" data-control data-switch>
+    <div class="relative" data-control>
         <input
             {{ $attributes->merge([
                 'id' => $id,
                 'type' => $type,
                 'disabled' => $disabled,
                 'class' => 'peer sr-only hidden',
-            ]) }}
-            data-control />
+            ]) }} />
 
         <div class="peer w-8 h-5 rounded-full appearance-none shadow-sm disabled:shadow-none dark:shadow-none bg-zinc-800/15 dark:bg-transparent peer-checked:bg-black dark:peer-checked:bg-white peer-disabled:opacity-50 dark:border border-zinc-300 dark:border-white/20 peer-checked:border-0 after:absolute peer-disabled:cursor-default focus:outline-1"
             x-on:click.prevent="$el.previousElementSibling.click()"
@@ -59,12 +57,16 @@
             :class="{
                 'cursor-pointer': !$el.previousElementSibling.disabled,
                 'cursor-default': $el.previousElementSibling.disabled,
-            }">
+            }"
+            data-switch>
         </div>
+
         <div class="absolute bg-white peer-checked:bg-white dark:peer-checked:bg-zinc-800 pointer-events-none top-[3px] left-[3px] size-3.5 rounded-full transition-all peer-checked:translate-x-3"
             data-switch-indicator>
         </div>
-    </label>
+    </div>
 
-    <x-error name="{{ $error }}" />
+    @if ($label || $description)
+        <x-error name="{{ $error }}" />
+    @endif
 </x-field>
