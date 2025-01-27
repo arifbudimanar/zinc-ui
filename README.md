@@ -52,13 +52,13 @@ After installation, initialize the package by running:
 php artisan zinc:install
 ```
 
-### Publishing components (optional)
+<!-- ### Publishing components (optional)
 
 If you want to customize the components, you can publish them using this command:
 
 ```bash
 php artisan zinc:publish
-```
+``` -->
 
 ### Check installed version
 
