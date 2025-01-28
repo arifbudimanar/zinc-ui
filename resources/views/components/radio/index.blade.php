@@ -30,6 +30,6 @@
             'disabled' => $disabled,
             'class' => 'peer sr-only hidden',
         ]) }}
-        data-control data-radio>
+        data-radio data-control>
     <x-radio.indicator />
 </x-with-field>

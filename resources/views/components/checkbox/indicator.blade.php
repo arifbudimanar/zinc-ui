@@ -7,7 +7,7 @@
         'cursor-pointer': !$el.previousElementSibling.disabled,
         'cursor-default': $el.previousElementSibling.disabled,
     }"
-    data-checkbox-indicator>
+    {{ $attributes->merge(['data-checkbox-indicator']) }}>
     <x-icon name="c-check" class="size-[1.125rem] hidden text-white pointer-events-none dark:text-zinc-800"
         data-indicator />
 </div>

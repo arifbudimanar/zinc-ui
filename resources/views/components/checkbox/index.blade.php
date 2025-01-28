@@ -25,6 +25,6 @@
             'disabled' => $disabled,
             'class' => 'peer sr-only hidden',
         ]) }}
-        data-control data-checkbox />
+        data-checkbox data-control />
     <x-checkbox.indicator />
 </x-with-field>

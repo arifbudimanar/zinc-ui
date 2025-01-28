@@ -7,6 +7,6 @@
         'cursor-pointer': !$el.previousElementSibling.disabled,
         'cursor-default': $el.previousElementSibling.disabled,
     }"
-    data-radio-indicator>
+    {{ $attributes->merge(['data-radio-indicator']) }}>
     <div class="rounded-full bg-white pointer-events-none size-2 dark:bg-zinc-800 hidden" data-indicator></div>
 </div>
