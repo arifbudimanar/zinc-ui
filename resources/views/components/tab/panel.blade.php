@@ -2,9 +2,15 @@
 
 @aware(['variant' => $variant, 'active'])
 
-{{-- @dump($variant, $active) --}}
-
-<x-card variant="{{ $variant == 'segmented' ? 'default' : 'subtle' }}" role="tabpanel" aria-label="{{ $name }}"
-    x-show="selectedTab === '{{ $name }}'" {{ $attributes->merge(['x-cloak' => $active !== $name]) }}>
-    {{ $slot }}
-</x-card>
+@if ($variant == 'default')
+    <div role="tabpanel" aria-label="{{ $name }}" x-show="selectedTab === '{{ $name }}'"
+        {{ $attributes->merge(['x-cloak' => $active !== $name ? true : false]) }} data-tab-panel>
+        {{ $slot }}
+    </div>
+@endif
+@if ($variant == 'segmented')
+    <x-card role="tabpanel" aria-label="{{ $name }}" x-show="selectedTab === '{{ $name }}'"
+        {{ $attributes->merge(['x-cloak' => $active !== $name ? true : false]) }} data-tab-panel>
+        {{ $slot }}
+    </x-card>
+@endif

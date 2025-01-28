@@ -14,14 +14,15 @@
 @endphp
 
 @if ($variant === 'default')
-    <button type="button" x-on:click="selectedTab = '{{ $name }}'" role="tab"
+    <button type="button"
+        {{ $attributes->merge(['class' => 'flex whitespace-nowrap gap-2 items-center h-10 px-2 -mb-px border-b-[2px] border-transparent text-sm font-medium text-zinc-400 dark:text-white/50 hover:text-zinc-800 dark:hover:text-white disabled:opacity-50 dark:disabled:opacity-75 disabled:cursor-default disabled:pointer-events-none']) }}
+        x-on:click="selectedTab = '{{ $name }}'" x-on:focusin="selectedTab = '{{ $name }}'" role="tab"
         :aria-selected="selectedTab === '{{ $name }}'"
         :tabindex="selectedTab === '{{ $name }}' ? '0' : '-1'"
-        class="flex items-center h-10 gap-2 px-2 -mb-px text-sm font-medium border-b-[2px] whitespace-nowrap text-zinc-400 dark:text-white/50 hover:text-zinc-800 dark:hover:text-white border-transparent disabled:opacity-50 dark:disabled:opacity-75 disabled:cursor-default disabled:pointer-events-none"
-        :class="selectedTab === '{{ $name }}' ?
+        x-bind:class="selectedTab === '{{ $name }}' ?
             '!text-zinc-800 dark:!text-white hover:!text-zinc-800 dark:hover:!text-white !border-zinc-800 dark:!border-white' :
             'text-zinc-400 dark:text-white/50 hover:text-zinc-800 dark:hover:text-white border-transparent'"
-        {{ $attributes }}>
+        data-tab>
         @if (is_string($iconLeading))
             <x-icon :name="$iconLeading" class="shrink-0 size-5" />
         @else
@@ -39,14 +40,15 @@
 @endif
 
 @if ($variant === 'segmented')
-    <button type="button" x-on:click="selectedTab = '{{ $name }}'" role="tab"
-        :aria-selected="selectedTab === '{{ $name }}'"
+    <button type="button"
+        {{ $attributes->merge(['class' => 'flex whitespace-nowrap flex-1 justify-center items-center gap-2 rounded-md data-[selected]:shadow-sm text-sm font-medium text-zinc-600 hover:text-zinc-800 dark:hover:text-white dark:text-white/70 data-[selected]:text-zinc-800 data-[selected]:dark:text-white data-[selected]:bg-white data-[selected]:dark:bg-white/20 disabled:opacity-50 dark:disabled:opacity-75 disabled:cursor-default disabled:pointer-events-none px-4']) }}
+        x-on:click="selectedTab = '{{ $name }}'" x-on:focusin="selectedTab = '{{ $name }}'"
+        role="tab" :aria-selected="selectedTab === '{{ $name }}'"
         :tabindex="selectedTab === '{{ $name }}' ? '0' : '-1'"
-        class="flex items-center justify-center flex-1 h-8 gap-2 px-4 text-sm font-medium rounded-md snap-center group whitespace-nowrap text-zinc-600 dark:text-white/70 hover:text-zinc-800 dark:hover:text-white disabled:opacity-50 dark:disabled:opacity-75 disabled:cursor-default disabled:pointer-events-none"
-        :class="selectedTab === '{{ $name }}' ?
+        x-bind:class="selectedTab === '{{ $name }}' ?
             '!text-zinc-800 dark:!text-white hover:!text-zinc-800 dark:hover:!text-white !bg-white dark:!bg-white/20' :
             'text-zinc-600 dark:text-white/70 hover:text-zinc-800 dark:hover:text-white'"
-        {{ $attributes }}>
+        data-tab>
         @if (is_string($iconLeading))
             <x-icon :name="$iconLeading" class="shrink-0 size-5" />
         @else
