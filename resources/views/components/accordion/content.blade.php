@@ -1,10 +1,15 @@
-@props(['transition' => false, 'expanded' => false])
+@props([
+    'transition' => false,
+    'expanded' => false,
+])
 
-@aware(['transition' => $transition, 'expanded' => $expanded])
+@aware([
+    'transition' => $transition,
+    'expanded' => $expanded,
+])
 
-<div x-show="isAccordionOpen" data-accordion-content @if ($transition) x-collapse @endif
-    {{ $attributes->merge(['x-cloak' => $expanded == false]) }}>
-    <div {{ $attributes->merge(['class' => 'pt-2 text-sm text-zinc-500 dark:text-zinc-300']) }}>
+<div x-show="isAccordionOpen" {{ $attributes->merge(['x-collapse' => $transition]) }} data-accordion-content>
+    <div {{ $attributes->class('pt-2 text-sm text-zinc-500 dark:text-zinc-300')->merge(['x-cloak' => !$expanded]) }}>
         {{ $slot }}
     </div>
 </div>

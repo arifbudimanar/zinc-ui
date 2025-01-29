@@ -1,5 +1,7 @@
-@props(['transition' => false])
+@props([
+    'transition' => false,
+])
 
-<div {{ $attributes->merge(['class' => 'block']) }} data-accordion>
+<div {{ $attributes->class('block') }} data-accordion>
     {{ $slot }}
 </div>

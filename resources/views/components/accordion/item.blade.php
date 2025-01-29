@@ -4,12 +4,15 @@
     'expanded' => false,
 ])
 
-@php
-    $classes = 'block pt-4 pb-4 border-b first:pt-0 last:pb-0 last:border-b-0 border-zinc-800/10 dark:border-white/10';
-@endphp
+@aware([
+    'transition' => $transition,
+    'expanded' => $expanded,
+])
 
-@if ($heading)
-    <div {{ $attributes->merge(['class' => $classes]) }} x-data="{ isAccordionOpen: {{ $expanded ? 'true' : 'false' }} }" data-accordion-item>
+<div {{ $attributes->class('block border-b border-zinc-800/10 pb-4 pt-4 first:pt-0 last:border-b-0 last:pb-0 dark:border-white/10') }}
+    x-data="{ isAccordionOpen: {{ $expanded ? 'true' : 'false' }} }"
+    data-accordion-item>
+    @if ($heading)
         <x-accordion.heading>
             {{ $heading }}
         </x-accordion.heading>
@@ -17,9 +20,7 @@
         <x-accordion.content>
             {{ $slot }}
         </x-accordion.content>
-    </div>
-@else
-    <div {{ $attributes->merge(['class' => $classes]) }} x-data="{ isAccordionOpen: {{ $expanded ? 'true' : 'false' }} }" data-accordion-item>
+    @else
         {{ $slot }}
-    </div>
-@endif
+    @endif
+</div>
