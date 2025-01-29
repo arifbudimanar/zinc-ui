@@ -2,9 +2,7 @@
 
 namespace ArifBudimanAr\ZincUi;
 
-use ArifBudimanAr\ZincUi\Commands\InstallCommand;
-use ArifBudimanAr\ZincUi\Commands\PublishCommand;
-use ArifBudimanAr\ZincUi\Commands\VersionCommand;
+use ArifBudimanAr\ZincUi\Commands;
 use Illuminate\Support\Facades\Blade;
 use Spatie\LaravelPackageTools\Package;
 use Spatie\LaravelPackageTools\PackageServiceProvider;
@@ -15,24 +13,25 @@ class ZincUiServiceProvider extends PackageServiceProvider
     {
         $package
             ->name('zinc-ui')
-            // ->hasConfigFile()
-            // ->hasViews()
-            // ->hasMigration('create_zinc_ui_table')
             ->hasCommands([
-                InstallCommand::class,
-                PublishCommand::class,
-                VersionCommand::class,
+                Commands\InstallCommand::class,
+                Commands\PublishCommand::class,
+                Commands\VersionCommand::class,
             ]);
 
-        $this->bootComponentPath();
-    }
+        $this->app->singleton('zincui', function () {
+            return new ClassBuilder;
+        });
 
-    public function bootComponentPath()
-    {
         if (file_exists(resource_path('views'))) {
             Blade::anonymousComponentPath(resource_path('views'));
         }
 
         Blade::anonymousComponentPath(__DIR__.'/../resources/views/components');
+    }
+
+    public static function classes()
+    {
+        return app('zincui');
     }
 }

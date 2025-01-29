@@ -11,6 +11,6 @@ class ZincUi extends Facade
 {
     protected static function getFacadeAccessor(): string
     {
-        return \ArifBudimanAr\ZincUi\ZincUi::class;
+        return 'zincui';
     }
 }
