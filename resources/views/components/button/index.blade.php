@@ -8,7 +8,7 @@
     'label' => null,
     'kbd' => null,
     'tooltip' => null,
-    'tooltipPosition' => 'bottom',
+    'tooltipPosition' => 'top',
     'tooltipOffset' => 6,
     'tooltipKbd' => null,
     'inset' => null,
