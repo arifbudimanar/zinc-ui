@@ -2,7 +2,6 @@
 
 namespace ArifBudimanAr\ZincUi;
 
-use ArifBudimanAr\ZincUi\Commands;
 use Illuminate\Support\Facades\Blade;
 use Spatie\LaravelPackageTools\Package;
 use Spatie\LaravelPackageTools\PackageServiceProvider;
