@@ -22,19 +22,9 @@
         x-on:keydown.right.prevent="$focus.next()" x-on:keydown.left.prevent="$focus.previous()" role="tablist" data-tabs>
         {{ $slot }}
     </div>
-@endif
-
-@if ($variant == 'segmented')
-    @if ($size == 'base')
-        <div {{ $attributes->class($classes) }}
-            x-on:keydown.right.prevent="$focus.next()" x-on:keydown.left.prevent="$focus.previous()" role="tablist" data-tabs>
-            {{ $slot }}
-        </div>
-    @endif
-    @if ($size == 'sm')
-        <div {{ $attributes->class($classes) }}
-            x-on:keydown.right.prevent="$focus.next()" x-on:keydown.left.prevent="$focus.previous()" role="tablist" data-tabs>
-            {{ $slot }}
-        </div>
-    @endif
+@elseif ($variant == 'segmented')
+    <div {{ $attributes->class($classes) }}
+        x-on:keydown.right.prevent="$focus.next()" x-on:keydown.left.prevent="$focus.previous()" role="tablist" data-tabs>
+        {{ $slot }}
+    </div>
 @endif

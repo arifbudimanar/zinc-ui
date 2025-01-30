@@ -7,8 +7,7 @@
         {{ $attributes->merge(['x-cloak' => $active !== $name]) }} data-tab-panel>
         {{ $slot }}
     </div>
-@endif
-@if ($variant == 'segmented')
+@elseif ($variant == 'segmented')
     <x-card role="tabpanel" aria-label="{{ $name }}" x-show="selectedTab === '{{ $name }}'"
         {{ $attributes->merge(['x-cloak' => $active !== $name]) }} data-tab-panel>
         {{ $slot }}

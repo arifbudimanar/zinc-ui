@@ -54,9 +54,7 @@
             {{ $iconTrailing }}
         @endif
     </button>
-@endif
-
-@if ($variant === 'segmented')
+@elseif ($variant === 'segmented')
     <button type="button"
         {{ $attributes->class($classes) }}
         x-on:click="selectedTab = '{{ $name }}'" x-on:focusin="selectedTab = '{{ $name }}'"
