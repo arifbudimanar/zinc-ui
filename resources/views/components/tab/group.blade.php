@@ -4,10 +4,9 @@
     $wireModel = $attributes->wire('model')->value();
 @endphp
 
-<div x-data="{
-    selectedTab: {{ $wireModel ? '$wire.entangle(\'' . $wireModel . '\')' : 'null' }}
-}" x-init="if (selectedTab === null) {
-    selectedTab = '{{ $active }}' || $el.querySelector('[role=tab]').getAttribute('name');
-}" {{ $attributes->merge(['class' => 'block']) }} data-tab-group>
+<div {{ $attributes->class('block')->except('wire:model') }}
+    x-data="{ selectedTab: {{ $wireModel ? '$wire.entangle(\'' . $wireModel . '\')' : 'null' }} }"
+    x-init="selectedTab ||= '{{ $active }}' || $el.querySelector('[data-tab-panel]').getAttribute('aria-label') || '';"
+    data-tab-group>
     {{ $slot }}
 </div>

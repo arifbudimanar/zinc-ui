@@ -16,11 +16,23 @@
 
 @php
     $iconLeading = $icon ??= $iconLeading;
+    $classes = ZincUi::classes()->add(
+        match ($variant) {
+            'default'
+                => 'flex whitespace-nowrap gap-2 items-center h-10 px-2 -mb-px border-b-[2px] border-transparent text-sm font-medium text-zinc-400 dark:text-white/50 hover:text-zinc-800 dark:hover:text-white disabled:opacity-50 dark:disabled:opacity-75 disabled:cursor-default disabled:pointer-events-none',
+            'segmented' => [
+                'base' =>
+                    'flex whitespace-nowrap flex-1 justify-center items-center gap-2 rounded-md text-sm font-medium text-zinc-600 hover:text-zinc-800 dark:hover:text-white dark:text-white/70 disabled:opacity-50 dark:disabled:opacity-75 disabled:cursor-default disabled:pointer-events-none px-4',
+                'sm' =>
+                    'flex whitespace-nowrap flex-1 justify-center items-center gap-2 rounded-md text-sm font-medium text-zinc-600 hover:text-zinc-800 dark:hover:text-white dark:text-white/70 disabled:opacity-50 dark:disabled:opacity-75 disabled:cursor-default disabled:pointer-events-none px-3',
+            ][$size],
+        },
+    );
 @endphp
 
 @if ($variant === 'default')
     <button type="button"
-        {{ $attributes->merge(['class' => 'flex whitespace-nowrap gap-2 items-center h-10 px-2 -mb-px border-b-[2px] border-transparent text-sm font-medium text-zinc-400 dark:text-white/50 hover:text-zinc-800 dark:hover:text-white disabled:opacity-50 dark:disabled:opacity-75 disabled:cursor-default disabled:pointer-events-none']) }}
+        {{ $attributes->class($classes) }}
         x-on:click="selectedTab = '{{ $name }}'" x-on:focusin="selectedTab = '{{ $name }}'" role="tab"
         :aria-selected="selectedTab === '{{ $name }}'"
         :tabindex="selectedTab === '{{ $name }}' ? '0' : '-1'"
@@ -46,7 +58,7 @@
 
 @if ($variant === 'segmented')
     <button type="button"
-        {{ $attributes->merge(['class' => 'flex whitespace-nowrap flex-1 justify-center items-center gap-2 rounded-md text-sm font-medium text-zinc-600 hover:text-zinc-800 dark:hover:text-white dark:text-white/70 disabled:opacity-50 dark:disabled:opacity-75 disabled:cursor-default disabled:pointer-events-none px-4']) }}
+        {{ $attributes->class($classes) }}
         x-on:click="selectedTab = '{{ $name }}'" x-on:focusin="selectedTab = '{{ $name }}'"
         role="tab" :aria-selected="selectedTab === '{{ $name }}'"
         :tabindex="selectedTab === '{{ $name }}' ? '0' : '-1'"
