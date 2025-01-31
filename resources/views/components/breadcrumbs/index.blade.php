@@ -2,6 +2,6 @@
     'separator' => 'chevron-right',
 ])
 
-<div {{ $attributes->merge(['class' => 'flex']) }} data-breadcrumbs>
+<div {{ $attributes->class('flex') }} data-breadcrumbs>
     {{ $slot }}
 </div>

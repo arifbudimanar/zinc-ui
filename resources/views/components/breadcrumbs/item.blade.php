@@ -6,31 +6,30 @@
 
 @aware(['separator' => $separator])
 
-<div class="flex items-center text-sm font-medium group/breadcrumb [&_[data-dropdown]]:-mx-1.5" data-breadcrumbs-item>
-    @if ($href)
-        <a
-            {{ $attributes->merge(['class' => ' text-zinc-800 dark:text-white hover:underline decoration-zinc-800/20 underline-offset-4', 'href' => $href]) }}>
-            @if ($icon)
+<div class="group flex items-center text-sm font-medium [&_[data-dropdown]]:-mx-1.5" data-breadcrumbs-item>
+    <?php if ($href): ?>
+        <a {{ $attributes->class('text-zinc-800 dark:text-white hover:underline decoration-zinc-800/20 underline-offset-4') }}>
+            <?php if ($icon): ?>
                 <x-icon name="{{ $icon }}" class="size-5 shrink-0" />
-            @else
+            <?php else: ?>
                 {{ $slot }}
-            @endif
+            <?php endif; ?>
         </a>
-    @else
+    <?php else: ?>
         <div {{ $attributes->merge(['class' => 'text-gray-500 dark:text-white/80']) }}>
-            @if ($icon)
+            <?php if ($icon): ?>
                 <x-icon name="{{ $icon }}" class="size-5 shrink-0" />
-            @else
+            <?php else: ?>
                 {{ $slot }}
-            @endif
+            <?php endif; ?>
         </div>
-    @endif
+    <?php endif; ?>
 
-    @if ($separator === 'chevron-right')
+    <?php if ($separator === 'chevron-right'): ?>
         <x-icon name="o-chevron-right"
-            class="mx-2 shrink-0 size-4 text-zinc-300 dark:text-white/80 group-last/breadcrumb:hidden" />
-    @elseif ($separator === 'slash')
+            class="mx-2 size-4 shrink-0 text-zinc-300 group-last/breadcrumb:hidden dark:text-white/80" />
+    <?php elseif ($separator === 'slash'): ?>
         <x-icon name="o-slash"
-            class="mx-2 shrink-0 size-4 text-zinc-300 dark:text-white/80 group-last/breadcrumb:hidden" />
-    @endif
+            class="mx-2 size-4 shrink-0 text-zinc-300 group-last/breadcrumb:hidden dark:text-white/80" />
+    <?php endif; ?>
 </div>
