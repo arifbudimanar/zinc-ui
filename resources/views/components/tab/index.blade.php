@@ -31,15 +31,14 @@
 @endphp
 
 @if ($variant === 'default')
-    <button type="button"
-        {{ $attributes->class($classes) }}
-        x-on:click="selectedTab = '{{ $name }}'" x-on:focusin="selectedTab = '{{ $name }}'" role="tab"
-        :aria-selected="selectedTab === '{{ $name }}'"
-        :tabindex="selectedTab === '{{ $name }}' ? '0' : '-1'"
+    <button type="button" {{ $attributes->class($classes) }} role="tab" data-tab
+        x-on:click="selectedTab = '{{ $name }}'"
+        x-on:focusin="selectedTab = '{{ $name }}'"
+        x-bind:aria-selected="selectedTab === '{{ $name }}'"
+        x-bind:tabindex="selectedTab === '{{ $name }}' ? '0' : '-1'"
         x-bind:class="selectedTab === '{{ $name }}' ?
             '!text-zinc-800 dark:!text-white hover:!text-zinc-800 dark:hover:!text-white !border-zinc-800 dark:!border-white' :
-            'text-zinc-400 dark:text-white/50 hover:text-zinc-800 dark:hover:text-white border-transparent'"
-        data-tab>
+            'text-zinc-400 dark:text-white/50 hover:text-zinc-800 dark:hover:text-white border-transparent'">
         @if (is_string($iconLeading))
             <x-icon :name="$iconLeading" class="size-5 shrink-0" />
         @else
@@ -55,15 +54,14 @@
         @endif
     </button>
 @elseif ($variant === 'segmented')
-    <button type="button"
-        {{ $attributes->class($classes) }}
-        x-on:click="selectedTab = '{{ $name }}'" x-on:focusin="selectedTab = '{{ $name }}'"
-        role="tab" :aria-selected="selectedTab === '{{ $name }}'"
-        :tabindex="selectedTab === '{{ $name }}' ? '0' : '-1'"
+    <button type="button" {{ $attributes->class($classes) }} role="tab" data-tab
+        x-on:click="selectedTab = '{{ $name }}'"
+        x-on:focusin="selectedTab = '{{ $name }}'"
+        x-bind:aria-selected="selectedTab === '{{ $name }}'"
+        x-bind:tabindex="selectedTab === '{{ $name }}' ? '0' : '-1'"
         x-bind:class="selectedTab === '{{ $name }}' ?
             '!text-zinc-800 dark:!text-white hover:!text-zinc-800 dark:hover:!text-white !bg-white dark:!bg-white/20 shadow-sm' :
-            'text-zinc-600 dark:text-white/70 hover:text-zinc-800 dark:hover:text-white'"
-        data-tab>
+            'text-zinc-600 dark:text-white/70 hover:text-zinc-800 dark:hover:text-white'">
         @if (is_string($iconLeading))
             <x-icon :name="$iconLeading" class="{{ $size == 'base' ? 'size-5' : 'size-4' }} shrink-0" />
         @else

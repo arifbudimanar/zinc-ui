@@ -17,14 +17,8 @@
     );
 @endphp
 
-@if ($variant == 'default')
-    <div {{ $attributes->class($classes) }}
-        x-on:keydown.right.prevent="$focus.next()" x-on:keydown.left.prevent="$focus.previous()" role="tablist" data-tabs>
-        {{ $slot }}
-    </div>
-@elseif ($variant == 'segmented')
-    <div {{ $attributes->class($classes) }}
-        x-on:keydown.right.prevent="$focus.next()" x-on:keydown.left.prevent="$focus.previous()" role="tablist" data-tabs>
-        {{ $slot }}
-    </div>
-@endif
+<div {{ $attributes->class($classes) }} role="tablist" data-tabs
+    x-on:keydown.right.prevent="$focus.next()"
+    x-on:keydown.left.prevent="$focus.previous()">
+    {{ $slot }}
+</div>
