@@ -5,16 +5,16 @@
     'as' => null,
 ])
 
-@if ($as === 'div')
+<?php if ($as == 'div'): ?>
     <div {{ $attributes }}>
         {{ $slot }}
     </div>
-@elseif ($as === 'a' || $href)
+<?php elseif ($as == 'a' || $href): ?>
     <a {{ $attributes->merge(['href' => $href]) }}>
         {{ $slot }}
     </a>
-@else
+<?php else: ?>
     <button {{ $attributes->merge(['type' => $type]) }}>
         {{ $slot }}
     </button>
-@endif
+<?php endif; ?>

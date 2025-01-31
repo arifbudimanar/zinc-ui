@@ -5,10 +5,10 @@
     'tooltipKbd' => null,
 ])
 
-@if ($tooltip)
+<?php if ($tooltip): ?>
     <x-tooltip {{ $attributes }} :content="$tooltip" :position="$tooltipPosition" :offset="$tooltipOffset" :kbd="$tooltipKbd">
         {{ $slot }}
     </x-tooltip>
-@else
+<?php else: ?>
     {{ $slot }}
-@endif
+<?php endif; ?>

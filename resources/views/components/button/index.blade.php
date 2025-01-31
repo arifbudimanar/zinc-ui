@@ -122,22 +122,22 @@
 
 <x-with-tooltip :$tooltip :$tooltipPosition :$tooltipOffset :$tooltipKbd :$attributes>
     <x-button-or-link :$type :attributes="$attributes->class($classes)" data-button>
-        @if (is_string($iconLeading) && $iconLeading !== '')
+        <?php if (is_string($iconLeading) && $iconLeading !== ''): ?>
             <x-icon :name="$iconLeading" :class="$iconClasses" />
-        @else
+        <?php else: ?>
             {{ $iconLeading }}
-        @endif
+        <?php endif; ?>
 
         {{ $slot }}
 
-        @if ($kbd && $size !== 'xs')
+        <?php if ($kbd && $size != 'xs'): ?>
             <x-kbd class="hidden lg:block">{{ $kbd }}</x-kbd>
-        @endif
+        <?php endif; ?>
 
-        @if (is_string($iconTrailing) && $iconTrailing !== '')
+        <?php if (is_string($iconTrailing) && $iconTrailing !== ''): ?>
             <x-icon :name="$iconTrailing" :class="$iconClasses" />
-        @else
+        <?php else: ?>
             {{ $iconTrailing }}
-        @endif
+        <?php endif; ?>
     </x-button-or-link>
 </x-with-tooltip>
