@@ -13,6 +13,7 @@
     x-anchor.{{ $position }}.offset.{{ $offset }}="$refs.dropdown"
     x-trap.noautofocus.noreturn="isDropdownOpen"
     x-on:click.outside="closeDropdown"
+    x-on:keydown.escape="closeDropdown"
     x-on:click.stop="isDropdownOpen" data-menu>
     {{ $slot }}
 </div>
