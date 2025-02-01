@@ -27,9 +27,9 @@
 
     <?php if ($separator === 'chevron-right'): ?>
         <x-icon name="o-chevron-right"
-            class="mx-2 size-4 shrink-0 text-zinc-300 group-last/breadcrumb:hidden dark:text-white/80" />
+            class="mx-2 size-4 shrink-0 text-zinc-300 group-last:hidden dark:text-white/80" />
     <?php elseif ($separator === 'slash'): ?>
         <x-icon name="o-slash"
-            class="mx-2 size-4 shrink-0 text-zinc-300 group-last/breadcrumb:hidden dark:text-white/80" />
+            class="mx-2 size-4 shrink-0 text-zinc-300 group-last:hidden dark:text-white/80" />
     <?php endif; ?>
 </div>
