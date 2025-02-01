@@ -1,13 +1,10 @@
-<div class="size-[1.125rem] mt-px outline-offset-2 rounded-[0.3rem] relative shadow-sm peer-checked:shadow-none disabled:shadow-none border border-zinc-300 dark:border-white/10 flex items-center justify-center peer-checked:border-transparent bg-white dark:bg-white/10 peer-checked:bg-zinc-800 dark:peer-checked:bg-white peer-disabled:opacity-50 peer-checked:[&_[data-indicator]]:block"
+<div class="relative mt-px flex size-[1.125rem] items-center justify-center rounded-[0.3rem] border border-zinc-300 bg-white shadow-sm outline-offset-2 disabled:shadow-none peer-checked:border-transparent peer-checked:bg-zinc-800 peer-checked:shadow-none peer-disabled:opacity-50 dark:border-white/10 dark:bg-white/10 dark:peer-checked:bg-white peer-checked:[&_[data-indicator]]:block"
     x-on:click.prevent="$el.previousElementSibling.click()"
     x-on:keydown.enter.prevent="$el.previousElementSibling.click()"
     x-on:keydown.space.prevent="$el.previousElementSibling.click()"
-    :tabindex="$el.previousElementSibling.disabled ? '-1' : '0'" :aria-disabled="$el.previousElementSibling.disabled"
-    :class="{
-        'cursor-pointer': !$el.previousElementSibling.disabled,
-        'cursor-default': $el.previousElementSibling.disabled,
-    }"
-    {{ $attributes->merge(['data-checkbox-indicator']) }}>
-    <x-icon name="c-check" class="size-[1.125rem] hidden text-white pointer-events-none dark:text-zinc-800"
+    x-bind:tabindex="$el.previousElementSibling.disabled ? '-1' : '0'"
+    x-bind:aria-disabled="$el.previousElementSibling.disabled"
+    x-bind:class="{ 'cursor-pointer': !$el.previousElementSibling.disabled, 'cursor-default': $el.previousElementSibling.disabled, }" data-checkbox-indicator>
+    <x-icon name="c-check" class="pointer-events-none hidden size-[1.125rem] text-white dark:text-zinc-800"
         data-indicator />
 </div>
