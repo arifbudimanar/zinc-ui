@@ -30,7 +30,7 @@
         {{ $slot }}
     </div>
 
-    <?php if (is_string($iconTrailing) && $iconLeading != null): ?>
+    <?php if (is_string($iconTrailing) && $iconTrailing != null): ?>
         <x-icon :name="$iconTrailing" class="inline-flex size-5 shrink-0 items-center" />
     <?php else: ?>
         {{ $iconTrailing }}
