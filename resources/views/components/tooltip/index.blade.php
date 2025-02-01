@@ -11,7 +11,7 @@
     $id = $id ?? 'tooltip-' . Str::random(8);
 @endphp
 
-@if ($toggleable)
+<?php if ($toggleable): ?>
     <div {{ $attributes->merge(['id' => $id]) }} x-data="{
         isTooltipOpen: false,
         openTooltip() {
@@ -28,11 +28,11 @@
 
         {{ $slot }}
 
-        @if ($content !== null)
+        <?php if ($content !== null): ?>
             <x-tooltip.content :$content :$kbd />
-        @endif
+        <?php endif; ?>
     </div>
-@else
+<?php else: ?>
     <div {{ $attributes->merge(['id' => $id]) }} x-data="{
         isTooltipOpen: false,
         touchTimeout: null,
@@ -77,8 +77,8 @@
 
         {{ $slot }}
 
-        @if ($content !== null)
+        <?php if ($content !== null): ?>
             <x-tooltip.content :$content :$kbd />
-        @endif
+        <?php endif; ?>
     </div>
-@endif
+<?php endif; ?>
