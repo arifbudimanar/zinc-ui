@@ -2,6 +2,6 @@
     'variant' => 'outline',
 ])
 
-<div {{ $attributes->merge(['class' => 'flex flex-col overflow-visible min-h-auto']) }}>
+<nav {{ $attributes->class('flex flex-col overflow-visible min-h-auto') }} data-navlist>
     {{ $slot }}
-</div>
+</nav>

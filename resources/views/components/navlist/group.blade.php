@@ -18,45 +18,43 @@
     $expanded = $attributes->has('expanded');
 @endphp
 
-@if ($expandable == false)
-    <div {{ $attributes->merge(['id' => $id, 'class' => 'block space-y-1']) }} data-navlist-group>
-        @if ($heading)
-            <x-navlist.heading>
-                {{ $heading }}
-            </x-navlist.heading>
-        @endif
-        <div class="flex flex-col min-h-auto">
-            {{ $slot }}
-        </div>
-    </div>
-@else
-    <div {{ $attributes->merge(['id' => $id, 'class' => 'group']) }} x-data="{
-        isNavlistGroupOpen: {{ $active || $expanded ? 'true' : 'false' }},
+<?php if ($expandable): ?>
+    <div id="{{ $id }}" {{ $attributes->class('group') }} x-data="{
+        isNavlistGroupOpen: {{ $expanded ? 'true' : 'false' }},
         toggleNavlistGroup() {
             this.isNavlistGroupOpen = !this.isNavlistGroupOpen;
         },
     }" data-navlist-group>
         <x-navlist.item :$variant :$active :$icon :$iconLeading :$iconTrailing :$badge :$badgeColor
             x-on:click="toggleNavlistGroup">
-            @if ($icon == null)
+            <?php if ($icon == null): ?>
                 <x-slot:icon>
-                    <x-icon name="o-chevron-right" class="inline-flex items-center shrink-0 size-5"
-                        x-show="!isNavlistGroupOpen"
-                        {{ $attributes->merge(['x-cloak' => $active || $expanded == true]) }}></x-icon>
-                    <x-icon name="o-chevron-down" class="inline-flex items-center shrink-0 size-5"
-                        x-show="isNavlistGroupOpen"
-                        {{ $attributes->merge(['x-cloak' => $active || $expanded == false]) }}></x-icon>
+                    <x-icon name="o-chevron-right" :attributes="$attributes->class('inline-flex size-5 shrink-0 items-center')->merge(['x-cloak' => $expanded])"
+                        x-show="!isNavlistGroupOpen" />
+                    <x-icon name="o-chevron-down" :attributes="$attributes->class('inline-flex size-5 shrink-0 items-center')->merge(['x-cloak' => !$expanded])"
+                        x-show="isNavlistGroupOpen" />
                 </x-slot:icon>
-            @endif
+            <?php endif; ?>
 
             {{ $heading }}
         </x-navlist.item>
 
-        <div class="relative flex flex-col pl-8 min-h-auto" x-show="isNavlistGroupOpen"
-            {{ $attributes->merge(['x-cloak' => $active || $expanded == false]) }}>
-            <div class="absolute inset-y-[3px] w-px bg-zinc-200 dark:bg-white/30 left-0 ml-[1.3rem] lg:ml-[1.35rem]">
-            </div>
+        <div {{ $attributes->class('min-h-auto relative flex flex-col pl-8')->merge(['x-cloak' => !$expanded]) }}
+            x-show="isNavlistGroupOpen">
+            <div class="absolute inset-y-[3px] left-0 ml-[1.3rem] w-px bg-zinc-200 lg:ml-[1.35rem] dark:bg-white/30"></div>
+
             {{ $slot }}
         </div>
     </div>
-@endif
+<?php else: ?>
+    <div id="{{ $id }}" {{ $attributes->class('block space-y-[2px] mt-4') }} data-navlist-group>
+        <?php if ($heading): ?>
+            <x-navlist.heading>
+                {{ $heading }}
+            </x-navlist.heading>
+        <?php endif; ?>
+        <div class="min-h-auto flex flex-col">
+            {{ $slot }}
+        </div>
+    </div>
+<?php endif; ?>

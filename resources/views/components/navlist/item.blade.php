@@ -1,6 +1,5 @@
 @props([
-    'variant' => 'outline',
-    'label' => null,
+    'variant' => 'filled',
     'active' => false,
     'icon' => null,
     'iconLeading' => null,
@@ -13,57 +12,57 @@
 
 @php
     $iconLeading = $icon ??= $iconLeading;
-    $textClass = [
-        'filled' => 'text-zinc-800 dark:text-zinc-100 hover:text-zinc-800 hover:dark:text-zinc-100',
-        'outline' => 'text-zinc-800 dark:text-zinc-100 hover:text-zinc-800 hover:dark:text-zinc-100',
-    ][$variant];
-
-    $backgroundClass = [
-        'filled' => 'bg-zinc-800/5 dark:bg-white/10',
-        'outline' => 'bg-white dark:bg-white/10',
-    ][$variant];
-
-    $borederClass = [
-        'filled' => 'border-none',
-        'outline' => 'border border-zinc-200 dark:border-white/10',
-    ][$variant];
-
-    $shadowClass = [
-        'filled' => 'shadow-sm',
-        'outline' => 'shadow-sm',
-    ][$variant];
-
-    $activeClasses = $active
-        ? $textClass . ' ' . $backgroundClass . ' ' . $borederClass . ' ' . $shadowClass
-        : 'text-zinc-500 dark:text-white/80 hover:text-zinc-800 hover:dark:text-white hover:bg-zinc-100 hover:dark:bg-white/10 border border-transparent';
+    $classes = ZincUi::classes()
+        ->add('relative flex items-center w-full h-10 lg:h-8 gap-3 px-2.5 lg:px-3 py-0 my-px rounded-lg text-left')
+        ->add(
+            // Background ...
+            $active
+                ? match ($variant) {
+                    'filled' => 'bg-zinc-800/5 dark:bg-white/10',
+                    'outline' => 'bg-white dark:bg-white/10',
+                }
+                : 'hover:bg-zinc-100 hover:dark:bg-white/10',
+        )
+        ->add(
+            // Text ...
+            $active
+                ? match ($variant) {
+                    'filled' => 'text-zinc-800 dark:text-zinc-100 hover:text-zinc-800 hover:dark:text-zinc-100',
+                    'outline' => 'text-zinc-800 dark:text-zinc-100 hover:text-zinc-800 hover:dark:text-zinc-100',
+                }
+                : 'text-zinc-500 dark:text-white/80 hover:text-zinc-800 hover:dark:text-white',
+        )
+        ->add(
+            // Border ...
+            $active
+                ? match ($variant) {
+                    'filled' => 'border-none',
+                    'outline' => 'border border-zinc-200 dark:border-white/10',
+                }
+                : 'border border-transparent',
+        );
 @endphp
 
-<x-button-or-link
-    {{ $attributes->merge([
-        'class' =>
-            'relative flex items-center w-full h-10 lg:h-8 gap-3 px-2.5 lg:px-3 py-0 my-px rounded-lg text-left' .
-            ' ' .
-            $activeClasses,
-    ]) }}>
-    @if (is_string($iconLeading))
-        <x-icon :name="$iconLeading" class="inline-flex items-center shrink-0 size-5" />
-    @else
+<x-button-or-link :attributes="$attributes->class($classes)" data-navlist-item>
+    <?php if (is_string($iconLeading)): ?>
+        <x-icon :name="$iconLeading" class="inline-flex size-5 shrink-0 items-center" />
+    <?php else: ?>
         {{ $iconLeading }}
-    @endif
+    <?php endif; ?>
 
-    <div class="flex-1 text-sm font-medium leading-none whitespace-nowrap">
-        {{ $label ?? $slot }}
+    <div class="flex-1 whitespace-nowrap text-sm font-medium leading-none">
+        {{ $slot }}
     </div>
 
-    @if (is_string($iconTrailing))
-        <x-icon :name="$iconTrailing" class="inline-flex items-center shrink-0 size-5" />
-    @else
+    <?php if (is_string($iconTrailing)): ?>
+        <x-icon :name="$iconTrailing" class="inline-flex size-5 shrink-0 items-center" />
+    <?php else: ?>
         {{ $iconTrailing }}
-    @endif
+    <?php endif; ?>
 
-    @isset($badge)
+    <?php if ($badge): ?>
         <x-badge size="sm" color="{{ $badgeColor }}" inset="top bottom" class="!px-1 !py-0.5">
             {{ $badge }}
         </x-badge>
-    @endisset
+    <?php endif; ?>
 </x-button-or-link>
