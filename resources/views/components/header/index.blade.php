@@ -4,19 +4,17 @@
 ])
 
 @php
-    $stickyClass = $sticky ? 'sticky top-0 z-10' : '';
+    $stickyClasses = $sticky && 'sticky top-0 z-10';
 @endphp
 
-@if ($container)
-    <div {{ $attributes->merge(['class' => '[grid-area:header] flex items-center min-h-14 w-full' . ' ' . $stickyClass]) }}
-        data-header>
-        <div class="flex items-center w-full h-full px-6 mx-auto lg:px-8 max-w-7xl">
+<?php if ($container): ?>
+    <div {{ $attributes->class('[grid-area:header] flex items-center min-h-14 w-full' . ' ' . $stickyClasses) }} data-header>
+        <div class="mx-auto flex h-full w-full max-w-7xl items-center px-6 lg:px-8">
             {{ $slot }}
         </div>
     </div>
-@else
-    <div {{ $attributes->merge(['class' => '[grid-area:header] flex items-center min-h-14 px-6 lg:px-8 w-full' . ' ' . $stickyClass]) }}
-        data-header>
+<?php else: ?>
+    <div {{ $attributes->class('[grid-area:header] flex items-center min-h-14 px-6 lg:px-8 w-full' . ' ' . $stickyClasses) }} data-header>
         {{ $slot }}
     </div>
-@endif
+<?php endif; ?>
