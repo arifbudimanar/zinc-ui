@@ -11,13 +11,13 @@
 @endphp
 
 <?php if ($container): ?>
-    <div {{ $attributes->class($classes) }} data-header>
+    <header {{ $attributes->class($classes) }} data-header>
         <div class="mx-auto flex h-full w-full max-w-7xl items-center px-6 lg:px-8">
             {{ $slot }}
         </div>
-    </div>
+    </header>
 <?php else: ?>
-    <div {{ $attributes->class($classes) }} data-header>
+    <header {{ $attributes->class($classes) }} data-header>
         {{ $slot }}
-    </div>
+    </header>
 <?php endif; ?>

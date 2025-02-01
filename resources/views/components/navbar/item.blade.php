@@ -1,5 +1,4 @@
 @props([
-    'label' => null,
     'active' => false,
     'icon' => null,
     'iconLeading' => null,
@@ -10,33 +9,36 @@
 
 @php
     $iconLeading = $icon ??= $iconLeading;
-    $activeClasses = $active
-        ? 'relative flex items-center gap-3 px-3 h-8 rounded-lg text-zinc-800 dark:text-white hover:text-zinc-800 hover:dark:text-white hover:bg-zinc-100 hover:dark:bg-white/10 after:absolute after:-bottom-3 after:inset-x-0 after:h-[2px] after:bg-zinc-800 after:dark:bg-white'
-        : 'relative flex items-center gap-3 px-3 h-8 rounded-lg text-zinc-500 dark:text-zinc-200 hover:text-zinc-800 hover:dark:text-white hover:bg-zinc-100 hover:dark:bg-white/10';
+    $classes = ZincUi::classes()
+        ->add('relative flex items-center gap-3 px-3 h-8 rounded-lg')
+        ->add(
+            $active
+                ? 'text-zinc-800 dark:text-white hover:text-zinc-800 hover:dark:text-white hover:bg-zinc-100 hover:dark:bg-white/10'
+                : 'text-zinc-500 dark:text-zinc-200 hover:text-zinc-800 hover:dark:text-white hover:bg-zinc-100 hover:dark:bg-white/10',
+        )
+        ->add($active ? 'after:absolute after:-bottom-3 after:inset-x-0 after:h-[2px] after:bg-zinc-800 after:dark:bg-white' : '');
 @endphp
 
-<x-button-or-link {{ $attributes->merge([
-    'class' => $activeClasses,
-]) }}>
-    @if (is_string($iconLeading))
-        <x-icon :name="$iconLeading" class="inline-flex items-center shrink-0 size-5" />
-    @else
+<x-button-or-link {{ $attributes->class($classes) }} data-navbar-item>
+    <?php if (is_string($iconLeading) && $iconLeading != null): ?>
+        <x-icon :name="$iconLeading" class="inline-flex size-5 shrink-0 items-center" />
+    <?php else: ?>
         {{ $iconLeading }}
-    @endif
+    <?php endif; ?>
 
-    <div class="flex-1 text-sm font-medium leading-none whitespace-nowrap">
-        {{ $label ?? $slot }}
+    <div class="flex-1 whitespace-nowrap text-sm font-medium leading-none">
+        {{ $slot }}
     </div>
 
-    @if (is_string($iconTrailing))
-        <x-icon :name="$iconTrailing" class="inline-flex items-center shrink-0 size-5" />
-    @else
+    <?php if (is_string($iconTrailing) && $iconLeading != null): ?>
+        <x-icon :name="$iconTrailing" class="inline-flex size-5 shrink-0 items-center" />
+    <?php else: ?>
         {{ $iconTrailing }}
-    @endif
+    <?php endif; ?>
 
-    @isset($badge)
+    <?php if ($badge): ?>
         <x-badge size="sm" color="{{ $badgeColor }}" inset="top bottom" class="!px-1 !py-0.5">
             {{ $badge }}
         </x-badge>
-    @endisset
+    <?php endif; ?>
 </x-button-or-link>

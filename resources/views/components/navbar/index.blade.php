@@ -1,12 +1,13 @@
 @props([
     'scrollable' => false,
 ])
-@php
-    $scrollableClasses = $scrollable ? 'overflow-x-auto overflow-y-hidden' : '';
 
-    $classes = 'flex items-center gap-1 py-3' . ' ' . $scrollableClasses;
+@php
+    $classes = ZincUi::classes()
+        ->add('flex items-center gap-1 py-3')
+        ->add($scrollable ? 'overflow-x-auto overflow-y-hidden' : '');
 @endphp
 
-<div {{ $attributes->merge(['class' => $classes]) }}>
+<nav {{ $attributes->class($classes) }} data-navbar>
     {{ $slot }}
-</div>
+</nav>
