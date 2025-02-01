@@ -4,17 +4,20 @@
 ])
 
 @php
-    $stickyClasses = $sticky && 'sticky top-0 z-10';
+    $classes = ZincUi::classes()
+        ->add('[grid-area:header] flex items-center min-h-14 w-full')
+        ->add($container ? '' : 'px-6 lg:px-8')
+        ->add($sticky ? 'sticky top-0 z-10' : '');
 @endphp
 
 <?php if ($container): ?>
-    <div {{ $attributes->class('[grid-area:header] flex items-center min-h-14 w-full' . ' ' . $stickyClasses) }} data-header>
+    <div {{ $attributes->class($classes) }} data-header>
         <div class="mx-auto flex h-full w-full max-w-7xl items-center px-6 lg:px-8">
             {{ $slot }}
         </div>
     </div>
 <?php else: ?>
-    <div {{ $attributes->class('[grid-area:header] flex items-center min-h-14 px-6 lg:px-8 w-full' . ' ' . $stickyClasses) }} data-header>
+    <div {{ $attributes->class($classes) }} data-header>
         {{ $slot }}
     </div>
 <?php endif; ?>

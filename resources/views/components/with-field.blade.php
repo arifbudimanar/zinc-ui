@@ -8,67 +8,65 @@
     'variant' => 'default',
 ])
 
-@if ($variant == 'default')
-    @if ($label || $description)
+<?php if ($variant == 'default'): ?>
+    <?php if ($label || $description): ?>
         <x-field>
-            @if ($label)
+            <?php if ($label): ?>
                 <x-label>
                     {{ $label }}
-                    @isset($badge)
+                    <?php if ($badge != null): ?>
                         <x-badge size="sm" color="{{ $badgeColor }}" inset="top bottom" class="ml-1.5">
                             {{ $badge }}
                         </x-badge>
-                    @endisset
+                    <?php endif; ?>
                 </x-label>
-                @if ($description)
+                <?php if ($description): ?>
                     <x-description>
                         {{ $description }}
                     </x-description>
-                @endif
-            @endif
+               <?php endif; ?>
+           <?php endif; ?>
 
             {{ $slot }}
 
             <x-error name="{{ $error }}" />
         </x-field>
-    @else
+    <?php else: ?>
         <div class="w-full">
             {{ $slot }}
         </div>
-    @endif
-@endif
-
-@if ($variant == 'inline')
-    @if ($label || $description)
+   <?php endif; ?>
+<?php elseif ($variant == 'inline'): ?>
+    <?php if ($label || $description): ?>
         <x-field variant="inline">
             {{ $slot }}
 
-            @if (is_string($label) && $label !== '')
+            <?php if (is_string($label) && $label !== ''): ?>
                 <x-label for="{{ $id }}" class="w-fit">
                     {{ $label }}
-                    @isset($badge)
+                    <?php if ($badge != null): ?>
                         <x-badge size="sm" color="{{ $badgeColor }}" inset="top bottom" class="ml-1.5">
                             {{ $badge }}
                         </x-badge>
-                    @endisset
+                    <?php endif; ?>
                 </x-label>
-            @else
+            <?php else: ?>
                 {{ $label }}
-            @endif
+           <?php endif; ?>
 
-            @if (is_string($description) && $description !== '')
+            <?php if (is_string($description) && $description !== ''): ?>
                 <x-description>
                     {{ $description }}
                 </x-description>
-            @else
+            <?php else: ?>
                 {{ $description }}
-            @endif
+           <?php endif; ?>
 
             <x-error name="{{ $error }}" />
         </x-field>
-    @else
+    <?php else: ?>
         <div class="relative">
             {{ $slot }}
         </div>
-    @endif
-@endif
+   <?php endif; ?>
+<?php endif; ?>

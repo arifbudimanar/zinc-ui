@@ -2,8 +2,8 @@
     'name' => null,
 ])
 
-@error($name)
-    <p {{ $attributes->merge(['class' => 'mt-3 text-sm font-medium text-red-500 dark:text-red-400']) }} data-error>
+<?php if ($errors->has($name)): ?>
+    <p {{ $attributes->class('mt-3 text-sm font-medium text-red-500 dark:text-red-400') }} data-error>
         {{ $message }}
     </p>
-@enderror
+<?php endif; ?>
