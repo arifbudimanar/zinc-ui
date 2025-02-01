@@ -17,8 +17,8 @@
     );
 @endphp
 
-<div {{ $attributes->class($classes) }} role="tablist" data-tabs
+<div role="tablist" {{ $attributes->class($classes) }}
     x-on:keydown.right.prevent="$focus.next()"
-    x-on:keydown.left.prevent="$focus.previous()">
+    x-on:keydown.left.prevent="$focus.previous()" data-tabs>
     {{ $slot }}
 </div>
