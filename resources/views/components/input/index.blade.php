@@ -162,7 +162,7 @@
                 <input x-ref="input" {{ $attributes->class($classes)->merge(['id' => $id, 'type' => $type]) }} data-control data-group-target>
 
                 <div class="{{ $iconTrailingClasses }}">
-                    <x-button size="sm" variant="subtle" icon="o-x-mark" x-on:click="clearInput()" class="{{ $size == 'sm' ? 'mr-2 !h-6' : 'mr-2' }}"/>
+                    <x-button size="sm" variant="subtle" icon="o-x-mark" x-on:click="clearInput()" class="{{ $size == 'sm' ? 'mr-2 !h-6' : 'mr-2' }}" data-action/>
                 </div>
             </div>
         <?php endif; ?>

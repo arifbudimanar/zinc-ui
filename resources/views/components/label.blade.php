@@ -5,16 +5,14 @@
 
 @php
     $badge ??= $attributes->has('required') ? 'Required' : null;
-    $disabled = $attributes->has('disabled');
 @endphp
 
-<label
-    {{ $attributes->merge(['class' => 'block text-sm font-medium select-none text-zinc-800 dark:text-white' . ' ' . ($disabled ? 'opacity-50' : '')]) }}
-    data-label>
+<label {{ $attributes->class('block text-sm font-medium select-none text-zinc-800 dark:text-white')->merge(['aria-hidden' => 'true']) }} data-label>
     {{ $slot }}
-    @isset($badge)
+
+    <?php if ($badge != null): ?>
         <x-badge size="sm" color="{{ $badgeColor }}" inset="top bottom" class="ml-1.5">
             {{ $badge }}
         </x-badge>
-    @endisset
+    <?php endif; ?>
 </label>

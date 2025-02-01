@@ -7,7 +7,8 @@
     <x-label>
         {{ $label }}
     </x-label>
-    <div {{ $attributes->merge(['class' => '[&>[data-field]]:mb-3 [&>[data-field]:has(>[data-description])]:mb-4 [&>[data-field]:last-child]:!mb-0']) }}
+
+    <div {{ $attributes->class('[&>[data-field]]:mb-3 [&>[data-field]:has(>[data-description])]:mb-4 [&>[data-field]:last-child]:!mb-0') }}
         data-radio-group>
         {{ $slot }}
     </div>

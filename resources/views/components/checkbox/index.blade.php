@@ -15,5 +15,6 @@
 
 <x-with-field variant="inline" :$id :$error :$label :$description :$badge :$badgeColor>
     <input {{ $attributes->class('peer sr-only hidden')->merge(['id' => $id, 'type' => $type]) }} data-checkbox data-control />
+
     <x-checkbox.indicator />
 </x-with-field>

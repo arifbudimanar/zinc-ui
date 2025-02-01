@@ -8,50 +8,38 @@
 ])
 
 @php
-    $id =
-        $id ??
-        ($label ??
-            ($attributes->whereStartsWith('wire:model')->first() ?? ($attributes->get('name') ?? Str::random(8))));
+    $id = $id ?? ($label ?? ($attributes->whereStartsWith('wire:model')->first() ?? ($attributes->get('name') ?? Str::random(8))));
     $error = $attributes->whereStartsWith('wire:model')->first() ?? ($attributes->get('name') ?? null);
     $badge ??= $attributes->has('required') ? 'Required' : null;
-    $disabled = $attributes->has('disabled');
 @endphp
 
 <x-field variant="inline">
-    @if (is_string($label) && $label !== '')
+    <?php if (is_string($label) && $label !== ''): ?>
         <x-label for="{{ $id }}" class="w-fit">
             {{ $label }}
-            @isset($badge)
+            <?php if ($badge != null): ?>
                 <x-badge size="sm" color="{{ $badgeColor }}" inset="top bottom" class="ml-1.5">
                     {{ $badge }}
                 </x-badge>
-            @endisset
+            <?php endif; ?>
         </x-label>
-    @else
+    <?php else: ?>
         {{ $label }}
-    @endif
+    <?php endif; ?>
 
-    @if (is_string($description) && $description !== '')
+    <?php if (is_string($description) && $description !== ''): ?>
         <x-description>
             {{ $description }}
         </x-description>
-    @else
+    <?php else: ?>
         {{ $description }}
-    @endif
+    <?php endif; ?>
 
-    <input
-        {{ $attributes->merge([
-            'id' => $id,
-            'type' => $type,
-            'disabled' => $disabled,
-            'class' => 'peer sr-only hidden',
-        ]) }}
-        data-switch data-control />
+    <input {{ $attributes->class('peer sr-only hidden')->merge(['id' => $id, 'type' => $type]) }} data-switch data-control />
 
     <x-switch.indicator data-control />
 
-
-    @if ($label || $description)
+    <?php if ($label || $description): ?>
         <x-error name="{{ $error }}" />
-    @endif
+    <?php endif; ?>
 </x-field>
