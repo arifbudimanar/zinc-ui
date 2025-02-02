@@ -41,7 +41,7 @@
         }
     },
 }" {{ $attributes->whereStartsWith('class') }} id="theme-switcher">
-    @if ($variant === 'header')
+    <?php if ($variant === 'header'): ?>
         <x-dropdown id="dropdown-theme-switcher-desktop" position="bottom-end" {{ $attributes }}>
             <x-tooltip position="bottom" offset="6">
                 <x-tooltip.content class="whitespace-nowrap">
@@ -75,8 +75,7 @@
                 </x-navmenu.item>
             </x-navmenu>
         </x-dropdown>
-    @endif
-    @if ($variant === 'sidebar')
+    <?php elseif ($variant === 'sidebar'): ?>
         <x-dropdown id="dropdown-theme-switcher-sidebar" position="top-start"
             {{ $attributes->merge(['class' => 'w-full']) }}>
             <x-navlist.item variant="outline">
@@ -107,5 +106,5 @@
                 </x-navmenu.item>
             </x-navmenu>
         </x-dropdown>
-    @endif
+    <?php endif; ?>
 </div>

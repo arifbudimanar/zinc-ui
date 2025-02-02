@@ -1,5 +1,4 @@
 @props([
-    'href' => null,
     'variant' => 'default',
     'indent' => false,
     'suffix' => null,
@@ -25,7 +24,7 @@
             [&:hover_[data-navmenu-icon]]:text-current [&:focus_[data-navmenu-icon]]:text-current');
 @endphp
 
-<x-button-or-link {{ $attributes->merge(['class' => $classes]) }} data-navmenu-item>
+<x-button-or-link :attributes="$attributes->class($classes)" data-navmenu-item>
     <?php if ($indent): ?>
         <div class="w-7"></div>
     <?php endif; ?>

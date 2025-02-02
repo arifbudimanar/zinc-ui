@@ -7,7 +7,7 @@
     $badge ??= $attributes->has('required') ? 'Required' : null;
 @endphp
 
-<label {{ $attributes->class('block text-sm font-medium select-none text-zinc-800 dark:text-white')->merge(['aria-hidden' => 'true']) }} data-label>
+<label {{ $attributes->class('block text-sm font-medium select-none text-zinc-800 dark:text-white') }} aria-hidden="true" data-label>
     {{ $slot }}
 
     <?php if ($badge != null): ?>

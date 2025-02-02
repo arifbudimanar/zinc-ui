@@ -1,35 +1,37 @@
 @props([
-    'orientation' => 'horizontal',
-    'variant' => 'default',
+    'orientation' => null,
+    'vertical' => false,
+    'variant' => null,
+    'faint' => false,
     'text' => null,
 ])
 
 @php
-    $orientation = $attributes->has('vertical') ? 'vertical' : 'horizontal';
+    $orientation ??= $vertical ? 'vertical' : 'horizontal';
 
-    $variantClass = [
-        'default' => 'bg-zinc-200 dark:bg-zinc-600',
-        'subtle' => 'bg-zinc-800/5 dark:bg-white/10',
-    ][$variant];
-
-    $orientationClass = [
-        'horizontal' => 'h-px w-full',
-        'vertical' => 'self-stretch self-center w-px',
-    ][$orientation];
+    $classes = ZincUi::classes('border-0 [print-color-adjust:exact]')
+        ->add(
+            match ($variant) {
+                'subtle' => 'bg-zinc-800/5 dark:bg-white/10',
+                default => 'bg-zinc-800/15 dark:bg-white/20',
+            },
+        )
+        ->add(
+            match ($orientation) {
+                'horizontal' => 'h-px w-full',
+                'vertical' => 'self-stretch self-center w-px',
+            },
+        );
 @endphp
 
-@if ($text !== null)
+<?php if ($text): ?>
     <div data-orientation="{{ $orientation }}" class="flex items-center w-full" role="none" data-separator>
-        <div {{ $attributes->merge(['class' => 'grow' . ' ' . $variantClass . ' ' . $orientationClass]) }}></div>
+        <div {{ $attributes->class([$classes, 'grow']) }}></div>
 
-        <span class="mx-6 text-sm font-medium select-none shrink text-zinc-500 dark:text-zinc-300 whitespace-nowrap">
-            {{ $text }}
-        </span>
+        <span class="shrink mx-6 font-medium text-sm text-zinc-500 dark:text-zinc-300 whitespace-nowrap">{{ $text }}</span>
 
-        <div {{ $attributes->merge(['class' => 'grow' . ' ' . $variantClass . ' ' . $orientationClass]) }}></div>
+        <div {{ $attributes->class([$classes, 'grow']) }}></div>
     </div>
-@else
-    <div data-orientation="{{ $orientation }}" role="none"
-        {{ $attributes->merge(['class' => 'shrink-0' . ' ' . $variantClass . ' ' . $orientationClass]) }}
-        data-separator></div>
-@endif
+<?php else: ?>
+    <div data-orientation="{{ $orientation }}" role="none" {{ $attributes->class($classes, 'shrink-0') }} data-separator></div>
+<?php endif; ?>

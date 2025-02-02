@@ -1,7 +1,6 @@
 @props([
     'variant' => 'default',
     'suffix' => null,
-    'value' => null,
     'icon' => null,
     'kbd' => null,
 ])
@@ -23,7 +22,7 @@
         ->add('[&_[data-menu-item-icon]]:text-zinc-400 dark:[&_[data-menu-item-icon]]:text-white/60 [&:hover_[data-menu-item-icon]]:text-current [&:focus_[data-menu-item-icon]]:text-current');
 @endphp
 
-<x-button-or-link {{ $attributes->class($classes) }} data-menu-item :data-menu-item-has-icon="!!$icon">
+<x-button-or-link :attributes="$attributes->class($classes)" data-menu-item :data-menu-item-has-icon="!!$icon">
     <?php if (is_string($icon) && $icon !== ''): ?>
         <x-icon :$icon class="mr-2 size-5 shrink-0" data-menu-item-icon />
     <?php elseif ($icon == null): ?>

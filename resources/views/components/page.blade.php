@@ -33,7 +33,7 @@
     @livewireStyles
 </head>
 
-<body {{ $attributes->merge(['class' => 'bg-white dark:bg-zinc-800 antialiased min-h-screen']) }}
+<body {{ $attributes->class('bg-white dark:bg-zinc-800 antialiased min-h-screen') }}
     x-data="{
         isSidebarOpen: false,
         openSidebar() {
@@ -46,10 +46,6 @@
             this.isSidebarOpen = false;
         },
     }" x-resize.document="$width >= 1024 && closeSidebar" data-layout>
-
-    {{-- @isset($body)
-        {{ $body }}
-    @endisset --}}
 
     {{ $slot }}
 
