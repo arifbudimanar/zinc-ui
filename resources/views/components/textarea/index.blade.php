@@ -65,6 +65,6 @@
 
 <x-with-field :$id :$error :$label :$description :$badge :$badgeColor>
     <textarea id={{ $id }} rows="{{ $rows }}" {{ $attributes->class($classes) }}
-        @if ($resize == 'auto') x-data x-autosize @endif
+        <?php if ($resize == 'auto'): ?> x-data x-autosize <?php endif; ?>
         data-control data-textarea></textarea>
 </x-with-field>

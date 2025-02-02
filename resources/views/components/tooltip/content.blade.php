@@ -23,7 +23,7 @@
     x-on:click.stop="isTooltipOpen" data-tooltip-content>
     {{ $content ?? $slot }}
 
-    @if ($kbd !== null)
+    <?php if ($kbd != null): ?>
         <x-kbd :label="$kbd" class="flex" />
-    @endif
+    <?php endif; ?>
 </div>
