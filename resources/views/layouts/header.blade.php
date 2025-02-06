@@ -8,7 +8,8 @@
     {{-- Desktop navigation --}}
     <x-header container sticky class="border-b bg-zinc-50 dark:bg-zinc-900 border-zinc-200 dark:border-zinc-700">
         <x-button variant="subtle" icon="o-bars-2" x-on:click="openSidebar" class="-ml-3 lg:hidden" />
-        <x-brand class="px-2 rounded-lg lg:-ml-2 lg:mr-4" />
+        <x-brand wire:navigate href="/" logo="{{ asset('logos/brand-light.png') }}" name="{{ config('app.name') }}" class="flex px-2 rounded-lg dark:hidden lg:-ml-2 lg:mr-4" />
+        <x-brand wire:navigate href="/" logo="{{ asset('logos/brand-dark.png') }}" name="{{ config('app.name') }}" class="hidden px-2 rounded-lg dark:flex lg:-ml-2 lg:mr-4" />
         <x-navbar class="-mb-px max-lg:hidden">
             <x-navbar.item wire:navigate href="/" active icon="o-home">{{ __('Home') }}</x-navbar.item>
             <x-navbar.item icon="o-inbox" badge="10">{{ __('Inbox') }}</x-navbar.item>
@@ -63,7 +64,8 @@
         x-on:click.outside="closeSidebar" x-on:keydown.escape="closeSidebar"
         class="border-r bg-zinc-50 dark:bg-zinc-900 border-zinc-200 dark:border-zinc-700">
         <x-button variant="subtle" icon="o-x-mark" x-on:click="closeSidebar" />
-        <x-brand class="px-2 !gap-2.5 rounded-lg" />
+        <x-brand wire:navigate href="/" logo="{{ asset('logos/brand-light.png') }}" name="{{ config('app.name') }}" class="flex dark:hidden px-2 !gap-2.5 rounded-lg" />
+        <x-brand wire:navigate href="/" logo="{{ asset('logos/brand-dark.png') }}" name="{{ config('app.name') }}" class="hidden dark:flex px-2 !gap-2.5 rounded-lg" />
         <x-navlist variant="outline">
             <x-navlist.item wire:navigate href="/" active icon="o-home">{{ __('Home') }}</x-navlist.item>
             <x-navlist.item icon="o-inbox" badge="10">{{ __('Inbox') }}</x-navlist.item>

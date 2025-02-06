@@ -1,7 +1,24 @@
-<a href="/" wire:navigate {{ $attributes->class('h-10 flex items-center gap-2 shrink-0') }}>
-    <x-logo name="zinc-ui" class="overflow-hidden size-6 shrink-0" />
+@props([
+    'logo' => null,
+    'name' => null,
+])
 
-    <div class="text-sm font-medium truncate text-zinc-900 dark:text-zinc-100">
-        {{ config('app.name') }}
-    </div>
+<a {{ $attributes->class('h-10 flex items-center gap-2 shrink-0') }} data-brand>
+    <?php if (is_string($logo) && $logo !== ''): ?>
+        <div class="size-6 rounded overflow-hidden shrink-0">
+            <img src="{{ $logo }}" alt="{{ $name ?? config('app.name') }}">
+        </div>
+    <?php else: ?>
+        {{ $logo }}
+    <?php endif; ?>
+
+    <?php if (is_string($name) && $name !== ''): ?>
+        <div class="text-sm font-medium truncate [:where(&)]:text-zinc-800 [:where(&)]:dark:text-zinc-100">
+            {{ $name }}
+        </div>
+    <?php else: ?>
+        {{ $name }}
+    <?php endif; ?>
+
+    {{ $slot }}
 </a>
