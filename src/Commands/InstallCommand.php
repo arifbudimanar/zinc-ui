@@ -15,6 +15,24 @@ class InstallCommand extends Command
 
     public $description = 'Install the Zinc UI components';
 
+    public function handle(): int
+    {
+        $this->comment('Installing Zinc UI ...');
+
+        $this->handleLivewire();
+        $this->handleUserModel();
+        $this->handleAppCss();
+        $this->handleAppJs();
+        $this->handleTailwindConfig();
+        $this->handleBrandLogo();
+        $this->handleNodePackages();
+        $this->handleErrorPage();
+
+        $this->comment('Zinc UI is installed! Love it? Star us on GitHub: https://github.com/arifbudimanar/zinc-ui');
+
+        return self::SUCCESS;
+    }
+
     protected function requireComposerPackages(array $packages, $asDev = false)
     {
         $composer = $this->option('composer');
@@ -106,6 +124,14 @@ class InstallCommand extends Command
         $this->comment('Publish toaster files ...');
         (new Filesystem)->ensureDirectoryExists(resource_path('views/vendor/toaster'));
         (new Filesystem)->copyDirectory(__DIR__.'/../../resources/views/vendor/toaster', resource_path('views/vendor/toaster'));
+    }
+
+    public function handleErrorPage()
+    {
+        // Copy errors files
+        $this->comment('Publish errors files ...');
+        (new Filesystem)->ensureDirectoryExists(resource_path('views/errors'));
+        (new Filesystem)->copyDirectory(__DIR__.'/../../resources/views/errors', resource_path('views/errors'));
     }
 
     public function handleNodePackages()
@@ -385,22 +411,5 @@ class InstallCommand extends Command
         (new Filesystem)->ensureDirectoryExists(public_path('logos'));
         (new Filesystem)->copy(__DIR__.'/../../art/brand-dark.png', public_path('/logos/brand-dark.png'));
         (new Filesystem)->copy(__DIR__.'/../../art/brand-light.png', public_path('/logos/brand-light.png'));
-    }
-
-    public function handle(): int
-    {
-        $this->comment('Installing Zinc UI ...');
-
-        $this->handleLivewire();
-        $this->handleUserModel();
-        $this->handleAppCss();
-        $this->handleAppJs();
-        $this->handleTailwindConfig();
-        $this->handleBrandLogo();
-        $this->handleNodePackages();
-
-        $this->comment('Zinc UI is installed! Love it? Star us on GitHub: https://github.com/arifbudimanar/zinc-ui');
-
-        return self::SUCCESS;
     }
 }
