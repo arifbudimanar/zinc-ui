@@ -93,7 +93,7 @@
     </x-main>
 
     {{-- Footer --}}
-    <x-container class="[grid-area:footer]">
+    <x-footer container class="max-w-7xl">
         <x-separator variant="subtle" class="mb-8" />
         <div class="grid grid-cols-2 gap-6 lg:gap-8 sm:grid-cols-3 lg:grid-cols-6">
             <div class="col-span-full lg:col-span-3">
@@ -135,5 +135,5 @@
                 </x-link>
             </x-subheading>
         </div>
-    </x-container>
+    </x-footer>
 </x-page>

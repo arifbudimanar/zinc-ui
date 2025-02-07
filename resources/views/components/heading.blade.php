@@ -5,14 +5,15 @@
 
 @php
     $classes = ZincUi::classes()
-        ->add('font-medium text-zinc-800 dark:text-white [&:has(+[data-subheading])]:mb-2 [[data-subheading]+&]:mt-2')
+        ->add('font-medium text-zinc-800 dark:text-white')
         ->add(
             match ($size) {
                 'base' => 'text-sm',
                 'lg' => 'text-base',
                 'xl' => 'text-2xl',
             },
-        );
+        )
+        ->add('[&:has(+[data-subheading])]:mb-2 [[data-subheading]+&]:mt-2');
 
     $level = $level ? (int) $level : null;
 @endphp

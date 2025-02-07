@@ -5,14 +5,14 @@
 
 @php
     $classes = ZincUi::classes()
-        ->add('text-zinc-500 dark:text-white/70')
         ->add(
             match ($size) {
                 'base' => 'text-sm',
                 'lg' => 'text-base',
                 'xl' => 'text-2xl',
             },
-        );
+        )
+        ->add('text-zinc-500 dark:text-white/70');
 
     $level = $level ? (int) $level : null;
 @endphp
