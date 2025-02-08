@@ -31,8 +31,7 @@ Since Zinc UI is in its Alpha version, you need to modify the composer.json file
 
 ```json
 {
-    "minimum-stability": "dev",
-    "prefer-stable": true
+    "minimum-stability": "dev"
 }
 ```
 
@@ -40,7 +39,7 @@ Since Zinc UI is in its Alpha version, you need to modify the composer.json file
 
 Run the following command to add Zinc UI to your project:
 
-```bash
+```sh
 composer require arifbudimanar/zinc-ui
 ```
 
@@ -48,7 +47,7 @@ composer require arifbudimanar/zinc-ui
 
 After installation, initialize the package by running:
 
-```bash
+```sh
 php artisan zinc:install
 ```
 
@@ -56,7 +55,7 @@ php artisan zinc:install
 
 If you want to customize the components, you can publish them using this command:
 
-```bash
+```sh
 php artisan zinc:publish
 ``` -->
 
@@ -64,7 +63,7 @@ php artisan zinc:publish
 
 To check the version of Zinc UI installed, run:
 
-```bash
+```sh
 php artisan zinc:version
 ```
 
@@ -72,7 +71,7 @@ php artisan zinc:version
 
 Generate a Livewire component by running:
 
-```bash
+```sh
 php artisan make:livewire Home
 ```
 
@@ -114,7 +113,7 @@ Route::get('/', Home::class);
 
 Start the development server and compile the assets using:
 
-```bash
+```sh
 composer run dev
 ```
 
@@ -122,7 +121,7 @@ Visit http://localhost:8000 to see Zinc UI in action.
 
 ## Testing
 
-```bash
+```sh
 composer test
 ```
 
