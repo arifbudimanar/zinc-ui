@@ -28,6 +28,7 @@ Thank you for your interest in contributing to Zinc UI! Follow these steps to ge
             }
         }
     }
+    "minimum-stability": "dev",
     ```
 6. **Require the package in your Laravel project**:
     ```sh
