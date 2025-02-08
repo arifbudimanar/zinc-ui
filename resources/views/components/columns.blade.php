@@ -1,4 +1,4 @@
-<thead data-columns>
+<thead {{ $attributes }} data-columns>
     <tr>
         {{ $slot }}
     </tr>

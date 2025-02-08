@@ -120,6 +120,19 @@ class InstallCommand extends Command
         (new Filesystem)->ensureDirectoryExists(resource_path('views/layouts'));
         (new Filesystem)->copyDirectory(__DIR__.'/../../resources/views/layouts', resource_path('views/layouts'));
 
+        // Copy paginate files
+        $this->comment('Publish layouts files ...');
+        (new Filesystem)->ensureDirectoryExists(resource_path('views/vendor/livewire'));
+        (new Filesystem)->copyDirectory(__DIR__.'/../../resources/views/vendor/livewire', resource_path('views/vendor/livewire'));
+
+        // Change livewire paginate config
+        $this->comment('Change livewire paginate config ...');
+        $this->replaceInFile(
+            "'pagination_theme' => 'tailwind'",
+            "'pagination_theme' => 'zinc-ui'",
+            config_path('livewire.php')
+        );
+
         // Copy toaster file
         $this->comment('Publish toaster files ...');
         (new Filesystem)->ensureDirectoryExists(resource_path('views/vendor/toaster'));

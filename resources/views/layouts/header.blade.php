@@ -97,7 +97,8 @@
         <x-separator variant="subtle" class="mb-8" />
         <div class="grid grid-cols-2 gap-6 lg:gap-8 sm:grid-cols-3 lg:grid-cols-6">
             <div class="col-span-full lg:col-span-3">
-                <x-brand class="px-2 -mx-2 rounded-lg w-fit" />
+                <x-brand wire:navigate href="/" logo="{{ asset('logos/brand-light.png') }}" name="{{ config('app.name') }}" class="flex dark:hidden px-2 -mx-2 rounded-lg w-fit" />
+                <x-brand wire:navigate href="/" logo="{{ asset('logos/brand-dark.png') }}" name="{{ config('app.name') }}" class="hidden dark:flex px-2 -mx-2 rounded-lg w-fit" />
                 <x-subheading>
                     Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eos quod vitae deserunt inventore
                     consequatur pariatur!
