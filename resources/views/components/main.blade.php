@@ -8,6 +8,6 @@
         ->add($container ? 'mx-auto' : '');
 @endphp
 
-<div {{ $attributes->class($classes) }} data-main>
+<main {{ $attributes->class($classes) }} data-main>
     {{ $slot }}
-</div>
+</main>

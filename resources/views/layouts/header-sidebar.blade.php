@@ -100,7 +100,7 @@
     {{-- Main --}}
     <x-main container class="max-w-7xl">
         <x-aside>
-            <x-aside.navigation class="hidden md:flex">
+            <x-aside.navigation class="hidden w-full max-w-56 md:flex">
                 <x-navlist variant="filled">
                     <x-navlist.item active>{{ __('Dashboard') }}</x-navlist.item>
                     <x-navlist.item badge="32">{{ __('Orders') }}</x-navlist.item>
@@ -112,7 +112,7 @@
                     <x-navlist.item>{{ __('Configuration') }}</x-navlist.item>
                 </x-navlist>
             </x-aside.navigation>
-            <x-aside.panel>
+            <x-aside.panel class="max-w-full w-[calc(100%-(14rem+2.25rem))]">
                 {{ $slot }}
             </x-aside.panel>
         </x-aside>
