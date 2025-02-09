@@ -21,8 +21,7 @@
     <?php endif; ?>
 
     <?php if ($name): ?>
-        <span
-            class="ml-2 text-sm font-medium truncate lg:ml-3 text-zinc-500 dark:text-white/80 group-hover:text-zinc-800 group-hover:dark:text-white">
+        <span class="ml-2 text-sm font-medium truncate lg:ml-3 text-zinc-500 dark:text-white/80 group-hover:text-zinc-800 group-hover:dark:text-white">
             {{ $name }}
         </span>
     <?php endif; ?>
