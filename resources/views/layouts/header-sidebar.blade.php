@@ -98,7 +98,7 @@
     <x-overlay x-show="isSidebarOpen" x-cloak x-on:click="closeSidebar" class="lg:hidden" />
 
     {{-- Main --}}
-    <x-main container class="max-w-7xl">
+    <x-main container>
         <x-aside>
             <x-aside.navigation class="hidden w-full max-w-56 md:flex">
                 <x-navlist variant="filled">

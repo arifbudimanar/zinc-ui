@@ -88,12 +88,12 @@
     <x-overlay x-show="isSidebarOpen" x-cloak x-on:click="closeSidebar" class="lg:hidden" />
 
     {{-- Main --}}
-    <x-main container class="max-w-7xl">
+    <x-main container>
         {{ $slot }}
     </x-main>
 
     {{-- Footer --}}
-    <x-footer container class="max-w-7xl">
+    <x-footer container>
         <x-separator variant="subtle" class="mb-8" />
         <div class="grid grid-cols-2 gap-6 lg:gap-8 sm:grid-cols-3 lg:grid-cols-6">
             <div class="col-span-full lg:col-span-3">
