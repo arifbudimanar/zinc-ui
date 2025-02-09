@@ -1,4 +1,14 @@
-<div {{ $attributes->class('relative mt-px flex size-[1.125rem] items-center justify-center rounded-full border border-zinc-300 bg-white shadow-sm outline-offset-2 disabled:shadow-none peer-checked:border-transparent peer-checked:bg-zinc-800 peer-checked:shadow-none peer-disabled:opacity-50 dark:border-white/10 dark:bg-white/10 dark:peer-checked:bg-white peer-checked:[&_[data-indicator]]:block') }}
+@php
+    $classes = ZincUi::classes()
+        ->add('flex items-center justify-center')
+        ->add('mt-px size-[1.125rem] rounded-full outline-offset-2')
+        ->add('bg-white dark:bg-white/10 peer-checked:bg-zinc-800 dark:peer-checked:bg-white')
+        ->add('border border-zinc-300 dark:border-white/10 peer-checked:border-transparent')
+        ->add('shadow-sm disabled:shadow-none peer-checked:shadow-none')
+        ->add('peer-checked:[&_[data-indicator]]:block peer-disabled:opacity-50');
+@endphp
+
+<div {{ $attributes->class($classes) }}
     x-on:click.prevent="$el.previousElementSibling.click()"
     x-on:keydown.enter.prevent="$el.previousElementSibling.click()"
     x-on:keydown.space.prevent="$el.previousElementSibling.click()"
