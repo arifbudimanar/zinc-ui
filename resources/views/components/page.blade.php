@@ -45,7 +45,7 @@
         closeSidebar() {
             this.isSidebarOpen = false;
         },
-    }" x-resize.document="$width >= 1024 && closeSidebar" data-layout>
+    }" x-resize.document="$width >= 1024 && closeSidebar" data-page>
 
     {{ $slot }}
 
