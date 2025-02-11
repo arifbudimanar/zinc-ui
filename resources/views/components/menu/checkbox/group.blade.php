@@ -1,6 +1,5 @@
 @props([
     'heading' => null,
-    'name' => null,
 ])
 
 <div role="group" {{ $attributes->class('-mx-1 px-1 [&+&>[data-menu-separator-top]]:hidden [&:first-child>[data-menu-separator-top]]:hidden [&:last-child>[data-menu-separator-bottom]]:hidden') }}
