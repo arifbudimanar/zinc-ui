@@ -10,7 +10,7 @@ $scrollIntoViewJsSnippet = ($scrollTo !== false)
     : '';
 @endphp
 
-<div class="flex items-center justify-between max-sm:flex-col max-sm:gap-3 max-sm:items-end" data-pagination>
+<div class="flex items-center justify-between pt-3 border-t border-zinc-800/10 dark:border-white/20 sm:gap-3" data-pagination>
     <?php if ($paginator->hasPages()): ?>
         <div class="flex items-center w-full lg:hidden">
             <?php if ($paginator->onFirstPage()): ?>
