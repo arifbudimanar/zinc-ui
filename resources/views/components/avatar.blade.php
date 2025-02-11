@@ -6,7 +6,7 @@
 
 @php
     $classes = ZincUi::classes()
-        ->add('overflow-hidden shrink-0')
+        ->add('overflow-hidden shrink-0 select-none')
         ->add(
             match ($size) {
                 'base' => 'size-10 rounded-lg',
