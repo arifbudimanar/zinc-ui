@@ -67,7 +67,7 @@
             </div>
         <?php endif; ?>
 
-        <select {{ $attributes->class($classes)->merge(['id' => $id, 'type' => $type]) }} data-control data-group-target>
+        <select {{ $attributes->class($classes)->merge(['id' => $id, 'type' => $type]) }} data-control data-select-native data-group-target>
             <x-option value="" selected class="placeholder">{{ $placeholder }}</x-option>
             {{ $slot }}
         </select>
