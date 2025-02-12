@@ -15,7 +15,7 @@
 @php
     $id = $id ?? ($label ?? ($attributes->whereStartsWith('wire:model')->first() ?? ($attributes->get('name') ?? Str::random(8))));
     $error = $attributes->whereStartsWith('wire:model')->first() ?? ($attributes->get('name') ?? null);
-    $badge ??= $attributes->has('required') ? 'Required' : null;
+    $badge ??= $attributes->has('required') ? __('Required') : null;
     $iconLeading = $icon ??= $iconLeading;
 
     $viewable = $attributes->has('viewable');
@@ -107,133 +107,133 @@
 
 <x-with-field :$id :$error :$label :$description :$badge :$badgeColor>
     <?php if ($type == 'file'): ?>
-        <div class="group relative block w-full" data-input>
-            <input {{ $attributes->class($classes)->merge(['id' => $id, 'type' => 'file']) }} data-control data-group-target>
-        </div>
+    <div class="group relative block w-full" data-input>
+        <input {{ $attributes->class($classes)->merge(['id' => $id, 'type' => 'file']) }} data-control data-group-target>
+    </div>
     <?php else: ?>
-        <?php if (!$clearable && !$viewable && !$copyable): ?>
-            <div class="group relative block w-full" data-input>
-                <?php if (is_string($iconLeading)): ?>
-                    <div class="{{ $iconLeadingClasses }}">
-                        <x-icon :name="$iconLeading" class="ml-2 size-5 shrink-0" />
-                    </div>
-                <?php elseif($iconLeading): ?>
-                    <div class="{{ $iconLeadingClasses }}">
-                        {{ $iconLeading }}
-                    </div>
-                <?php endif; ?>
-
-                <input {{ $attributes->class($classes)->merge(['id' => $id, 'type' => $type]) }} data-control data-group-target>
-
-                <?php if (is_string($iconTrailing)): ?>
-                    <div class="{{ $iconTrailingClasses }}">
-                        <x-icon :name="$iconTrailing" class="mr-2 size-5 shrink-0" />
-                    </div>
-                <?php elseif($iconTrailing): ?>
-                    <div class="{{ $iconTrailingClasses }}">
-                        {{ $iconTrailing }}
-                    </div>
-                <?php endif; ?>
-            </div>
+    <?php if (!$clearable && !$viewable && !$copyable): ?>
+    <div class="group relative block w-full" data-input>
+        <?php if (is_string($iconLeading)): ?>
+        <div class="{{ $iconLeadingClasses }}">
+            <x-icon :name="$iconLeading" class="ml-2 size-5 shrink-0" />
+        </div>
+        <?php elseif($iconLeading): ?>
+        <div class="{{ $iconLeadingClasses }}">
+            {{ $iconLeading }}
+        </div>
         <?php endif; ?>
 
-        <?php if ($clearable): ?>
-            <div x-data="{
-                wireModel: '{{ $attributes->whereStartsWith('wire:model')->first() }}',
-                clearInput() {
-                    if (this.wireModel) {
-                        $wire.set(this.wireModel, '');
-                    }
-                    this.$refs.input.value = '';
-                    this.$refs.input.focus();
-                }
-            }"
-                x-on:keydown.alt.x="clearInput()" class="group relative block w-full" data-input>
-                <?php if (is_string($iconLeading)): ?>
-                    <div class="{{ $iconLeadingClasses }}">
-                        <x-icon :name="$iconLeading" class="ml-2 size-5 shrink-0" />
-                    </div>
-                <?php elseif($iconLeading): ?>
-                    <div class="{{ $iconLeadingClasses }}">
-                        {{ $iconLeading }}
-                    </div>
-                <?php endif; ?>
+        <input {{ $attributes->class($classes)->merge(['id' => $id, 'type' => $type]) }} data-control data-group-target>
 
-                <input x-ref="input" {{ $attributes->class($classes)->merge(['id' => $id, 'type' => $type]) }} data-control data-group-target>
+        <?php if (is_string($iconTrailing)): ?>
+        <div class="{{ $iconTrailingClasses }}">
+            <x-icon :name="$iconTrailing" class="mr-2 size-5 shrink-0" />
+        </div>
+        <?php elseif($iconTrailing): ?>
+        <div class="{{ $iconTrailingClasses }}">
+            {{ $iconTrailing }}
+        </div>
+        <?php endif; ?>
+    </div>
+    <?php endif; ?>
 
-                <div class="{{ $iconTrailingClasses }}">
-                    <x-button size="sm" variant="subtle" icon="o-x-mark" x-on:click="clearInput()" class="{{ $size == 'sm' ? 'mr-2 !h-6' : 'mr-2' }}" data-action/>
-                </div>
-            </div>
+    <?php if ($clearable): ?>
+    <div x-data="{
+        wireModel: '{{ $attributes->whereStartsWith('wire:model')->first() }}',
+        clearInput() {
+            if (this.wireModel) {
+                $wire.set(this.wireModel, '');
+            }
+            this.$refs.input.value = '';
+            this.$refs.input.focus();
+        }
+    }"
+        x-on:keydown.alt.x="clearInput()" class="group relative block w-full" data-input>
+        <?php if (is_string($iconLeading)): ?>
+        <div class="{{ $iconLeadingClasses }}">
+            <x-icon :name="$iconLeading" class="ml-2 size-5 shrink-0" />
+        </div>
+        <?php elseif($iconLeading): ?>
+        <div class="{{ $iconLeadingClasses }}">
+            {{ $iconLeading }}
+        </div>
         <?php endif; ?>
 
-        <?php if ($viewable): ?>
-            <div x-data="{
-                isRevealed: false,
-                viewInput() {
-                    this.isRevealed = !this.isRevealed;
-                    this.$refs.input.type = this.isRevealed ? 'text' : 'password';
-                    this.$refs.input.focus();
-                }
-            }"
-                x-on:keydown.alt.v="viewInput()" class="group relative block w-full" data-input>
-                <?php if (is_string($iconLeading)): ?>
-                    <div class="{{ $iconLeadingClasses }}">
-                        <x-icon :name="$iconLeading" class="ml-2 size-5 shrink-0" />
-                    </div>
-                <?php elseif($iconLeading): ?>
-                    <div class="{{ $iconLeadingClasses }}">
-                        {{ $iconLeading }}
-                    </div>
-                <?php endif; ?>
+        <input x-ref="input" {{ $attributes->class($classes)->merge(['id' => $id, 'type' => $type]) }} data-control data-group-target>
 
-                <input x-ref="input" {{ $attributes->class($classes)->merge(['id' => $id, 'type' => 'password']) }} data-control data-group-target />
+        <div class="{{ $iconTrailingClasses }}">
+            <x-button size="sm" variant="subtle" icon="o-x-mark" x-on:click="clearInput()" class="{{ $size == 'sm' ? 'mr-2 !h-6' : 'mr-2' }}" data-action />
+        </div>
+    </div>
+    <?php endif; ?>
 
-                <div class="{{ $iconTrailingClasses }}">
-                    <x-button size="sm" variant="subtle" icon="o-x-mark" class="{{ $size == 'sm' ? 'mr-2 !h-6' : 'mr-2' }}"
-                        x-on:click="viewInput()">
-                        <x-slot:icon>
-                            <x-icon name="o-eye" x-show="!isRevealed" class="size-5 shrink-0" />
-                            <x-icon name="o-eye-slash" x-show="isRevealed" x-cloak class="size-5 shrink-0" />
-                        </x-slot:icon>
-                    </x-button>
-                </div>
-            </div>
+    <?php if ($viewable): ?>
+    <div x-data="{
+        isRevealed: false,
+        viewInput() {
+            this.isRevealed = !this.isRevealed;
+            this.$refs.input.type = this.isRevealed ? 'text' : 'password';
+            this.$refs.input.focus();
+        }
+    }"
+        x-on:keydown.alt.v="viewInput()" class="group relative block w-full" data-input>
+        <?php if (is_string($iconLeading)): ?>
+        <div class="{{ $iconLeadingClasses }}">
+            <x-icon :name="$iconLeading" class="ml-2 size-5 shrink-0" />
+        </div>
+        <?php elseif($iconLeading): ?>
+        <div class="{{ $iconLeadingClasses }}">
+            {{ $iconLeading }}
+        </div>
         <?php endif; ?>
 
-        <?php if ($copyable): ?>
-            <div x-data="{
-                isCopied: false,
-                copyInput() {
-                    this.$refs.input.select();
-                    document.execCommand('copy');
-                    this.isCopied = true;
-                    setTimeout(() => this.isCopied = false, 1500);
-                }
-            }"
-                x-on:keydown.alt.c="copyInput()" class="group relative block w-full" data-input>
-                <?php if (is_string($iconLeading)): ?>
-                    <div class="{{ $iconLeadingClasses }}">
-                        <x-icon :name="$iconLeading" class="ml-2 size-5 shrink-0" />
-                    </div>
-                <?php elseif($iconLeading): ?>
-                    <div class="{{ $iconLeadingClasses }}">
-                        {{ $iconLeading }}
-                    </div>
-                <?php endif; ?>
+        <input x-ref="input" {{ $attributes->class($classes)->merge(['id' => $id, 'type' => 'password']) }} data-control data-group-target />
 
-                <input x-ref="input" {{ $attributes->class($classes)->merge(['id' => $id, 'type' => $type]) }} data-control data-group-target />
+        <div class="{{ $iconTrailingClasses }}">
+            <x-button size="sm" variant="subtle" icon="o-x-mark" class="{{ $size == 'sm' ? 'mr-2 !h-6' : 'mr-2' }}"
+                x-on:click="viewInput()">
+                <x-slot:icon>
+                    <x-icon name="o-eye" x-show="!isRevealed" class="size-5 shrink-0" />
+                    <x-icon name="o-eye-slash" x-show="isRevealed" x-cloak class="size-5 shrink-0" />
+                </x-slot:icon>
+            </x-button>
+        </div>
+    </div>
+    <?php endif; ?>
 
-                <div class="{{ $iconTrailingClasses }}">
-                    <x-button size="sm" variant="{{ $variant == 'filled' ? 'outline' : 'filled' }}"
-                        class="{{ $size == 'sm' ? 'mr-2 !h-6' : 'mr-2' }}" x-on:click="copyInput()">
-                        <x-slot:iconLeading>
-                            <x-icon name="o-clipboard" x-show="!isCopied" class="size-5 shrink-0" />
-                            <x-icon name="o-clipboard-document" x-show="isCopied" x-cloak class="size-5 shrink-0" />
-                        </x-slot:iconLeading>
-                    </x-button>
-                </div>
-            </div>
+    <?php if ($copyable): ?>
+    <div x-data="{
+        isCopied: false,
+        copyInput() {
+            this.$refs.input.select();
+            document.execCommand('copy');
+            this.isCopied = true;
+            setTimeout(() => this.isCopied = false, 1500);
+        }
+    }"
+        x-on:keydown.alt.c="copyInput()" class="group relative block w-full" data-input>
+        <?php if (is_string($iconLeading)): ?>
+        <div class="{{ $iconLeadingClasses }}">
+            <x-icon :name="$iconLeading" class="ml-2 size-5 shrink-0" />
+        </div>
+        <?php elseif($iconLeading): ?>
+        <div class="{{ $iconLeadingClasses }}">
+            {{ $iconLeading }}
+        </div>
         <?php endif; ?>
+
+        <input x-ref="input" {{ $attributes->class($classes)->merge(['id' => $id, 'type' => $type]) }} data-control data-group-target />
+
+        <div class="{{ $iconTrailingClasses }}">
+            <x-button size="sm" variant="{{ $variant == 'filled' ? 'outline' : 'filled' }}"
+                class="{{ $size == 'sm' ? 'mr-2 !h-6' : 'mr-2' }}" x-on:click="copyInput()">
+                <x-slot:iconLeading>
+                    <x-icon name="o-clipboard" x-show="!isCopied" class="size-5 shrink-0" />
+                    <x-icon name="o-clipboard-document" x-show="isCopied" x-cloak class="size-5 shrink-0" />
+                </x-slot:iconLeading>
+            </x-button>
+        </div>
+    </div>
+    <?php endif; ?>
     <?php endif; ?>
 </x-with-field>
