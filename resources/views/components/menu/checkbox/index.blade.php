@@ -40,7 +40,7 @@
     <div class="w-7 peer-checked:[&_[data-menu-checkbox-indicator]]:block">
         <div class="hidden" data-menu-checkbox-indicator>
             <?php if (is_string($icon) && $icon !== ''): ?>
-                <x-icon name="{{ $icon }}" class="size-5 shrink-0" data-menu-checkbox-icon />
+                <x-icon :$icon class="size-5 shrink-0" data-menu-checkbox-icon />
             <?php elseif ($icon == null): ?>
                 <x-icon icon="o-check" class="size-5 shrink-0" data-menu-checkbox-icon />
             <?php else: ?>
