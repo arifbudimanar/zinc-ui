@@ -18,7 +18,7 @@
     $error = $attributes->whereStartsWith('wire:model')->first() ?? ($attributes->get('name') ?? null);
     $badge ??= $attributes->has('required') ? __('Required') : null;
     $iconLeading = $icon ??= $iconLeading;
-    $placeholder = $attributes->has('multiple') ? __('Select options...') : $placeholder ?? __('Select an option...');
+    $placeholder = $placeholder ?? ($attributes->has('multiple') ? __('Select options...') : __('Select an option...'));
 
     $classes = ZincUi::classes()
         ->add('appearance-none w-full block')
