@@ -26,10 +26,10 @@
         ->add('rounded-md')
         ->add('cursor-pointer')
         ->add('text-left text-sm font-medium')
-        ->add('[&:has(input[data-menu-checkbox]:disabled)]:opacity-50 [&:has(input[data-menu-checkbox]:disabled)]:cursor-default')
+        ->add('[&:has([data-menu-checkbox]:disabled)]:opacity-50 [&:has([data-menu-checkbox]:disabled)]:cursor-default')
         ->add([
             'text-zinc-800 hover:bg-zinc-50 focus:bg-zinc-50 dark:text-white hover:dark:bg-zinc-600 focus:dark:bg-zinc-600',
-            '[&_[data-menu-checkbox-icon]]:text-zinc-400 dark:[&_[data-menu-checkbox-icon]]:text-white/60 [&:hover_[data-menu-checkbox-icon]]:text-current [&:focus_[data-menu-checkbox-icon]]:text-current',
+            '[&_[data-menu-radio-icon]]:text-zinc-400 dark:[&_[data-menu-radio-icon]]:text-white/60 [&:hover_[data-menu-radio-icon]]:text-current [&:focus_[data-menu-radio-icon]]:text-current',
         ]);
 @endphp
 
@@ -43,17 +43,29 @@
     data-menu-item-has-icon>
     <input {{ $attributes->class('peer sr-only hidden')->merge(['id' => $id, 'type' => $type, 'name' => $name]) }} data-menu-checkbox>
 
-    <div class="w-7 peer-checked:[&_[data-menu-checkbox-indicator]]:block">
-        <div class="hidden" data-menu-checkbox-indicator>
-            <x-icon icon="o-check" class="size-5 shrink-0" data-menu-checkbox-icon />
+    <div class="w-7 peer-checked:[&_[data-menu-radio-indicator]]:block">
+        <div class="hidden" data-menu-radio-indicator>
+            <?php if (is_string($icon) && $icon !== ''): ?>
+                <x-icon name="{{ $icon }}" class="size-5 shrink-0" data-menu-radio-icon />
+            <?php elseif ($icon == null): ?>
+                <x-icon icon="o-check" class="size-5 shrink-0" data-menu-radio-icon />
+            <?php else: ?>
+                {{ $icon }}
+            <?php endif; ?>
         </div>
     </div>
 
     {{ $label ?? $slot }}
 
-    <?php if ($suffix): ?>
-    <div class="ml-auto opacity-50 text-xs">
-        {{ $suffix }}
-    </div>
+    <?php if (is_string($suffix) && $suffix != ''): ?>
+        <div class="ml-auto">
+            <x-kbd class="ml-2 hidden opacity-50 lg:block">
+                {{ $suffix }}
+            </x-kbd>
+        </div>
+    <?php else: ?>
+        <div class="ml-auto">
+            {{ $suffix }}
+        </div>
     <?php endif; ?>
 </div>

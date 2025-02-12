@@ -3,6 +3,7 @@
     'suffix' => null,
     'icon' => null,
     'kbd' => null,
+    'label' => null,
 ])
 
 @php
@@ -30,8 +31,8 @@
    <?php else: ?>
         {{ $icon }}
     <?php endif; ?>
-
-    {{ $slot }}
+    
+    {{ $label ?? $slot }}
 
     <?php if (is_string($suffix) && $suffix != ''): ?>
         <div class="ml-auto">
