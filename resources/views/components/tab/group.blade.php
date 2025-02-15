@@ -1,7 +1,7 @@
 @props(['active' => null, 'variant' => 'default'])
 
 @php
-    $wireModel = $attributes->wire('model')->value();
+    $wireModel = $attributes->whereStartsWith('wire:model')->first();
 @endphp
 
 <div {{ $attributes->class('block')->except('wire:model') }}

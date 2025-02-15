@@ -10,7 +10,9 @@
 ])
 
 <div {{ $attributes->class('block border-b border-zinc-800/10 pb-4 pt-4 first:pt-0 last:border-b-0 last:pb-0 dark:border-white/10') }}
-    x-data="{ isAccordionOpen: {{ $expanded ? 'true' : 'false' }} }" data-accordion-item>
+    x-data="{
+        isAccordionOpen: {{ $expanded ? 'true' : 'false' }}
+    }" data-accordion-item>
     <?php if ($heading): ?>
         <x-accordion.heading>
             {{ $heading }}

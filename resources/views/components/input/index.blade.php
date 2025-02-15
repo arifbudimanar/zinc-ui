@@ -107,12 +107,12 @@
 
 <x-with-field :$id :$error :$label :$description :$badge :$badgeColor>
     <?php if ($type == 'file'): ?>
-    <div class="group relative block w-full" data-input>
+    <div {{ $attributes->class('group relative block w-full') }} data-input>
         <input {{ $attributes->class($classes)->merge(['id' => $id, 'type' => 'file']) }} data-control data-group-target>
     </div>
     <?php else: ?>
     <?php if (!$clearable && !$viewable && !$copyable): ?>
-    <div class="group relative block w-full" data-input>
+    <div {{ $attributes->class('group relative block w-full') }} data-input>
         <?php if (is_string($iconLeading)): ?>
         <div class="{{ $iconLeadingClasses }}">
             <x-icon :name="$iconLeading" class="ml-2 size-5 shrink-0" />
@@ -138,17 +138,17 @@
     <?php endif; ?>
 
     <?php if ($clearable): ?>
-    <div x-data="{
-        wireModel: '{{ $attributes->whereStartsWith('wire:model')->first() }}',
-        clearInput() {
-            if (this.wireModel) {
-                $wire.set(this.wireModel, '');
+    <div {{ $attributes->class('group relative block w-full') }}
+        x-data="{
+            wireModel: '{{ $attributes->whereStartsWith('wire:model')->first() }}',
+            clearInput() {
+                if (this.wireModel) {
+                    $wire.set(this.wireModel, '');
+                }
+                this.$refs.input.value = '';
+                this.$refs.input.focus();
             }
-            this.$refs.input.value = '';
-            this.$refs.input.focus();
-        }
-    }"
-        x-on:keydown.alt.x="clearInput()" class="group relative block w-full" data-input>
+        }" x-on:keydown.alt.x="clearInput()" data-input>
         <?php if (is_string($iconLeading)): ?>
         <div class="{{ $iconLeadingClasses }}">
             <x-icon :name="$iconLeading" class="ml-2 size-5 shrink-0" />
@@ -168,15 +168,15 @@
     <?php endif; ?>
 
     <?php if ($viewable): ?>
-    <div x-data="{
-        isRevealed: false,
-        viewInput() {
-            this.isRevealed = !this.isRevealed;
-            this.$refs.input.type = this.isRevealed ? 'text' : 'password';
-            this.$refs.input.focus();
-        }
-    }"
-        x-on:keydown.alt.v="viewInput()" class="group relative block w-full" data-input>
+    <div {{ $attributes->class('group relative block w-full') }}
+        x-data="{
+            isRevealed: false,
+            viewInput() {
+                this.isRevealed = !this.isRevealed;
+                this.$refs.input.type = this.isRevealed ? 'text' : 'password';
+                this.$refs.input.focus();
+            }
+        }" x-on:keydown.alt.v="viewInput()" data-input>
         <?php if (is_string($iconLeading)): ?>
         <div class="{{ $iconLeadingClasses }}">
             <x-icon :name="$iconLeading" class="ml-2 size-5 shrink-0" />
@@ -202,16 +202,16 @@
     <?php endif; ?>
 
     <?php if ($copyable): ?>
-    <div x-data="{
-        isCopied: false,
-        copyInput() {
-            this.$refs.input.select();
-            document.execCommand('copy');
-            this.isCopied = true;
-            setTimeout(() => this.isCopied = false, 1500);
-        }
-    }"
-        x-on:keydown.alt.c="copyInput()" class="group relative block w-full" data-input>
+    <div {{ $attributes->class('group relative block w-full') }}
+        x-data="{
+            isCopied: false,
+            copyInput() {
+                this.$refs.input.select();
+                document.execCommand('copy');
+                this.isCopied = true;
+                setTimeout(() => this.isCopied = false, 1500);
+            }
+        }" x-on:keydown.alt.c="copyInput()" data-input>
         <?php if (is_string($iconLeading)): ?>
         <div class="{{ $iconLeadingClasses }}">
             <x-icon :name="$iconLeading" class="ml-2 size-5 shrink-0" />

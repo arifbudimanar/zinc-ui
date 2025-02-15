@@ -19,12 +19,13 @@
 @endphp
 
 <?php if ($expandable): ?>
-    <div id="{{ $id }}" {{ $attributes->class('group') }} x-data="{
-        isNavlistGroupOpen: {{ $expanded ? 'true' : 'false' }},
-        toggleNavlistGroup() {
-            this.isNavlistGroupOpen = !this.isNavlistGroupOpen;
-        },
-    }" data-navlist-group>
+    <div id="{{ $id }}" {{ $attributes->class('group') }}
+        x-data="{
+            isNavlistGroupOpen: {{ $expanded ? 'true' : 'false' }},
+            toggleNavlistGroup() {
+                this.isNavlistGroupOpen = !this.isNavlistGroupOpen;
+            },
+        }" data-navlist-group>
         <x-navlist.item :$variant :$active :$icon :$iconLeading :$iconTrailing :$badge :$badgeColor
             x-on:click="toggleNavlistGroup">
             <?php if ($icon == null): ?>
@@ -53,6 +54,7 @@
                 {{ $heading }}
             </x-navlist.heading>
         <?php endif; ?>
+
         <div class="min-h-auto flex flex-col">
             {{ $slot }}
         </div>
