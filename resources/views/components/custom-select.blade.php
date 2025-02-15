@@ -16,7 +16,7 @@
 <div id="{{ $id }}" {{ $attributes->class('w-fit')->except('wire:model') }}
     x-data="{
         isSelectOpen: false,
-        {{ $multiple ? 'selectedOptions' : 'selectedOption' }}: {{ $entangledWireModel }},
+        {{ $multiple ? 'selectedOptions' : 'selectedOption' }}: {{ $wireModel ? $entangledWireModel : ($multiple ? '[]' : 'null') }},
         openSelect() {
             this.isSelectOpen = true;
         },

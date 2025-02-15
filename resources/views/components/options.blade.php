@@ -15,6 +15,6 @@
     x-trap.noautofocus="isSelectOpen"
     x-on:click.outside="closeSelect"
     x-on:keydown.escape="closeSelect"
-    x-on:click.stop="isSelectOpen" data-menu>
+    x-on:click.stop="isSelectOpen" data-options>
     {{ $slot }}
 </div>
