@@ -13,7 +13,7 @@
     $entangledWireModel = $attributes->wire('model')->directive() == 'wire:model.live' ? '$wire.entangle(\'' . $wireModel . '\').live' : '$wire.entangle(\'' . $wireModel . '\')';
 @endphp
 
-<div id="{{ $id }}" {{ $attributes->class('w-fit')->except('wire:model') }}
+<div id="{{ $id }}" {{ $attributes->except('wire:model') }}
     x-data="{
         isSelectOpen: false,
         {{ $multiple ? 'selectedOptions' : 'selectedOption' }}: {{ $wireModel ? $entangledWireModel : ($multiple ? '[]' : 'null') }},

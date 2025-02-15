@@ -87,7 +87,7 @@
         <?php endif; ?>
     </div>
     <?php elseif ($variant == 'listbox'): ?>
-    <x-custom-select class="group relative block w-full" {{ $attributes }} data-select>
+    <x-custom-select {{ $attributes->class('group relative block w-full') }} data-select>
         <?php if (is_string($iconLeading)): ?>
         <div class="{{ $iconLeadingClasses }}">
             <x-icon :name="$iconLeading" class="ml-2 size-5 shrink-0" />
