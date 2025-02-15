@@ -1,7 +1,10 @@
 @props([
     'id' => null,
-    'position' => 'bottom-start',
-    'offset' => 6,
+    'multiple' => false,
+])
+
+@aware([
+    'multiple' => $multiple,
 ])
 
 @php
@@ -13,7 +16,7 @@
 <div id="{{ $id }}" {{ $attributes->class('w-fit')->except('wire:model') }}
     x-data="{
         isSelectOpen: false,
-        selectedOption: {{ $entangledWireModel }},
+        {{ $multiple ? 'selectedOptions' : 'selectedOption' }}: {{ $entangledWireModel }},
         openSelect() {
             this.isSelectOpen = true;
         },

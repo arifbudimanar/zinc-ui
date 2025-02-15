@@ -1,28 +1,61 @@
 @props([
     'variant' => 'default',
     'value' => null,
-])
-@aware([
-    'variant' => $variant,
+    'multiple' => false,
 ])
 
+@aware([
+    'variant' => $variant,
+    'multiple' => $multiple,
+])
+
+@php
+    $classes = ZincUi::classes()->add(
+        match ($variant) {
+            'default' => 'bg-white dark:bg-zinc-700 text-zinc-700 dark:text-zinc-300 [&[disabled]]:text-zinc-500 dark:[&[disabled]]:text-zinc-500',
+            'listbox' => [
+                'group/option overflow-hidden select-none group',
+                'flex items-center px-2 py-1.5 w-full rounded-md',
+                'text-left text-sm font-medium text-zinc-800 dark:text-white',
+                '[&[disabled]]:text-zinc-400 dark:[&[disabled]]:text-zinc-400 [&[disabled]]:pointer-events-none',
+                'focus:outline-none focus:bg-zinc-100 focus:dark:bg-zinc-600',
+                'hover:bg-zinc-100 hover:dark:bg-zinc-600',
+                'scroll-my-[.3125rem]',
+            ],
+        },
+    );
+@endphp
+
 @if ($variant == 'default')
-    <option {{ $attributes->class('bg-white dark:bg-zinc-700 text-zinc-700 dark:text-zinc-300')->merge(['value' => $value]) }}>
+    <option {{ $attributes->class($classes)->merge(['value' => $value]) }}>
         {{ $slot }}
     </option>
 @endif
 
 @if ($variant == 'listbox')
-    <div tabindex="0" role="option" value="{{ $value }}" data-option
-        x-on:click="selectedOption = '{{ $value }}'; isSelectOpen = false;"
-        x-on:keydown.enter="selectedOption = '{{ $value }}'; isSelectOpen = false;"
-        x-on:keydown.space="selectedOption = '{{ $value }}'; isSelectOpen = false;"
-        class="group/option overflow-hidden select-none data-[hidden]:hidden group flex items-center px-2 py-1.5 w-full focus:outline-none rounded-md text-left text-sm font-medium text-zinc-800 hover:bg-zinc-100 focus:bg-zinc-100 [&[disabled]]:text-zinc-400 dark:text-white hover:dark:bg-zinc-600 focus:dark:bg-zinc-600 dark:[&[disabled]]:text-zinc-400 scroll-my-[.3125rem]">
-        <div class="w-7 shrink-0">
-            <template x-if="selectedOption === '{{ $value }}'">
-                <x-icon name="m-check" class="size-5 shrink-0" />
-            </template>
-        </div>
-        {{ $slot }}
-    </div>
+    @if ($multiple)
+        <button type="button" role="option" value="{{ $value }}" {{ $attributes->class($classes) }}
+            x-on:click="selectedOptions.includes('{{ $value }}') ? selectedOptions = selectedOptions.filter(option => option !== '{{ $value }}') : selectedOptions = [...selectedOptions, '{{ $value }}'];"
+            x-on:keydown.space.prevent="$el.click()" data-option>
+            <div class="w-7 shrink-0">
+                <template x-if="selectedOptions.includes('{{ $value }}')">
+                    <x-icon name="m-check" class="size-5 shrink-0" />
+                </template>
+            </div>
+
+            {{ $slot }}
+        </button>
+    @else
+        <button type="button" role="option" value="{{ $value }}" {{ $attributes->class($classes) }}
+            x-on:click="if (selectedOption === '{{ $value }}') { selectedOption = null; } else { selectedOption = '{{ $value }}'; isSelectOpen = false; }"
+            x-on:keydown.space.prevent="$el.click()" data-option>
+            <div class="w-7 shrink-0">
+                <template x-if="selectedOption === '{{ $value }}'">
+                    <x-icon name="m-check" class="size-5 shrink-0" />
+                </template>
+            </div>
+
+            {{ $slot }}
+        </button>
+    @endif
 @endif
