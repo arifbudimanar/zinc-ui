@@ -11,6 +11,7 @@
     'badgeColor' => 'zinc',
     'description' => null,
     'placeholder' => null,
+    'selectedSuffix' => __('selected'),
     'multiple' => false,
 ])
 
@@ -102,7 +103,7 @@
             <button type="button" {{ $attributes->class($classes) }} data-group-target data-select-button>
                 <span class="truncate flex gap-2 text-left flex-1">
                     <span
-                        x-text="selectedOptions.length > 1 ? `${selectedOptions.length} {{ __('selected') }}` : selectedOptions.length === 1 ? $root.querySelector(`[data-option][value='${selectedOptions[0]}']`)?.textContent.trim() ?? '{{ $placeholder }}' : '{{ $placeholder }}'"></span>
+                        x-text="selectedOptions.length > 1 ? `${selectedOptions.length} {{ $selectedSuffix }}` : selectedOptions.length === 1 ? $root.querySelector(`[data-option][value='${selectedOptions[0]}']`)?.textContent.trim() ?? '{{ $placeholder }}' : '{{ $placeholder }}'"></span>
                 </span>
             </button>
         @else
