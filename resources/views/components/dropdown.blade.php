@@ -24,6 +24,6 @@
     x-on:click="toggleDropdown"
     x-on:keydown.down.prevent="$focus.next()"
     x-on:keydown.up.prevent="$focus.previous()"
-    x-on:keydown.escape="closeDropdown" data-dropdown>
+    x-on:keydown.escape.stop="closeDropdown" data-dropdown>
     {{ $slot }}
 </div>

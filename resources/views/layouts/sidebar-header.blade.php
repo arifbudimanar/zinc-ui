@@ -116,7 +116,7 @@
         x-trap.inert.noscroll="isSidebarOpen"
         x-on:resize.window="if (window.innerWidth >= 1024) isSidebarOpen = false"
         x-on:click.outside="closeSidebar"
-        x-on:keydown.escape="closeSidebar"
+        x-on:keydown.escape.stop="closeSidebar"
         class="border-r lg:hidden bg-zinc-50 dark:bg-zinc-900 border-zinc-200 dark:border-zinc-700">
         <x-button variant="subtle" icon="o-x-mark" class="lg:hidden" x-on:click="closeSidebar" />
 

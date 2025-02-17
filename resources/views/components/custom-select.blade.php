@@ -30,6 +30,6 @@
     x-on:click="toggleSelect"
     x-on:keydown.down.prevent="$focus.next()"
     x-on:keydown.up.prevent="$focus.previous()"
-    x-on:keydown.escape="closeSelect" data-custom-select>
+    x-on:keydown.escape.stop.stop="closeSelect" data-custom-select>
     {{ $slot }}
 </div>
