@@ -11,9 +11,13 @@
             class="sm:hidden" />
         <x-button variant="filled" size="sm" icon="o-magnifying-glass" kbd="Ctrl+K"
             class="hidden sm:flex">{{ __('Search everything') }}</x-button>
+
         <x-separator variant="subtle" vertical class="hidden mx-2 my-2 sm:block" />
-        <x-theme-switcher variant="header" x-on:keydown.alt.l.window="lightMode()"
-            x-on:keydown.alt.m.window="darkMode()" x-on:keydown.alt.p.window="systemMode()" />
+
+        <x-theme-switcher variant="header"
+            x-on:keydown.alt.l.window="lightMode()"
+            x-on:keydown.alt.m.window="darkMode()"
+            x-on:keydown.alt.p.window="systemMode()" />
     </x-navbar>
 
     {{-- Main --}}
