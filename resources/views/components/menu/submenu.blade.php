@@ -11,10 +11,14 @@
     $id = $id ?? 'submenu-' . Str::random(8);
 @endphp
 
-<x-dropdown {{ $attributes->class('!w-full') }} :$id :$position :$offset
-    x-on:mouseover.outside="closeDropdown" x-on:keydown.left="closeDropdown" data-menu-submenu>
-    <x-menu.item :$variant :$icon x-on:keydown.right="openDropdown" x-on:mouseover="openDropdown"
-        x-on:keydown.enter="toggleDropdown" x-on:click.stop="isDropdownOpen">
+<x-dropdown :$id :$position :$offset {{ $attributes->class('w-full') }}
+    x-on:mouseover.outside="closeDropdown"
+    x-on:keydown.left="closeDropdown" data-menu-submenu>
+    <x-menu.item :$variant :$icon
+        x-on:keydown.right="openDropdown"
+        x-on:mouseover="openDropdown"
+        x-on:keydown.enter="toggleDropdown"
+        x-on:click.stop="isDropdownOpen">
         {{ $heading }}
 
         <x-slot:suffix>

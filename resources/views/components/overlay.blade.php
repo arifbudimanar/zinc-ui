@@ -1,4 +1,4 @@
-<div {{ $attributes->class('fixed inset-0 z-10 bg-black/10') }}
+<div {{ $attributes->class('fixed inset-0 bg-black/10 [:where(&)]:z-10') }}
     x-cloak
     x-transition:enter="ease-out duration-100"
     x-transition:enter-start="opacity-0"
@@ -6,4 +6,5 @@
     x-transition:leave="ease-in duration-100"
     x-transition:leave-start="opacity-100"
     x-transition:leave-end="opacity-0" data-overlay>
+    {{ $slot }}
 </div>

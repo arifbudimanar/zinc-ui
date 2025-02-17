@@ -8,7 +8,7 @@
     $id = $id ?? 'dropdown-' . Str::random(8);
 @endphp
 
-<div id="{{ $id }}" {{ $attributes->class('w-fit') }}
+<div id="{{ $id }}" {{ $attributes->class('[:where(&)]:w-fit') }}
     x-data="{
         isDropdownOpen: false,
         openDropdown() {
