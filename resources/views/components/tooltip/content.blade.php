@@ -18,7 +18,7 @@
 @endphp
 
 <div {{ $attributes->merge(['class' => $classes]) }}
-    x-show="isTooltipOpen" x-cloak x-transition
+    x-show="isTooltipOpen" x-cloak
     x-anchor.{{ $position }}.offset.{{ $offset }}="$refs.tooltip"
     x-on:click.stop="isTooltipOpen" data-tooltip-content>
     {{ $content ?? $slot }}

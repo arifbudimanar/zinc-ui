@@ -4,6 +4,5 @@
     x-transition:enter-end="opacity-50"
     x-transition:leave="ease-in duration-100"
     x-transition:leave-start="opacity-100"
-    x-transition:leave-end="opacity-0"
-    data-overlay>
+    x-transition:leave-end="opacity-0" data-overlay>
 </div>
