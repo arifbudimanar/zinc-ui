@@ -26,14 +26,14 @@
     );
 @endphp
 
-@if ($variant == 'default')
+<?php if ($variant == 'default'): ?>
     <option {{ $attributes->class($classes)->merge(['value' => $value]) }}>
         {{ $slot }}
     </option>
-@endif
+<?php endif; ?>
 
-@if ($variant == 'listbox')
-    @if ($multiple)
+<?php if ($variant == 'listbox'): ?>
+    <?php if ($multiple): ?>
         <button type="button" role="option" value="{{ $value }}" {{ $attributes->class($classes) }}
             x-on:click="selectedOptions.includes('{{ $value }}') ? selectedOptions = selectedOptions.filter(option => option !== '{{ $value }}') : selectedOptions = [...selectedOptions, '{{ $value }}'];"
             x-on:keydown.space.prevent="$el.click()" data-option>
@@ -45,7 +45,7 @@
 
             {{ $slot }}
         </button>
-    @else
+    <?php else: ?>
         <button type="button" role="option" value="{{ $value }}" {{ $attributes->class($classes) }}
             x-on:click="if (selectedOption === '{{ $value }}') { selectedOption = null; } else { selectedOption = '{{ $value }}'; isSelectOpen = false; }"
             x-on:keydown.space.prevent="$el.click()" data-option>
@@ -57,5 +57,5 @@
 
             {{ $slot }}
         </button>
-    @endif
-@endif
+    <?php endif; ?>
+<?php endif; ?>
