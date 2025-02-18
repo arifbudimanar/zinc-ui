@@ -2,6 +2,7 @@
     'variant' => 'default',
     'name' => null,
     'dismissable' => true,
+    'closeable' => true,
     'position' => 'right',
 ])
 
@@ -104,14 +105,16 @@
 
             {{ $slot }}
 
-            <?php if ($variant == 'flyout'): ?>
-                <x-modal.close hidden class="absolute top-0 right-0 mt-4 mr-4 lg:mt-6 lg:mr-6 [&[hidden]]:block">
-                    <x-button variant="ghost" size="sm" icon="o-x-mark" />
-                </x-modal.close>
-            <?php else: ?>
-                <x-modal.close hidden class="absolute top-0 right-0 mt-4 mr-4 [&[hidden]]:block">
-                    <x-button variant="ghost" size="sm" icon="o-x-mark" />
-                </x-modal.close>
+            <?php if ($closeable): ?>
+                <?php if ($variant == 'flyout'): ?>
+                    <x-modal.close hidden class="absolute top-0 right-0 mt-4 mr-4 lg:mt-6 lg:mr-6 [&[hidden]]:block">
+                        <x-button variant="ghost" size="sm" icon="o-x-mark" />
+                    </x-modal.close>
+                <?php else: ?>
+                    <x-modal.close hidden class="absolute top-0 right-0 mt-4 mr-4 [&[hidden]]:block">
+                        <x-button variant="ghost" size="sm" icon="o-x-mark" />
+                    </x-modal.close>
+                <?php endif; ?>
             <?php endif; ?>
             </div>
     </div>
