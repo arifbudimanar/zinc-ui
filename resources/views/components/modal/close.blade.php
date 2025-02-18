@@ -7,15 +7,14 @@
     $name = Str::kebab($name ?? $wireModel);
 @endphp
 
-@if ($name)
-    <div {{ $attributes->class('w-fit')->except('wire:model') }}
-        x-data
-        x-on:click="$dispatch('close-modal-{{ $name }}')" data-modal-close>
+<?php if ($name): ?>
+    <div {{ $attributes->class('[:where(&)]:w-fit')->except('wire:model') }}
+        x-data x-on:click="$dispatch('close-modal-{{ $name }}')" data-modal-close>
         {{ $slot }}
     </div>
-@else
-    <div {{ $attributes->class('w-fit')->except('wire:model') }}
+<?php else: ?>
+    <div {{ $attributes->class('[:where(&)]:w-fit')->except('wire:model') }}
         x-on:click.stop="isModalOpen = false" data-modal-close>
         {{ $slot }}
     </div>
-@endif
+<?php endif; ?>

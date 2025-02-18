@@ -7,8 +7,7 @@
     $name = Str::kebab($name ?? $wireModel);
 @endphp
 
-<div {{ $attributes->class('w-fit')->except('wire:model') }}
-    x-data
-    x-on:click="$dispatch('open-modal-{{ $name }}')" data-modal-trigger>
+<div {{ $attributes->class('[:where(&)]:w-fit')->except('wire:model') }}
+    x-data x-on:click="$dispatch('open-modal-{{ $name }}')" data-modal-trigger>
     {{ $slot }}
 </div>

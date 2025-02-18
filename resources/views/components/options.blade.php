@@ -3,11 +3,6 @@
     'offset' => 6,
 ])
 
-@aware([
-    'position' => $position,
-    'offset' => $offset,
-])
-
 @php
     $classes = ZincUi::classes()
         ->add('z-20 p-[.3125rem] rounded-lg shadow-sm overflow-y-auto')
