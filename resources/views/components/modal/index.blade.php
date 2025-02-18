@@ -50,39 +50,38 @@
             x-show="isModalOpen"
             x-trap.inert.noscroll="isModalOpen"
             x-on:keydown.esc.stop="isModalOpen = false"
-            @if ($variant == 'default') x-transition:enter="transform ease-out duration-75"
+            @if ($variant == 'default') x-transition:enter="transform ease-out duration-100"
                 x-transition:enter-start="translate-y-5 opacity-90"
                 x-transition:enter-end="translate-y-0 opacity-100"
-                x-transition:leave="transform ease-in duration-75"
+                x-transition:leave="transform ease-in duration-100"
                 x-transition:leave-start="translate-y-0 opacity-100"
-                x-transition:leave-end="translate-y-5 opacity-0"
-            @elseif($variant == 'flyout')
-                @if ($position == 'left')
-                    x-transition:enter="transform ease-out duration-75"
+                x-transition:leave-end="translate-y-5 opacity-0" @endif
+            @if ($variant == 'flyout') @if ($position == 'left')
+                    x-transition:enter="transform ease-out duration-100"
                     x-transition:enter-start="-translate-x-full opacity-0"
                     x-transition:enter-end="translate-x-0 opacity-100"
-                    x-transition:leave="transform ease-in duration-75"
+                    x-transition:leave="transform ease-in duration-100"
                     x-transition:leave-start="translate-x-0 opacity-100"
                     x-transition:leave-end="-translate-x-full opacity-0"
                 @elseif($position == 'right')
-                    x-transition:enter="transform ease-out duration-75"
+                    x-transition:enter="transform ease-out duration-100"
                     x-transition:enter-start="translate-x-full opacity-0"
                     x-transition:enter-end="translate-x-0 opacity-100"
-                    x-transition:leave="transform ease-in duration-75"
+                    x-transition:leave="transform ease-in duration-100"
                     x-transition:leave-start="translate-x-0 opacity-100"
                     x-transition:leave-end="translate-x-full opacity-0"
                 @elseif($position == 'top')
-                    x-transition:enter="transform ease-out duration-75"
+                    x-transition:enter="transform ease-out duration-100"
                     x-transition:enter-start="-translate-y-full opacity-0"
                     x-transition:enter-end="translate-y-0 opacity-100"
-                    x-transition:leave="transform ease-in duration-75"
+                    x-transition:leave="transform ease-in duration-100"
                     x-transition:leave-start="translate-y-0 opacity-100"
                     x-transition:leave-end="-translate-y-full opacity-0"
                 @elseif($position == 'bottom')
-                    x-transition:enter="transform ease-out duration-75"
+                    x-transition:enter="transform ease-out duration-100"
                     x-transition:enter-start="translate-y-full opacity-0"
                     x-transition:enter-end="translate-y-0 opacity-100"
-                    x-transition:leave="transform ease-in duration-75"
+                    x-transition:leave="transform ease-in duration-100"
                     x-transition:leave-start="translate-y-0 opacity-100"
                     x-transition:leave-end="translate-y-full opacity-0" @endif
             @endif
