@@ -104,12 +104,12 @@
 
                 <button type="button" {{ $attributes->class($classes) }} >
                     <?php if ($multiple): ?>
-                        <span class="truncate flex gap-2 text-left flex-1 text-zinc-400" x-bind:class="selectedOptions.length > 0 ? 'text-current' : 'text-zinc-400'">
+                        <span class="truncate flex gap-2 text-left flex-1" x-bind:class="selectedOptions.length > 0 ? 'text-current' : 'text-zinc-400'">
                             <span
                                 x-text="selectedOptions.length > 1 ? `${selectedOptions.length} {{ $selectedSuffix }}` : selectedOptions.length === 1 ? $root.querySelector(`[data-option][value='${selectedOptions[0]}']`)?.textContent.trim() ?? '{{ $placeholder }}' : '{{ $placeholder }}'"></span>
                         </span>
                     <?php else: ?>
-                        <span class="truncate flex gap-2 text-left flex-1 text-zinc-400" x-bind:class="selectedOption !== null ? 'text-current' : 'text-zinc-400'">
+                        <span class="truncate flex gap-2 text-left flex-1" x-bind:class="selectedOption !== null && selectedOption !== '' ? 'text-current' : 'text-zinc-400'">
                             <span x-text="selectedOption ? $root.querySelector(`[data-option][value='${selectedOption}']`)?.textContent.trim() ?? '{{ $placeholder }}' : '{{ $placeholder }}'"></span>
                         </span>
                     <?php endif; ?>
@@ -125,7 +125,6 @@
                     </div>
                 <?php endif; ?>
             </div>
-
 
             <x-options>
                 {{ $slot }}
