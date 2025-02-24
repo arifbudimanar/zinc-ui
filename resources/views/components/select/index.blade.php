@@ -90,41 +90,42 @@
     <?php endif; ?>
 
     <?php if ($variant == 'listbox'): ?>
-        <x-custom-select {{ $attributes->class('group relative block w-full') }} data-select>
-            <?php if (is_string($iconLeading)): ?>
-                <div class="{{ $iconLeadingClasses }}">
-                    <x-icon :name="$iconLeading" class="ml-2 size-5 shrink-0" />
-                </div>
-            <?php elseif($iconLeading): ?>
-                <div class="{{ $iconLeadingClasses }}">
-                    {{ $iconLeading }}
-                </div>
-            <?php endif; ?>
+        <x-custom-select {{ $attributes->class('[:where(&)]:w-full') }} data-select>
+            <div class="relative" data-control data-group-target data-select-button>
+                <?php if (is_string($iconLeading)): ?>
+                    <div class="{{ $iconLeadingClasses }}">
+                        <x-icon :name="$iconLeading" class="ml-2 size-5 shrink-0" />
+                    </div>
+                <?php elseif($iconLeading): ?>
+                    <div class="{{ $iconLeadingClasses }}">
+                        {{ $iconLeading }}
+                    </div>
+                <?php endif; ?>
 
-            <?php if ($multiple): ?>
-                <button type="button" {{ $attributes->class($classes) }} data-control data-group-target data-select-button>
-                    <span class="truncate flex gap-2 text-left flex-1">
-                        <span
-                            x-text="selectedOptions.length > 1 ? `${selectedOptions.length} {{ $selectedSuffix }}` : selectedOptions.length === 1 ? $root.querySelector(`[data-option][value='${selectedOptions[0]}']`)?.textContent.trim() ?? '{{ $placeholder }}' : '{{ $placeholder }}'"></span>
-                    </span>
+                <button type="button" {{ $attributes->class($classes) }} >
+                    <?php if ($multiple): ?>
+                        <span class="truncate flex gap-2 text-left flex-1 text-zinc-400" x-bind:class="selectedOptions.length > 0 ? 'text-current' : 'text-zinc-400'">
+                            <span
+                                x-text="selectedOptions.length > 1 ? `${selectedOptions.length} {{ $selectedSuffix }}` : selectedOptions.length === 1 ? $root.querySelector(`[data-option][value='${selectedOptions[0]}']`)?.textContent.trim() ?? '{{ $placeholder }}' : '{{ $placeholder }}'"></span>
+                        </span>
+                    <?php else: ?>
+                        <span class="truncate flex gap-2 text-left flex-1 text-zinc-400" x-bind:class="selectedOption !== null ? 'text-current' : 'text-zinc-400'">
+                            <span x-text="selectedOption ? $root.querySelector(`[data-option][value='${selectedOption}']`)?.textContent.trim() ?? '{{ $placeholder }}' : '{{ $placeholder }}'"></span>
+                        </span>
+                    <?php endif; ?>
                 </button>
-            <?php else: ?>
-                <button type="button" {{ $attributes->class($classes) }} data-control data-group-target data-select-button>
-                    <span class="truncate flex gap-2 text-left flex-1">
-                        <span x-text="selectedOption ? $root.querySelector(`[data-option][value='${selectedOption}']`)?.textContent.trim() ?? '{{ $placeholder }}' : '{{ $placeholder }}'"></span>
-                    </span>
-                </button>
-            <?php endif; ?>
 
-            <?php if (is_string($iconTrailing)): ?>
-                <div class="{{ $iconTrailingClasses }}">
-                    <x-icon :name="$iconTrailing" class="mr-2 size-5 shrink-0" />
-                </div>
-            <?php elseif($iconTrailing): ?>
-                <div class="{{ $iconTrailingClasses }}">
-                    {{ $iconTrailing }}
-                </div>
-            <?php endif; ?>
+                <?php if (is_string($iconTrailing)): ?>
+                    <div class="{{ $iconTrailingClasses }}">
+                        <x-icon :name="$iconTrailing" class="mr-2 size-5 shrink-0" />
+                    </div>
+                <?php elseif($iconTrailing): ?>
+                    <div class="{{ $iconTrailingClasses }}">
+                        {{ $iconTrailing }}
+                    </div>
+                <?php endif; ?>
+            </div>
+
 
             <x-options>
                 {{ $slot }}
