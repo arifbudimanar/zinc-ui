@@ -41,7 +41,7 @@
         ->add(
             // Shadow ...
             match ($variant) {
-                'outline' => 'shadow-sm dark:shadow-none',
+                'outline' => 'shadow-xs dark:shadow-none',
                 'filled' => 'dark:shadow-none',
             },
         )

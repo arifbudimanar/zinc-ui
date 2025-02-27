@@ -4,7 +4,7 @@
         ->add('mt-px size-[1.125rem] rounded-[0.3rem] outline-offset-2')
         ->add('bg-white dark:bg-white/10 peer-checked:bg-zinc-800 dark:peer-checked:bg-white')
         ->add('border border-zinc-300 dark:border-white/10 peer-checked:border-transparent')
-        ->add('shadow-sm disabled:shadow-none peer-checked:shadow-none')
+        ->add('shadow-xs disabled:shadow-none peer-checked:shadow-none')
         ->add('peer-checked:[&_[data-indicator]]:block peer-disabled:opacity-50');
 @endphp
 

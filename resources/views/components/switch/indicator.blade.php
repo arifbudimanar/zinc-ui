@@ -4,7 +4,7 @@
         ->add('h-5 w-8 rounded-full outline-offset-2')
         ->add('bg-zinc-800/15 dark:bg-transparent peer-checked:bg-black dark:peer-checked:bg-white')
         ->add('dark:border border-zinc-300 dark:border-white/20 peer-checked:border-0')
-        ->add('shadow-sm dark:shadow-none disabled:shadow-none')
+        ->add('shadow-xs dark:shadow-none disabled:shadow-none')
         ->add('peer-checked:[&_[data-indicator]]:translate-x-3 peer-checked:dark:[&_[data-indicator]]:bg-black peer-disabled:opacity-50');
 @endphp
 

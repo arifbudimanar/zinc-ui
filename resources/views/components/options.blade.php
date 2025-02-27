@@ -5,7 +5,7 @@
 
 @php
     $classes = ZincUi::classes()
-        ->add('z-20 p-[.3125rem] rounded-lg shadow-sm overflow-y-auto')
+        ->add('z-20 p-[.3125rem] rounded-lg shadow-xs overflow-y-auto')
         ->add('border border-zinc-200 dark:border-zinc-600')
         ->add('bg-white dark:bg-zinc-700')
         ->add('[:where(&)]:min-w-48 [:where(&)]:w-full [:where(&)]:max-h-[20rem]');

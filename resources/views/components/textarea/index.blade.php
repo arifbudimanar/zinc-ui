@@ -34,7 +34,7 @@
         ->add(
             // Shadow & Border ...
             match ($variant) {
-                'outline' => 'shadow-sm dark:shadow-none border-zinc-200 dark:border-white/10 border-b-zinc-300/80',
+                'outline' => 'shadow-xs dark:shadow-none border-zinc-200 dark:border-white/10 border-b-zinc-300/80',
                 'filled' => 'shadow-none dark:shadow-none border-0',
             },
         )

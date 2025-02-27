@@ -12,7 +12,7 @@
     }
 
     $classes = ZincUi::classes()
-        ->add('flex items-center px-2 py-1.5 w-full focus:outline-none rounded-md disabled:opacity-50')
+        ->add('flex items-center px-2 py-1.5 w-full focus:outline-hidden rounded-md disabled:opacity-50')
         ->add('text-left text-sm font-medium text-zinc-800 dark:text-white')
         ->add(
             match ($variant) {
@@ -25,24 +25,24 @@
 
 <x-button-or-link :attributes="$attributes->class($classes)" data-menu-item :data-menu-item-has-icon="!!$icon">
     <?php if (is_string($icon) && $icon !== ''): ?>
-        <x-icon :$icon class="mr-2 size-5 shrink-0" data-menu-item-icon />
+    <x-icon :$icon class="mr-2 size-5 shrink-0" data-menu-item-icon />
     <?php elseif ($icon == null): ?>
-        <div class="hidden w-7 [[data-menu]:has(>[data-menu-item-has-icon])_&]:block"></div>
-   <?php else: ?>
-        {{ $icon }}
+    <div class="hidden w-7 [[data-menu]:has(>[data-menu-item-has-icon])_&]:block"></div>
+    <?php else: ?>
+    {{ $icon }}
     <?php endif; ?>
-    
+
     {{ $label ?? $slot }}
 
     <?php if (is_string($suffix) && $suffix != ''): ?>
-        <div class="ml-auto">
-            <x-kbd class="ml-2 hidden opacity-50 lg:block">
-                {{ $suffix }}
-            </x-kbd>
-        </div>
-   <?php else: ?>
-        <div class="ml-auto">
+    <div class="ml-auto">
+        <x-kbd class="ml-2 hidden opacity-50 lg:block">
             {{ $suffix }}
-        </div>
+        </x-kbd>
+    </div>
+    <?php else: ?>
+    <div class="ml-auto">
+        {{ $suffix }}
+    </div>
     <?php endif; ?>
 </x-button-or-link>

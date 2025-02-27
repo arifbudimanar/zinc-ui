@@ -60,8 +60,8 @@
                 'primary' => 'shadow-[inset_0px_1px_theme(colors.zinc.900),inset_0px_2px_theme(colors.white/.15)] dark:shadow-none',
                 'filled' => '',
                 'outline' => [
-                    'base' => 'shadow-sm',
-                    'sm' => 'shadow-sm',
+                    'base' => 'shadow-xs',
+                    'sm' => 'shadow-xs',
                     'xs' => 'shadow-none',
                 ][$size],
                 'danger' => 'shadow-[inset_0px_1px_theme(colors.red.500),inset_0px_2px_theme(colors.white/.15)] dark:shadow-none',

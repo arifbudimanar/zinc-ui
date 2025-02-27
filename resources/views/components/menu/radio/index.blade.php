@@ -22,7 +22,7 @@
     $name ??= $attributes->whereStartsWith('wire:model')->first();
 
     $classes = ZincUi::classes()
-        ->add('group/menu-checkbox flex items-center px-2 py-1.5 w-full focus:outline-none')
+        ->add('group/menu-checkbox flex items-center px-2 py-1.5 w-full focus:outline-hidden')
         ->add('rounded-md')
         ->add('cursor-pointer')
         ->add('text-left text-sm font-medium')
@@ -46,11 +46,11 @@
     <div class="w-7 peer-checked:[&_[data-menu-radio-indicator]]:block">
         <div class="hidden" data-menu-radio-indicator>
             <?php if (is_string($icon) && $icon !== ''): ?>
-                <x-icon :$icon class="size-5 shrink-0" data-menu-radio-icon />
+            <x-icon :$icon class="size-5 shrink-0" data-menu-radio-icon />
             <?php elseif ($icon == null): ?>
-                <x-icon icon="o-check" class="size-5 shrink-0" data-menu-radio-icon />
+            <x-icon icon="o-check" class="size-5 shrink-0" data-menu-radio-icon />
             <?php else: ?>
-                {{ $icon }}
+            {{ $icon }}
             <?php endif; ?>
         </div>
     </div>
@@ -58,14 +58,14 @@
     {{ $label ?? $slot }}
 
     <?php if (is_string($suffix) && $suffix != ''): ?>
-        <div class="ml-auto">
-            <x-kbd class="ml-2 hidden opacity-50 lg:block">
-                {{ $suffix }}
-            </x-kbd>
-        </div>
-    <?php else: ?>
-        <div class="ml-auto">
+    <div class="ml-auto">
+        <x-kbd class="ml-2 hidden opacity-50 lg:block">
             {{ $suffix }}
-        </div>
+        </x-kbd>
+    </div>
+    <?php else: ?>
+    <div class="ml-auto">
+        {{ $suffix }}
+    </div>
     <?php endif; ?>
 </div>
