@@ -41,6 +41,15 @@
                 window.dispatchEvent(new Event('storage'))
             }
         },
+        toggleTheme() {
+            if (this.theme === 'dark') {
+                this.systemMode()
+            } else if (this.theme === 'light') {
+                this.darkMode()
+            } else {
+                this.lightMode()
+            }
+        }
     }">
     <?php if ($variant === 'header'): ?>
         <x-dropdown id="dropdown-theme-switcher-desktop" position="bottom-end" {{ $attributes }}>
@@ -107,10 +116,19 @@
                         <x-icon name="s-device-phone-mobile" class="mr-2 shrink-0 size-5 md:hidden lg:hidden"
                             data-navmenu-icon />
                     </x-slot:icon>
-                    
+
                     {{ __('System Preference') }}
                 </x-navmenu.item>
             </x-navmenu>
         </x-dropdown>
+    <?php elseif ($variant === 'simple'): ?>
+        <x-tooltip content="{{ __('Togle Theme Preferences') }}" {{ $attributes }}>
+            <x-button variant="subtle" size="sm" x-on:click="toggleTheme()" {{ $attributes }}>
+                <x-slot:icon>
+                    <x-icon name="o-moon" class="hidden size-5 dark:flex" />
+                    <x-icon name="o-sun" class="flex size-5 dark:hidden" />
+                </x-slot:icon>
+            </x-button>
+        </x-tooltip>
     <?php endif; ?>
 </div>
