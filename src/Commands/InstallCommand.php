@@ -176,7 +176,7 @@ class InstallCommand extends Command
     {
         $filePath = resource_path('css/app.css');
 
-        if (!File::exists($filePath)) {
+        if (! File::exists($filePath)) {
             return;
         }
 
@@ -190,7 +190,7 @@ class InstallCommand extends Command
         $updatedContent = preg_replace_callback(
             '/(@theme\s*{[^}]*--font-sans:\s*)([^;}]+)(;[^}]*})/s',
             function ($matches) {
-                return $matches[1] . "'Inter', " . $matches[2] . $matches[3];
+                return $matches[1]."'Inter', ".$matches[2].$matches[3];
             },
             $fileContent
         );
