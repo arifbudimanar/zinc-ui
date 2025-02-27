@@ -20,7 +20,7 @@
     $classes = ZincUi::classes()
         ->add('relative items-center font-medium justify-center gap-2 whitespace-nowrap shrink-0')
         ->add('disabled:opacity-75 dark:disabled:opacity-75 disabled:cursor-default disabled:pointer-events-none')
-        ->add($inset ? 'flex' : 'inline-flex')
+        ->add($inset ? '[:where(&)]:flex' : '[:where(&)]:inline-flex')
         ->add(
             // Background color...
             match ($variant) {

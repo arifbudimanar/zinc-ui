@@ -2,7 +2,7 @@
 
 @php
     $classes = ZincUi::classes()
-        ->add('inline text-inherit font-medium')
+        ->add('[:where(&)]:inline text-inherit font-medium')
         ->add(
             match ($variant) {
                 'default' => 'text-zinc-800 dark:text-white underline underline-offset-[6px] decoration-zinc-800/20 dark:decoration-white/20 hover:decoration-current dark:hover:decoration-current',

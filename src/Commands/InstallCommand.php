@@ -22,8 +22,9 @@ class InstallCommand extends Command
         $this->handleLivewire();
         $this->handleUserModel();
         $this->handleAppCss();
+        $this->handleFont();
         $this->handleAppJs();
-        $this->handleTailwindConfig();
+        // $this->handleTailwindConfig();
         $this->handleBrandLogo();
         $this->handleNodePackages();
         $this->handleErrorPage();
@@ -152,10 +153,8 @@ class InstallCommand extends Command
         $this->comment('Update NPM Package ...');
         $this->updateNodePackages(function ($packages) {
             return [
-                '@tailwindcss/forms' => '^0.5.2',
-                'autoprefixer' => '^10.4.2',
-                'postcss' => '^8.4.31',
-                'tailwindcss' => '^3.1.0',
+                '@tailwindcss/forms' => '^0.5.10',
+                'tailwindcss' => '^4.0.0',
                 '@marcreichel/alpine-autosize' => '^1.3.3',
             ] + $packages;
         });
@@ -173,10 +172,38 @@ class InstallCommand extends Command
         }
     }
 
+    public function handleFont()
+    {
+        $filePath = resource_path('css/app.css');
+
+        if (!File::exists($filePath)) {
+            return;
+        }
+
+        $fileContent = File::get($filePath);
+
+        if (Str::contains($fileContent, "'Inter'")) {
+            return;
+        }
+
+        // Replace the font definition inside @theme block
+        $updatedContent = preg_replace_callback(
+            '/(@theme\s*{[^}]*--font-sans:\s*)([^;}]+)(;[^}]*})/s',
+            function ($matches) {
+                return $matches[1] . "'Inter', " . $matches[2] . $matches[3];
+            },
+            $fileContent
+        );
+
+        File::put($filePath, $updatedContent);
+    }
+
     public function handleAppCss()
     {
         $filePath = resource_path('css/app.css');
         $newStyles = <<<'EOT'
+
+        @source '../../vendor/arifbudimanar/zinc-ui/resources/views/**/*.blade.php';
 
         @layer utilities {
             /* Hide scrollbar for Chrome, Safari and Opera */
@@ -376,47 +403,6 @@ class InstallCommand extends Command
             }
         }
 
-    }
-
-    public function handleTailwindConfig()
-    {
-        $filePath = base_path('tailwind.config.js');
-
-        // Content to be added or updated
-        $newConfig = <<<'EOT'
-    import defaultTheme from 'tailwindcss/defaultTheme';
-
-    /** @type {import('tailwindcss').Config} */
-    export default {
-        darkMode: 'selector',
-        content: [
-            './vendor/arifbudimanar/zinc-ui/resources/views/**/*.blade.php',
-            './vendor/laravel/framework/src/Illuminate/Pagination/resources/views/*.blade.php',
-            './storage/framework/views/*.php',
-            './resources/**/*.blade.php',
-            './resources/**/*.js',
-            './resources/**/*.vue',
-        ],
-        theme: {
-            extend: {
-                fontFamily: {
-                    sans: ['Inter', ...defaultTheme.fontFamily.sans],
-                    mono: ['JetBrains Mono', ...defaultTheme.fontFamily.mono],
-                },
-            },
-        },
-        plugins: [],
-    };
-
-    EOT;
-
-        // Ensure the file exists
-        if (File::exists($filePath)) {
-            File::put($filePath, $newConfig);
-        } else {
-            // If the file doesn't exist, create it with the new configuration
-            File::put($filePath, $newConfig);
-        }
     }
 
     public function handleBrandLogo()
