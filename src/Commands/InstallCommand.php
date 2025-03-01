@@ -176,7 +176,7 @@ class InstallCommand extends Command
     {
         $filePath = resource_path('css/app.css');
 
-        if (!File::exists($filePath)) {
+        if (! File::exists($filePath)) {
             return;
         }
 
@@ -191,7 +191,6 @@ class InstallCommand extends Command
             File::put($filePath, $updatedContent);
         }
     }
-
 
     public function handleAppCss()
     {
