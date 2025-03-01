@@ -176,33 +176,27 @@ class InstallCommand extends Command
     {
         $filePath = resource_path('css/app.css');
 
-        if (! File::exists($filePath)) {
+        if (!File::exists($filePath)) {
             return;
         }
 
         $fileContent = File::get($filePath);
 
-        if (Str::contains($fileContent, "'Inter'")) {
-            return;
+        $pattern = '/@theme\s*{\s*--font-sans:.*?;\s*}/s';
+        $replacement = "@theme {\n    --font-sans: \"Inter\", \"Instrument Sans\", ui-sans-serif, system-ui,\n        sans-serif, \"Apple Color Emoji\", \"Segoe UI Emoji\", \"Segoe UI Symbol\",\n        \"Noto Color Emoji\";\n    --font-mono: \"JetBrains Mono\", ui-monospace, SFMono-Regular, Menlo, Monaco,\n        Consolas, \"Liberation Mono\", \"Courier New\", monospace;\n}\n";
+
+        $updatedContent = preg_replace($pattern, $replacement, $fileContent);
+
+        if ($updatedContent !== null && $updatedContent !== $fileContent) {
+            File::put($filePath, $updatedContent);
         }
-
-        // Replace the font definition inside @theme block
-        $updatedContent = preg_replace_callback(
-            '/(@theme\s*{[^}]*--font-sans:\s*)([^;}]+)(;[^}]*})/s',
-            function ($matches) {
-                return $matches[1]."'Inter', ".$matches[2].$matches[3];
-            },
-            $fileContent
-        );
-
-        File::put($filePath, $updatedContent);
     }
+
 
     public function handleAppCss()
     {
         $filePath = resource_path('css/app.css');
         $newStyles = <<<'EOT'
-
         @source '../../vendor/arifbudimanar/zinc-ui/resources/views/**/*.blade.php';
 
         @layer utilities {
