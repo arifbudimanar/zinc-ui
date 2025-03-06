@@ -107,11 +107,11 @@
 
             <?php if ($closeable): ?>
                 <?php if ($variant == 'flyout'): ?>
-                    <x-modal.close hidden class="absolute top-0 right-0 mt-4 mr-4 lg:mt-6 lg:mr-6 [&[hidden]]:block">
+                    <x-modal.close class="absolute top-0 right-0 mt-4 mr-4 lg:mt-6 lg:mr-6">
                         <x-button variant="ghost" size="sm" icon="o-x-mark" />
                     </x-modal.close>
                 <?php else: ?>
-                    <x-modal.close hidden class="absolute top-0 right-0 mt-4 mr-4 [&[hidden]]:block">
+                    <x-modal.close class="absolute top-0 right-0 mt-4 mr-4">
                         <x-button variant="ghost" size="sm" icon="o-x-mark" />
                     </x-modal.close>
                 <?php endif; ?>
