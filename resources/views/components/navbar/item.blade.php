@@ -16,7 +16,7 @@
                 ? 'text-zinc-800 dark:text-white hover:text-zinc-800 hover:dark:text-white hover:bg-zinc-100 hover:dark:bg-white/10'
                 : 'text-zinc-500 dark:text-zinc-200 hover:text-zinc-800 hover:dark:text-white hover:bg-zinc-100 hover:dark:bg-white/10',
         )
-        ->add($active ? 'after:absolute after:-bottom-3 after:inset-x-0 after:h-[2px] after:bg-zinc-800 after:dark:bg-white' : '');
+        ->add($active ? 'after:absolute after:-bottom-3 after:inset-x-0 after:h-[2px] after:bg-zinc-800 dark:after:bg-white' : '');
 @endphp
 
 <x-button-or-link {{ $attributes->class($classes) }} data-navbar-item>
