@@ -48,7 +48,7 @@
             <x-separator variant="subtle" vertical class="hidden mx-2 my-2 sm:block lg:hidden xl:block" />
 
             <x-theme-switcher variant="header" class="hidden lg:block" />
-            <x-button variant="subtle" size="sm" icon="o-bell" tooltip="{{ __('Notifications') }}" />
+            <x-button variant="subtle" size="sm" icon="o-bell" tooltip="{{ __('Notification') }}" />
         </x-navbar>
 
         {{-- Auth --}}

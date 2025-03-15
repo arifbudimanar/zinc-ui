@@ -55,7 +55,7 @@
         <x-dropdown id="dropdown-theme-switcher-desktop" position="bottom-end" {{ $attributes }}>
             <x-tooltip position="bottom" offset="6">
                 <x-tooltip.content class="whitespace-nowrap">
-                    {{ __('Theme Preferences') }}
+                    {{ __('Theme') }}
                 </x-tooltip.content>
 
                 <x-button variant="subtle" size="sm">
@@ -67,11 +67,11 @@
             </x-tooltip>
             <x-navmenu>
                 <x-navmenu.item icon="s-moon" kbd="Alt+M" x-on:click="darkMode()" class="whitespace-nowrap">
-                    {{ __('Dark Mode') }}
+                    {{ __('Dark mode') }}
                 </x-navmenu.item>
 
                 <x-navmenu.item icon="s-sun" kbd="Alt+L" x-on:click="lightMode()" class="whitespace-nowrap">
-                    {{ __('Light Mode') }}
+                    {{ __('Light mode') }}
                 </x-navmenu.item>
 
                 <x-navmenu.item kbd="Alt+P" x-on:click="systemMode()" class="whitespace-nowrap">
@@ -83,7 +83,7 @@
                         <x-icon name="s-device-phone-mobile" class="mr-2 shrink-0 size-5 md:hidden lg:hidden"
                             data-navmenu-icon />
                     </x-slot:icon>
-                    {{ __('System Preference') }}
+                    {{ __('System preference') }}
                 </x-navmenu.item>
             </x-navmenu>
         </x-dropdown>
@@ -95,16 +95,16 @@
                     <x-icon name="o-moon" class="hidden size-5 dark:flex" />
                     <x-icon name="o-sun" class="flex size-5 dark:hidden" />
                 </x-slot:icon>
-                {{ __('Theme Preferences') }}
+                {{ __('Theme') }}
             </x-navlist.item>
 
             <x-navmenu>
                 <x-navmenu.item icon="s-moon" x-on:click="darkMode()" kbd="Alt+M">
-                    {{ __('Dark Mode') }}
+                    {{ __('Dark mode') }}
                 </x-navmenu.item>
 
                 <x-navmenu.item icon="s-sun" x-on:click="lightMode()" kbd="Alt+L">
-                    {{ __('Light Mode') }}
+                    {{ __('Light mode') }}
                 </x-navmenu.item>
 
                 <x-navmenu.item x-on:click="systemMode()" kbd="Alt+P">
@@ -117,12 +117,12 @@
                             data-navmenu-icon />
                     </x-slot:icon>
 
-                    {{ __('System Preference') }}
+                    {{ __('System preference') }}
                 </x-navmenu.item>
             </x-navmenu>
         </x-dropdown>
     <?php elseif ($variant === 'simple'): ?>
-        <x-tooltip content="{{ __('Togle Theme Preferences') }}" {{ $attributes }}>
+        <x-tooltip content="{{ __('Toggle theme') }}" {{ $attributes }}>
             <x-button variant="subtle" size="sm" x-on:click="toggleTheme()" {{ $attributes }}>
                 <x-slot:icon>
                     <x-icon name="o-moon" class="hidden size-5 dark:flex" />

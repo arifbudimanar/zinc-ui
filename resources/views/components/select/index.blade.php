@@ -20,7 +20,7 @@
     $error = $attributes->whereStartsWith('wire:model')->first() ?? ($attributes->get('name') ?? null);
     $badge ??= $attributes->has('required') ? __('Required') : null;
     $iconLeading = $icon ??= $iconLeading;
-    $placeholder = $placeholder ?? ($attributes->has('multiple') ? __('Select options...') : __('Select an option...'));
+    $placeholder = $placeholder ?? ($attributes->has('multiple') ? __('Select options') : __('Select an option'));
     $wireModel = $attributes->whereStartsWith('wire:model')->first() ?? ($attributes->get('name') ?? null);
 
     $classes = ZincUi::classes()

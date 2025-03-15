@@ -22,7 +22,7 @@
 
             <x-separator variant="subtle" vertical class="hidden mx-3 my-3 sm:block lg:hidden xl:block" />
 
-            <x-button variant="subtle" size="sm" icon="o-bell" tooltip="{{ __('Notifications') }}" class="mr-1" />
+            <x-button variant="subtle" size="sm" icon="o-bell" tooltip="{{ __('Notification') }}" class="mr-1" />
 
             {{-- Auth --}}
             <x-dropdown position="bottom-end">
