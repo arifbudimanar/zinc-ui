@@ -44,10 +44,7 @@
     );
 @endphp
 
-<div
-    x-data="{
-        isModalOpen: {{ $wireModel ? '$wire.entangle(\'' . $wireModel . '\')' : 'false' }}
-    }"
+<div x-data="{ isModalOpen: {{ $wireModel ? '$wire.entangle(\'' . $wireModel . '\')' : 'false' }} }"
     x-on:open-modal-{{ $name }}.window="isModalOpen = true"
     x-on:close-modal-{{ $name }}.window="isModalOpen = false">
     <div x-show="isModalOpen" x-cloak class="{{ $modalClasses }}" data-modal>
@@ -116,6 +113,6 @@
                     </x-modal.close>
                 <?php endif; ?>
             <?php endif; ?>
-            </div>
+        </div>
     </div>
 </div>
