@@ -1,13 +1,20 @@
 @props([
     'label' => null,
+    'description' => null,
+    'badge' => null,
+    'badgeColor' => 'zinc',
+    'error' => null,
+    'variant' => 'default',
+    'name' => null,
 ])
 
-<x-field>
-    <x-label>
-        {{ $label }}
-    </x-label>
+@php
+    $badge ??= $attributes->has('required') ? __('Required') : null;
+    $error = $attributes->whereStartsWith('wire:model')->first() ?? ($attributes->get('name') ?? null);
+@endphp
 
-    <div {{ $attributes->class('[&>[data-field]]:mb-3 [&>[data-field]:has(>[data-description])]:mb-4 [&>[data-field]:last-child]:!mb-0') }} data-checkbox-group>
+<x-with-field :$label :$description :$error :$badge :$badgeColor>
+    <div {{ $attributes->class('[&>[data-field]]:mb-3 [&>[data-field]:has(>[data-description])]:mb-4 [&>[data-field]:last-child]:!mb-0')->except('wire:model') }} data-checkbox-group>
         {{ $slot }}
     </div>
-</x-field>
+</x-with-field>

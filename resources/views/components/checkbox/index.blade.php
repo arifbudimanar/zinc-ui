@@ -8,13 +8,13 @@
 ])
 
 @php
-    $id = $id ?? ($label ?? ($attributes->whereStartsWith('wire:model')->first() ?? ($attributes->get('name') ?? Str::random(8))));
-    $error = $attributes->whereStartsWith('wire:model')->first() ?? ($attributes->get('name') ?? null);
+    $id = $id ?? (Str::kebab($label) ?? ($attributes->whereStartsWith('wire:model')->first() ?? ($attributes->get('name') ?? Str::random(8))));
     $badge ??= $attributes->has('required') ? __('Required') : null;
+    $name ??= $attributes->whereStartsWith('wire:model')->first();
 @endphp
 
-<x-with-field variant="inline" :$id :$error :$label :$description :$badge :$badgeColor>
-    <input {{ $attributes->class('peer sr-only hidden')->merge(['id' => $id, 'type' => $type]) }} data-checkbox data-control />
+<x-with-field variant="inline" :$id :$label :$description :$badge :$badgeColor>
+    <input {{ $attributes->class('peer sr-only hidden')->merge(['id' => $id, 'type' => $type, 'name' => $name]) }} data-checkbox data-control />
 
     <x-checkbox.indicator />
 </x-with-field>

@@ -11,8 +11,8 @@
     {{ $slot }}
 
     <?php if ($badge != null): ?>
-    <x-badge size="sm" color="{{ $badgeColor }}" inset="top bottom" class="ml-1.5">
-        {{ $badge }}
-    </x-badge>
+        <x-badge size="sm" color="{{ $badgeColor }}" inset="top bottom" class="ml-1.5">
+            {{ $badge }}
+        </x-badge>
     <?php endif; ?>
 </label>
