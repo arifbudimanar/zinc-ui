@@ -4,6 +4,7 @@
     'dismissable' => true,
     'closeable' => true,
     'position' => 'right',
+    'autofocus' => true,
 ])
 
 @php
@@ -54,9 +55,13 @@
             <?php if ($dismissable): ?>
                 x-on:click.outside="isModalOpen = false"
             <?php endif; ?>
-
+            
             x-show="isModalOpen"
-            x-trap.inert.noscroll="isModalOpen"
+            <?php if ($autofocus): ?>
+                x-trap.inert.noscroll="isModalOpen"
+            <?php else: ?>
+                x-trap.inert.noscroll.noautofocus="isModalOpen"
+            <?php endif; ?>
             x-on:keydown.esc.stop="isModalOpen = false"
 
             <?php if ($variant == 'default'): ?>
