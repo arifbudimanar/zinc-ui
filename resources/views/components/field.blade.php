@@ -1,4 +1,6 @@
-@props(['variant' => 'default'])
+@props([
+    'variant' => 'default',
+])
 
 @php
     $classes = ZincUi::classes()
