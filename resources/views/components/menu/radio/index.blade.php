@@ -18,7 +18,7 @@
     if ($kbd) {
         $suffix = $kbd;
     }
-    $id = $id ?? ($label ?? ($attributes->whereStartsWith('wire:model')->first() ?? ($attributes->get('name') ?? Str::random(8))));
+    $id = $id ?? (Str::kebab($label) ?? ($attributes->whereStartsWith('wire:model')->first() ?? ($attributes->get('name') ?? Str::random(8))));
     $name ??= $attributes->whereStartsWith('wire:model')->first();
 
     $classes = ZincUi::classes()
@@ -46,11 +46,11 @@
     <div class="w-7 peer-checked:[&_[data-menu-radio-indicator]]:block">
         <div class="hidden" data-menu-radio-indicator>
             <?php if (is_string($icon) && $icon !== ''): ?>
-            <x-icon :$icon class="size-5 shrink-0" data-menu-radio-icon />
+                <x-icon :$icon class="size-5 shrink-0" data-menu-radio-icon />
             <?php elseif ($icon == null): ?>
-            <x-icon icon="o-check" class="size-5 shrink-0" data-menu-radio-icon />
+                <x-icon icon="o-check" class="size-5 shrink-0" data-menu-radio-icon />
             <?php else: ?>
-            {{ $icon }}
+                {{ $icon }}
             <?php endif; ?>
         </div>
     </div>
@@ -58,14 +58,14 @@
     {{ $label ?? $slot }}
 
     <?php if (is_string($suffix) && $suffix != ''): ?>
-    <div class="ml-auto">
-        <x-kbd class="ml-2 hidden opacity-50 lg:block">
-            {{ $suffix }}
-        </x-kbd>
-    </div>
+        <div class="ml-auto">
+            <x-kbd class="ml-2 hidden opacity-50 lg:block">
+                {{ $suffix }}
+            </x-kbd>
+        </div>
     <?php else: ?>
-    <div class="ml-auto">
-        {{ $suffix }}
-    </div>
+        <div class="ml-auto">
+            {{ $suffix }}
+        </div>
     <?php endif; ?>
 </div>

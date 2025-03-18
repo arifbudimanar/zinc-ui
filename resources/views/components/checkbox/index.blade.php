@@ -13,7 +13,7 @@
     $name ??= $attributes->whereStartsWith('wire:model')->first();
 @endphp
 
-<x-with-field variant="inline" :$id :$label :$description :$badge :$badgeColor>
+<x-with-inline-field :$id :$label :$description :$badge :$badgeColor>
     <input {{ $attributes->class('peer sr-only hidden')->merge(['id' => $id, 'type' => $type, 'name' => $name]) }} data-checkbox data-control />
 
     <x-checkbox.indicator />

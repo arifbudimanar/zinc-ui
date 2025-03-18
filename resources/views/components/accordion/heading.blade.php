@@ -13,11 +13,7 @@
 
 <button type="button" {{ $attributes->class($classes) }}
     x-on:click="isAccordionOpen = !isAccordionOpen" data-accordion-heading>
-    <span class="flex-1">
-        {{ $slot }}
-    </span>
-    <x-icon name="o-chevron-down" :attributes="$attributes->class($iconClasses)->merge(['x-cloak' => $expanded])"
-        x-show="!isAccordionOpen" />
-    <x-icon name="o-chevron-up" :attributes="$attributes->class($iconClasses)->merge(['x-cloak' => !$expanded])"
-        x-show="isAccordionOpen" />
+    <span class="flex-1">{{ $slot }}</span>
+    <x-icon name="o-chevron-down" :attributes="$attributes->class($iconClasses)->merge(['x-cloak' => $expanded])" x-show="!isAccordionOpen" />
+    <x-icon name="o-chevron-up" :attributes="$attributes->class($iconClasses)->merge(['x-cloak' => !$expanded])" x-show="isAccordionOpen" />
 </button>
