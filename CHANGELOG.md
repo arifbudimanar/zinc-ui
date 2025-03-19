@@ -2,6 +2,12 @@
 
 All notable changes to `zinc-ui` will be documented in this file.
 
+## v1.0.1 - 2025-03-19
+
+**Full Changelog**: https://github.com/arifbudimanar/zinc-ui/compare/v0.1-alpha.91...v1.0.1
+
+Fix color scheme
+
 ## v1.0.0 - 2025-03-19
 
 **Full Changelog**: https://github.com/arifbudimanar/zinc-ui/compare/v0.1-alpha.91...v1.0.0
