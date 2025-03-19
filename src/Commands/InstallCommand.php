@@ -221,16 +221,6 @@ class InstallCommand extends Command
             display: none !important;
         }
 
-        /* Light mode color scheme */
-        .light {
-            color-scheme: light;
-        }
-
-        /* Dark mode color scheme */
-        .dark {
-            color-scheme: dark;
-        }
-
         *:has(> [data-main]) {
             display: grid;
             grid-area: body;

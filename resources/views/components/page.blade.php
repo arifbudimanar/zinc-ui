@@ -30,7 +30,7 @@
     @livewireStyles
 </head>
 
-<body {{ $attributes->class('bg-white dark:bg-zinc-800 antialiased min-h-screen') }}
+<body {{ $attributes->class('bg-white dark:bg-zinc-800 antialiased min-h-screen scheme-light dark:scheme-dark') }}
     x-data="{
         isSidebarOpen: false,
         openSidebar() {
