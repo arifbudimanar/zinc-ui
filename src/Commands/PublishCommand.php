@@ -7,7 +7,7 @@ use Illuminate\Filesystem\Filesystem;
 
 class PublishCommand extends Command
 {
-    public $signature = 'zinc:publish';
+    public $signature = 'zinc:publish --components';
 
     public $description = 'Publish the Zinc UI components';
 

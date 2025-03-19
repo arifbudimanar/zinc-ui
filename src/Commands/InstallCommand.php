@@ -24,7 +24,6 @@ class InstallCommand extends Command
         $this->handleAppCss();
         $this->handleFont();
         $this->handleAppJs();
-        // $this->handleTailwindConfig();
         $this->handleBrandLogo();
         $this->handleNodePackages();
         $this->handleErrorPage();
@@ -102,10 +101,10 @@ class InstallCommand extends Command
 
     public function handleLivewire()
     {
-        // $this->comment('Install Livewire and Livewire Toaster ...');
-        // if (! $this->requireComposerPackages(['livewire/livewire:^3.5', 'masmerise/livewire-toaster:^2.6'])) {
-        //     return 1;
-        // }
+        $this->comment('Install Livewire and Livewire Toaster ...');
+        if (! $this->requireComposerPackages(['livewire/livewire:^3.6.2', 'masmerise/livewire-toaster:^2.7.0'])) {
+            return 1;
+        }
 
         $this->comment('Publish Livewire config and Livewire Toaster config ...');
         $this->runCommands(['php artisan livewire:publish --config']);
@@ -118,8 +117,8 @@ class InstallCommand extends Command
 
         // Copy layouts files
         $this->comment('Publish layouts files ...');
-        (new Filesystem)->ensureDirectoryExists(resource_path('views/layouts'));
-        (new Filesystem)->copyDirectory(__DIR__.'/../../resources/views/layouts', resource_path('views/layouts'));
+        (new Filesystem)->ensureDirectoryExists(resource_path('views/components/layouts'));
+        (new Filesystem)->copyDirectory(__DIR__.'/../../resources/views/components/layouts', resource_path('views/components/layouts'));
 
         // Copy paginate files
         $this->comment('Publish layouts files ...');
@@ -153,8 +152,9 @@ class InstallCommand extends Command
         $this->comment('Update NPM Package ...');
         $this->updateNodePackages(function ($packages) {
             return [
+                // 'tailwindcss' => '^4.0.14',
                 '@tailwindcss/forms' => '^0.5.10',
-                'tailwindcss' => '^4.0.0',
+                '@tailwindcss/typography' => '^0.5.16',
                 '@marcreichel/alpine-autosize' => '^1.3.3',
             ] + $packages;
         });
@@ -198,6 +198,9 @@ class InstallCommand extends Command
         $newStyles = <<<'EOT'
         @source '../../vendor/arifbudimanar/zinc-ui/resources/views/**/*.blade.php';
 
+        @plugin "@tailwindcss/typography";
+        @plugin "@tailwindcss/forms";
+
         @layer utilities {
             /* Hide scrollbar for Chrome, Safari and Opera */
             .scrollbar-none::-webkit-scrollbar {
@@ -208,6 +211,21 @@ class InstallCommand extends Command
                 -ms-overflow-style: none; /* IE and Edge */
                 scrollbar-width: none; /* Firefox */
             }
+        }
+
+        /* Hide element and prevent the blip on screen */
+        [x-cloak] {
+            display: none !important;
+        }
+
+        /* Light mode color scheme */
+        .light {
+            color-scheme: light;
+        }
+
+        /* Dark mode color scheme */
+        .dark {
+            color-scheme: dark;
         }
 
         *:has(> [data-main]) {
@@ -226,88 +244,6 @@ class InstallCommand extends Command
                 "sidebar header  header"
                 "sidebar main    aside"
                 "sidebar footer  aside";
-        }
-
-        /* Light mode color scheme */
-        .light {
-            color-scheme: light;
-        }
-
-        /* Dark mode color scheme */
-        .dark {
-            color-scheme: dark;
-        }
-
-        /* Hide element and prevent the blip on screen */
-        [x-cloak] {
-            display: none !important;
-        }
-
-        /* Dark theme scrollbar styles */
-        .dark ::-webkit-scrollbar {
-            width: 10px;
-            height: 10px;
-            background-color: #27272a;
-        }
-
-        .dark ::-webkit-scrollbar-thumb {
-            background-color: #71717a;
-            border-radius: 5px;
-        }
-
-        .dark ::-webkit-scrollbar-thumb:hover {
-            background-color: #a1a1aa;
-        }
-
-        /* Light theme scrollbar styles */
-        .light ::-webkit-scrollbar {
-            width: 10px;
-            height: 10px;
-            background-color: #f4f4f5;
-        }
-
-        .light ::-webkit-scrollbar-thumb {
-            background-color: #a1a1aa;
-            border-radius: 5px;
-        }
-
-        .light ::-webkit-scrollbar-thumb:hover {
-            background-color: #71717a;
-        }
-
-        /* System preference scrollbar styles */
-        @media (prefers-color-scheme: dark) {
-            :root:not(.light):not(.dark) ::-webkit-scrollbar {
-                width: 10px;
-                height: 10px;
-                background-color: #27272a;
-            }
-
-            :root:not(.light):not(.dark) ::-webkit-scrollbar-thumb {
-                background-color: #71717a;
-                border-radius: 5px;
-            }
-
-            :root:not(.light):not(.dark) ::-webkit-scrollbar-thumb:hover {
-                background-color: #a1a1aa;
-            }
-        }
-
-        @media (prefers-color-scheme: light) {
-            :root:not(.light):not(.dark) ::-webkit-scrollbar {
-                width: 10px;
-                height: 10px;
-                background-color: #f4f4f5;
-            }
-
-            :root:not(.light):not(.dark) ::-webkit-scrollbar-thumb {
-                background-color: #a1a1aa;
-                border-radius: 5px;
-            }
-
-            :root:not(.light):not(.dark) ::-webkit-scrollbar-thumb:hover {
-                background-color: #71717a;
-            }
         }
 
         EOT;
