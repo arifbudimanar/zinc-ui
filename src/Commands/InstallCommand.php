@@ -330,6 +330,9 @@ class InstallCommand extends Command
     public function handleBrandLogo()
     {
         (new Filesystem)->ensureDirectoryExists(public_path('logos'));
+        if (File::exists(public_path('/logos/brand-dark.png')) && File::exists(public_path('/logos/brand-light.png'))) {
+            return;
+        }
         (new Filesystem)->copy(__DIR__.'/../../art/brand-dark.png', public_path('/logos/brand-dark.png'));
         (new Filesystem)->copy(__DIR__.'/../../art/brand-light.png', public_path('/logos/brand-light.png'));
     }
