@@ -33,8 +33,7 @@ composer require arifbudimanar/zinc-ui
 php artisan zinc:install
 ```
 
-> It will install nececsary stuff like installing Livewire, Tailwind and other package.
-> No need to install manually, I got you.
+> This command will automatically set up everything you need, including Livewire, Tailwind, and other dependencies no manual installation required.
 
 ### Check installed version
 
@@ -98,11 +97,11 @@ composer run dev
 
 Visit http://localhost:8000 to see Zinc UI in action.
 
-## Testing
+<!-- ## Testing
 
 ```sh
 composer test
-```
+``` -->
 
 ## Changelog
 
