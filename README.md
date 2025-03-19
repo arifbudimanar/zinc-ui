@@ -21,21 +21,7 @@
 
 You can find the documentation [here](https://zinc.arifcode.dev/).
 
-## Installation
-
-> **Package Status: Alpha Stage**
-
-### Configure `composer.json`
-
-Since Zinc UI is in its Alpha version, you need to modify the composer.json file. Open the file and ensure the following lines are present:
-
-```json
-{
-    "minimum-stability": "dev"
-}
-```
-
-### Install Zinc UI
+### Installation
 
 Run the following command to add Zinc UI to your project:
 
@@ -43,21 +29,12 @@ Run the following command to add Zinc UI to your project:
 composer require arifbudimanar/zinc-ui
 ```
 
-### Set up Zinc UI
-
-After installation, initialize the package by running:
-
 ```sh
 php artisan zinc:install
 ```
 
-<!-- ### Publishing components (optional)
-
-If you want to customize the components, you can publish them using this command:
-
-```sh
-php artisan zinc:publish
-``` -->
+> It will install nececsary stuff like installing Livewire, Tailwind and other package.
+> No need to install manually, I got you.
 
 ### Check installed version
 
@@ -66,6 +43,8 @@ To check the version of Zinc UI installed, run:
 ```sh
 php artisan zinc:version
 ```
+
+## Guide
 
 ### Create a Livewire Component
 
@@ -78,7 +57,7 @@ php artisan make:livewire Home
 Update the `Home.php` file with this content:
 
 ```php
-#[Layout('layouts.sidebar-header')]
+#[Layout('components.layouts.sidebar-header')]
 #[Title('Home')]
 class Home extends Component
 {
@@ -109,7 +88,7 @@ use App\Livewire\Home;
 Route::get('/', Home::class);
 ```
 
-## Run the application
+### Run the application
 
 Start the development server and compile the assets using:
 
