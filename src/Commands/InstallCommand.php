@@ -346,14 +346,14 @@ class InstallCommand extends Command
 
         // Use a regex pattern to find the plugins section and add the build config after it
         $pattern = '/(\s*plugins\s*:\s*\[\s*laravel\s*\(\s*\{[^}]*\}\s*\)\s*,\s*tailwindcss\s*\(\s*\)\s*,?\s*\]\s*,?)/';
-        $replacement = '$1' . PHP_EOL . '    build: {' . PHP_EOL . '        cssMinify: \'lightningcss\',' . PHP_EOL . '    },';
+        $replacement = '$1'.PHP_EOL.'    build: {'.PHP_EOL.'        cssMinify: \'lightningcss\','.PHP_EOL.'    },';
 
         $updatedContent = preg_replace($pattern, $replacement, $content);
 
         // If the pattern wasn't found, try adding it at the end of the export default defineConfig section
         if ($updatedContent === $content) {
             $pattern = '/(export\s+default\s+defineConfig\s*\(\s*\{[^\}]*)\}\s*\)\s*;?\s*$/s';
-            $replacement = '$1    build: {' . PHP_EOL . '        cssMinify: \'lightningcss\',' . PHP_EOL . '    },' . PHP_EOL . '});';
+            $replacement = '$1    build: {'.PHP_EOL.'        cssMinify: \'lightningcss\','.PHP_EOL.'    },'.PHP_EOL.'});';
             $updatedContent = preg_replace($pattern, $replacement, $content);
         }
 
