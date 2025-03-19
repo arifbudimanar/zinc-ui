@@ -25,6 +25,7 @@ class InstallCommand extends Command
         $this->handleFont();
         $this->handleAppJs();
         $this->handleBrandLogo();
+        $this->handleVite();
         $this->handleNodePackages();
         $this->handleErrorPage();
 
@@ -196,6 +197,8 @@ class InstallCommand extends Command
     {
         $filePath = resource_path('css/app.css');
         $newStyles = <<<'EOT'
+        /* @custom-variant dark (&:where(.dark, .dark *)); */
+
         @source '../../vendor/arifbudimanar/zinc-ui/resources/views/**/*.blade.php';
 
         @plugin "@tailwindcss/typography";
@@ -339,5 +342,32 @@ class InstallCommand extends Command
         (new Filesystem)->ensureDirectoryExists(public_path('logos'));
         (new Filesystem)->copy(__DIR__.'/../../art/brand-dark.png', public_path('/logos/brand-dark.png'));
         (new Filesystem)->copy(__DIR__.'/../../art/brand-light.png', public_path('/logos/brand-light.png'));
+    }
+
+    public function handleVite()
+    {
+        $path = base_path('vite.config.js');
+        $content = file_get_contents($path);
+
+        // Check if the configuration already has cssMinify
+        if (strpos($content, 'cssMinify') !== false) {
+            return;
+        }
+
+        // Use a regex pattern to find the plugins section and add the build config after it
+        $pattern = '/(\s*plugins\s*:\s*\[\s*laravel\s*\(\s*\{[^}]*\}\s*\)\s*,\s*tailwindcss\s*\(\s*\)\s*,?\s*\]\s*,?)/';
+        $replacement = '$1' . PHP_EOL . '    build: {' . PHP_EOL . '        cssMinify: \'lightningcss\',' . PHP_EOL . '    },';
+
+        $updatedContent = preg_replace($pattern, $replacement, $content);
+
+        // If the pattern wasn't found, try adding it at the end of the export default defineConfig section
+        if ($updatedContent === $content) {
+            $pattern = '/(export\s+default\s+defineConfig\s*\(\s*\{[^\}]*)\}\s*\)\s*;?\s*$/s';
+            $replacement = '$1    build: {' . PHP_EOL . '        cssMinify: \'lightningcss\',' . PHP_EOL . '    },' . PHP_EOL . '});';
+            $updatedContent = preg_replace($pattern, $replacement, $content);
+        }
+
+        // Save the updated content
+        file_put_contents($path, $updatedContent);
     }
 }
