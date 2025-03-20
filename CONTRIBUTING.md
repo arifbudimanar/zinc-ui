@@ -32,7 +32,11 @@ Thank you for your interest in contributing to Zinc UI! Follow these steps to ge
     ```
 6. **Require the package in your Laravel project**:
     ```sh
-    composer install
+    composer require yourname/zinc-ui
+    ```
+    To install the package run this following command:
+    ```sh
+    php artisan zinc:install
     ```
 7. **Start contributing!**
 
@@ -52,4 +56,4 @@ Thank you for your interest in contributing to Zinc UI! Follow these steps to ge
     ```
 4. Open a pull request on GitHub.
 
-Thank you for contributing! 🎉
+Thank you for contributing!
