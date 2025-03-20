@@ -7,8 +7,10 @@ use Illuminate\Filesystem\Filesystem;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Str;
 use RuntimeException;
+use Symfony\Component\Console\Attribute\AsCommand;
 use Symfony\Component\Process\Process;
 
+#[AsCommand(name: 'zinc:install')]
 class InstallCommand extends Command
 {
     public $signature = 'zinc:install {--composer=global : Absolute path to the Composer binary which should be used to install packages}';

@@ -3,7 +3,9 @@
 namespace ArifBudimanAr\ZincUi\Commands;
 
 use Illuminate\Console\Command;
+use Symfony\Component\Console\Attribute\AsCommand;
 
+#[AsCommand(name: 'zinc:version')]
 class VersionCommand extends Command
 {
     public $signature = 'zinc:version';

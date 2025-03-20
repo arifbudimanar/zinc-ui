@@ -33,8 +33,6 @@ composer require arifbudimanar/zinc-ui
 php artisan zinc:install
 ```
 
-> This command will automatically set up everything you need, including Livewire, Tailwind, and other dependencies no manual installation required.
-
 ### Check installed version
 
 To check the version of Zinc UI installed, run:
@@ -42,6 +40,16 @@ To check the version of Zinc UI installed, run:
 ```sh
 php artisan zinc:version
 ```
+
+### Publish individual component
+
+To publish individual component, run:
+
+```sh
+php artisan zinc:publish
+```
+
+You'll be prompted to select which components to publish, use `--all` to publish everything and use `--force` to force replace published file.
 
 ## Guide
 

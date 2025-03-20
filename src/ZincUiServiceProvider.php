@@ -15,7 +15,7 @@ class ZincUiServiceProvider extends PackageServiceProvider
             ->hasCommands([
                 Commands\InstallCommand::class,
                 Commands\VersionCommand::class,
-                // Commands\PublishCommand::class,
+                Commands\PublishCommand::class,
             ]);
 
         $this->app->singleton('zincui', function () {
