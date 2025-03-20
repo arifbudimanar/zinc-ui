@@ -90,7 +90,7 @@
     <?php endif; ?>
 
     <?php if ($variant == 'listbox'): ?>
-        <x-custom-select {{ $attributes->class('[:where(&)]:w-full') }} data-select>
+        <x-select.custom {{ $attributes->class('[:where(&)]:w-full') }} data-select>
             <div class="relative" data-control data-group-target data-select-button>
                 <?php if (is_string($iconLeading)): ?>
                     <div class="{{ $iconLeadingClasses }}">
@@ -126,9 +126,9 @@
                 <?php endif; ?>
             </div>
 
-            <x-options>
+            <x-select.options>
                 {{ $slot }}
-            </x-options>
+            </x-select.options>
         </x-custom-select>
     <?php endif; ?>
 </x-with-field>
