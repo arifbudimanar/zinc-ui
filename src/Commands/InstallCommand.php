@@ -294,7 +294,7 @@ class InstallCommand extends Command
         $filePath = app_path('Models/User.php');
         $newMethods = <<<'EOT'
 
-            /*
+            /**
             * Get the avatar_url attribute.
             *
             * @return string
@@ -304,7 +304,7 @@ class InstallCommand extends Command
                 return 'https://ui-avatars.com/api/?name='.urlencode($this->name).'&color=27272a&background=00000000&format=svg';
             }
 
-            /*
+            /**
             * Get the first_name attribute.
             *
             * @return string
