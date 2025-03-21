@@ -14,17 +14,6 @@
         {{ $head }}
     @endisset
 
-    <script>
-        setThemeClass = () => {
-            const theme = localStorage.theme || (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
-            document.documentElement.classList.toggle('dark', theme === 'dark');
-            document.documentElement.classList.toggle('light', theme === 'light');
-        }
-
-        setThemeClass();
-        window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', setThemeClass);
-    </script>
-
     @stack('scripts')
     @vite(['resources/css/app.css', 'resources/js/app.js'])
     @livewireStyles

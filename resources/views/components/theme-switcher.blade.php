@@ -1,4 +1,4 @@
-@props(['variant' => 'header'])
+{{-- @props(['variant' => 'header'])
 
 <div id="theme-switcher" {{ $attributes->whereStartsWith('class') }}
     x-data="{
@@ -131,4 +131,6 @@
             </x-button>
         </x-tooltip>
     <?php endif; ?>
-</div>
+</div> --}}
+
+{{ $slot }}
