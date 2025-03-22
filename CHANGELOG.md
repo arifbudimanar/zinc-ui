@@ -2,6 +2,12 @@
 
 All notable changes to `zinc-ui` will be documented in this file.
 
+## v1.0.4 - 2025-03-22
+
+**Full Changelog**: https://github.com/arifbudimanar/zinc-ui/compare/v1.0.3...v1.0.4
+
+- Refactor install command
+
 ## v1.0.3 - 2025-03-21
 
 **Full Changelog**: https://github.com/arifbudimanar/zinc-ui/compare/v1.0.2...v1.0.3
