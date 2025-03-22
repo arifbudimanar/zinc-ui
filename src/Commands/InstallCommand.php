@@ -22,6 +22,7 @@ class InstallCommand extends Command
         $this->comment('Installing Zinc UI ...');
 
         $this->handleLivewire();
+        $this->handleErrorPage();
         $this->handleUserModel();
         $this->handleAppCss();
         $this->handleFont();
@@ -29,7 +30,6 @@ class InstallCommand extends Command
         $this->handleBrandLogo();
         $this->handleVite();
         $this->handleNodePackages();
-        $this->handleErrorPage();
 
         $this->comment('Zinc UI is installed! Love it? Star us on GitHub: https://github.com/arifbudimanar/zinc-ui');
 
@@ -114,6 +114,15 @@ class InstallCommand extends Command
         $this->runCommands(['php artisan vendor:publish --tag=toaster-config']);
         // $this->runCommands(['php artisan vendor:publish --tag=toaster-views']);
 
+        // Change livewire paginate config
+        $this->comment('Update livewire config ...');
+        $this->replaceInFile("'pagination_theme' => 'tailwind'", "'pagination_theme' => 'zinc-ui'", config_path('livewire.php'));
+
+        // Change toaster config
+        $this->comment('Update toaster config ...');
+        $this->replaceInFile("'replace' => false", "'replace' => true", config_path('toaster.php'));
+        $this->replaceInFile("'suppress' => false", "'suppress' => true", config_path('toaster.php'));
+
         // $this->comment('Copying Zinc UI component ...');
         // (new Filesystem)->ensureDirectoryExists(resource_path('views'));
         // (new Filesystem)->copyDirectory(__DIR__.'/../../resources/views', resource_path('views'));
@@ -124,17 +133,9 @@ class InstallCommand extends Command
         (new Filesystem)->copyDirectory(__DIR__.'/../../resources/views/components/layouts', resource_path('views/components/layouts'));
 
         // Copy paginate files
-        $this->comment('Publish layouts files ...');
+        $this->comment('Publish pagination files ...');
         (new Filesystem)->ensureDirectoryExists(resource_path('views/vendor/livewire'));
         (new Filesystem)->copyDirectory(__DIR__.'/../../resources/views/vendor/livewire', resource_path('views/vendor/livewire'));
-
-        // Change livewire paginate config
-        $this->comment('Change livewire paginate config ...');
-        $this->replaceInFile(
-            "'pagination_theme' => 'tailwind'",
-            "'pagination_theme' => 'zinc-ui'",
-            config_path('livewire.php')
-        );
 
         // Copy toaster file
         $this->comment('Publish toaster files ...');
