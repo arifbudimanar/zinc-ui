@@ -2,6 +2,13 @@
 
 All notable changes to `zinc-ui` will be documented in this file.
 
+## v1.0.3 - 2025-03-21
+
+**Full Changelog**: https://github.com/arifbudimanar/zinc-ui/compare/v1.0.2...v1.0.3
+
+- Remove theme toggle theme script
+- Disable theme switcher component
+
 ## v1.0.2 - 2025-03-20
 
 **Full Changelog**: https://github.com/arifbudimanar/zinc-ui/compare/v1.0.1...v1.0.2
